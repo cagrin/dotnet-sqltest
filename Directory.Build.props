@@ -1,0 +1,11 @@
+<Project>
+    <PropertyGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AnalysisMode>All</AnalysisMode>
+		<CodeAnalysisRuleSet>../StyleCop.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.406" PrivateAssets="All"/>
+    </ItemGroup>
+</Project>
