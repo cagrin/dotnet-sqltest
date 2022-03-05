@@ -13,12 +13,16 @@ public static class Program
 
         if (args.Length == 0)
         {
-            var versionString = Assembly.GetEntryAssembly()?
-                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
-                .InformationalVersion
-                .ToString();
-
-            Console.WriteLine($"sqltest v{versionString}\n------------\nUsage: sqltest [options]");
+            var ea = Assembly.GetEntryAssembly();
+            if (ea != null)
+            {
+                var aiva = ea.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
+                if (aiva != null)
+                {
+                    var versionString = aiva.InformationalVersion.ToString();
+                    Console.WriteLine($"sqltest v{versionString}\n------------\nUsage: sqltest [options]");
+                }
+            }
         }
     }
 }
