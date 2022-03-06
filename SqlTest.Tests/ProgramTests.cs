@@ -1,5 +1,7 @@
 namespace SqlTest.Tests;
 
+using SqlTest;
+
 [TestClass]
 public class ProgramTests
 {
@@ -7,12 +9,12 @@ public class ProgramTests
     [ExpectedException(typeof(ArgumentNullException))]
     public void MainShouldThrowArgumentNullException()
     {
-        SqlTest.Program.Main(null!);
+        Program.Main(null!);
     }
 
     [TestMethod]
     public void MainShouldRunWithEmptyArgs()
     {
-        SqlTest.Program.Main(Array.Empty<string>());
+        Program.Main(Array.Empty<string>());
     }
 }
