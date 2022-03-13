@@ -5,6 +5,10 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "nuget"
+    directory: "/SqlTest"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "nuget"
     directory: "/SqlTest.Tests"
     schedule:
       interval: "daily"
