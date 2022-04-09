@@ -19,7 +19,7 @@ public static class Program
                 var aiva = ea.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
                 if (aiva != null)
                 {
-                    var versionString = aiva.InformationalVersion.ToString();
+                    var versionString = aiva.InformationalVersion.ToString().Split("+").First();
                     Console.WriteLine($"sqltest v{versionString}\n------------\nUsage: sqltest [options]");
                 }
             }
