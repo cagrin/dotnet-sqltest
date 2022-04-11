@@ -19,12 +19,12 @@ jobs:
         with:
           dotnet-version: '6.0'
       - name: Run unit tests
-        run: dotnet test SqlTest.Tests --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=lcov
+        run: dotnet test ./SqlTest.Tests --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=lcov
       - name: Run invoke tests
         run: |
-          cd SqlTest.Tests/bin/Release/net6.0
-          sqltest --help
-          sqltest --version
+          cd ./SqlTest.Tests/bin/Release/net6.0
+          ./sqltest --help
+          ./sqltest --version
       - name: Run coveralls.io
         uses: coverallsapp/github-action@master
         with:
