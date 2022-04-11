@@ -37,6 +37,8 @@ public class PowerShellTests
         "mcr.microsoft.com/mssql/server:2019-latest";
 #endif
 
-        _ = PowerShellExtensions.RunScript($"dotnet SqlTest.dll --image {image}");
+        var results = PowerShellExtensions.RunScript($"dotnet SqlTest.dll --image {image}");
+
+        Assert.That.IsLike(results.First().ToString(), "Server=%;Database=master;User Id=sa;Password=%;");
     }
 }
