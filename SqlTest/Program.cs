@@ -25,10 +25,13 @@ public static class Program
 
     public static void InvokeSqlTest(string image)
     {
-        using var stc = new SqlTestContainer();
+        if (image != null)
+        {
+            using var stc = new SqlTestContainer();
 
-        var cs = stc.InvokeImage(image);
+            var cs = stc.InvokeImage(image);
 
-        Console.WriteLine(cs);
+            Console.WriteLine(cs);
+        }
     }
 }
