@@ -24,8 +24,8 @@ jobs:
         run: |
           dotnet build SqlTest --configuration Release
           cd SqlTest/bin/Release/net6.0
-          ./sqltest --help
-          ./sqltest --version
+          dotnet SqlTest.dll --help
+          dotnet SqlTest.dll --version
       - name: Run coveralls.io
         uses: coverallsapp/github-action@master
         with:
