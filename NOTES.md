@@ -4,4 +4,4 @@
 
 ## Run project
 
-```dotnet run --project SqlTest```
+```dotnet run --project SqlTest -- --help```

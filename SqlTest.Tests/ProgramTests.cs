@@ -11,10 +11,4 @@ public class ProgramTests
     {
         Program.Main(null!);
     }
-
-    [TestMethod]
-    public void MainShouldRunWithEmptyArgs()
-    {
-        Program.Main(Array.Empty<string>());
-    }
 }

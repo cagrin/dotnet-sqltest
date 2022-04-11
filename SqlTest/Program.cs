@@ -11,8 +11,24 @@ public static class Program
             throw new ArgumentNullException(nameof(args), "Value cannot be null.");
         }
 
-        var rootCommand = new RootCommand() { Description = "Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects." };
+        var imageOption = new Option<string>("--image");
+
+        var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.")
+        {
+            imageOption,
+        };
+
+        rootCommand.SetHandler((string image) => InvokeSqlTest(image), imageOption);
 
         _ = rootCommand.Invoke(args);
+    }
+
+    public static void InvokeSqlTest(string image)
+    {
+        using var stc = new SqlTestContainer();
+
+        var cs = stc.InvokeImage(image);
+
+        Console.WriteLine(cs);
     }
 }

@@ -26,4 +26,17 @@ public class PowerShellTests
 
         Assert.That.IsLike(results.First().ToString(), "Description:");
     }
+
+    [TestMethod]
+    public void RunScriptGetImage()
+    {
+        string image =
+#if DEBUG
+        "cagrin/azure-sql-edge-arm64";
+#else
+        "mcr.microsoft.com/mssql/server:2019-latest";
+#endif
+
+        _ = PowerShellExtensions.RunScript($"dotnet SqlTest.dll --image {image}");
+    }
 }
