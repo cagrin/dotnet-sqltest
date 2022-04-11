@@ -1,11 +1,12 @@
 namespace SqlTest;
 
+using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 
 public static class PowerShellExtensions
 {
-    public static void RunScript(string script)
+    public static Collection<PSObject> RunScript(string script)
     {
         var runspace = RunspaceFactory.CreateRunspace(InitialSessionState.CreateDefault());
         runspace.Open();
@@ -29,5 +30,7 @@ public static class PowerShellExtensions
 
         Console.ResetColor();
         runspace.Close();
+
+        return results;
     }
 }

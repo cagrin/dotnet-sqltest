@@ -1,17 +1,23 @@
 namespace SqlTest.Tests;
 
+using LikeComparison.TransactSql;
+
 [TestClass]
 public class PowerShellTests
 {
     [TestMethod]
-    public void RunScript()
+    public void RunScriptGetVersion()
     {
-        PowerShellExtensions.RunScript("dotnet --version");
+        var results = PowerShellExtensions.RunScript("dotnet SqlTest.dll --version");
+
+        Assert.That.IsLike(results.First().ToString(), "%.%.%+%");
     }
 
     [TestMethod]
-    public void RunScriptError()
+    public void RunScriptGetHelp()
     {
-        PowerShellExtensions.RunScript("dotnet --error");
+        var results = PowerShellExtensions.RunScript("dotnet SqlTest.dll --help");
+
+        Assert.That.IsLike(results.First().ToString(), "Description:");
     }
 }
