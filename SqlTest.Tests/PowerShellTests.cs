@@ -6,6 +6,12 @@ using LikeComparison.TransactSql;
 public class PowerShellTests
 {
     [TestMethod]
+    public void RunScriptError()
+    {
+        _ = PowerShellExtensions.RunScript("dotnet --error");
+    }
+
+    [TestMethod]
     public void RunScriptGetVersion()
     {
         var results = PowerShellExtensions.RunScript("dotnet SqlTest.dll --version");
