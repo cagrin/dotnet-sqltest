@@ -34,7 +34,7 @@ public class PowerShellExtensionsTests
 #if DEBUG
         "cagrin/azure-sql-edge-arm64";
 #else
-        "mcr.microsoft.com/mssql/server:2019-latest";
+        "mcr.microsoft.com/azure-sql-edge";
 #endif
 
         var results = PowerShellExtensions.RunScript($"dotnet SqlTest.dll --image {image} --project ../../../../Database.Tests");
