@@ -12,24 +12,26 @@ public static class Program
         }
 
         var imageOption = new Option<string>("--image");
+        var projectOption = new Option<string>("--project");
 
         var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.")
         {
             imageOption,
+            projectOption,
         };
 
-        rootCommand.SetHandler((string image) => InvokeSqlTest(image), imageOption);
+        rootCommand.SetHandler((string image, string project) => InvokeSqlTest(image, project), imageOption, projectOption);
 
         _ = rootCommand.Invoke(args);
     }
 
-    public static void InvokeSqlTest(string image)
+    public static void InvokeSqlTest(string image, string project)
     {
-        if (image != null)
+        if (image != null && project != null)
         {
             using var stc = new SqlTestContainer();
 
-            var cs = stc.InvokeImage(image);
+            var cs = stc.InvokeProject(image, project);
 
             Console.WriteLine(cs);
         }

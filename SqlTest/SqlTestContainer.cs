@@ -8,7 +8,7 @@ public class SqlTestContainer : IDisposable
 {
     private MsSqlTestcontainer? testcontainer;
 
-    public string InvokeImage(string image)
+    public string InvokeProject(string image, string project)
     {
         var password = "A.794613";
 
@@ -22,7 +22,14 @@ public class SqlTestContainer : IDisposable
         this.testcontainer = testcontainersBuilder.Build();
         this.testcontainer.StartAsync().Wait();
 
-        return this.testcontainer.ConnectionString;
+        int port = this.testcontainer.Port;
+        password = this.testcontainer.Password;
+
+        string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={port} /p:TargetDatabaseName=Database.Tests /p:TargetUser=sa /p:TargetPassword={password}";
+
+        var psobjs = PowerShellExtensions.RunScript(script);
+
+        return psobjs.Last().ToString();
     }
 
     public void Dispose()

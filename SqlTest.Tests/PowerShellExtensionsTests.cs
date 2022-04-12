@@ -3,7 +3,7 @@ namespace SqlTest.Tests;
 using LikeComparison.TransactSql;
 
 [TestClass]
-public class PowerShellTests
+public class PowerShellExtensionsTests
 {
     [TestMethod]
     public void RunScriptError()
@@ -28,7 +28,7 @@ public class PowerShellTests
     }
 
     [TestMethod]
-    public void RunScriptGetImage()
+    public void RunScriptGetInvokeProject()
     {
         string image =
 #if DEBUG
@@ -37,8 +37,8 @@ public class PowerShellTests
         "mcr.microsoft.com/mssql/server:2019-latest";
 #endif
 
-        var results = PowerShellExtensions.RunScript($"dotnet SqlTest.dll --image {image}");
+        var results = PowerShellExtensions.RunScript($"dotnet SqlTest.dll --image {image} --project ../../../../Database.Tests");
 
-        Assert.That.IsLike(results.First().ToString(), "Server=%;Database=master;User Id=sa;Password=%;");
+        Assert.That.IsLike(results.Last().ToString(), "%Successfully deployed database%");
     }
 }
