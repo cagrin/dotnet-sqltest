@@ -13,4 +13,4 @@ Install the tool from the package:
 
 Invoke the tool:
 
-```sqltest [options]```
+```sqltest [command] [options]```
