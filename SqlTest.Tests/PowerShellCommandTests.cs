@@ -8,13 +8,13 @@ public class PowerShellCommandTests
     [TestMethod]
     public void InvokeDotnetError()
     {
-        _ = PowerShellCommand.Invoke("dotnet --error");
+        _ = new PowerShellCommand().Invoke("dotnet --error");
     }
 
     [TestMethod]
     public void InvokeSqlTestVersion()
     {
-        var results = PowerShellCommand.Invoke("dotnet SqlTest.dll --version");
+        var results = new PowerShellCommand().Invoke("dotnet SqlTest.dll --version");
 
         Assert.That.IsLike(results.First().ToString(), "%.%.%+%");
     }
@@ -22,7 +22,7 @@ public class PowerShellCommandTests
     [TestMethod]
     public void InvokeSqlTestHelp()
     {
-        var results = PowerShellCommand.Invoke("dotnet SqlTest.dll --help");
+        var results = new PowerShellCommand().Invoke("dotnet SqlTest.dll --help");
 
         Assert.That.IsLike(results.First().ToString(), "Description:");
     }
@@ -37,7 +37,7 @@ public class PowerShellCommandTests
         "mcr.microsoft.com/azure-sql-edge";
 #endif
 
-        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project ../../../../Database.Tests");
+        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {image} --project ../../../../Database.Tests");
 
         Assert.That.IsLike(results.Last().ToString(), "%Successfully deployed database%");
     }

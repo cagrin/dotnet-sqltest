@@ -31,7 +31,7 @@ public class RunAllCommand : IDisposable
 
         string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={port} /p:TargetDatabaseName=Database.Tests /p:TargetUser=sa /p:TargetPassword={password}";
 
-        var result = PowerShellCommand.Invoke(script);
+        var result = new PowerShellCommand().Invoke(script);
 
         using var con = new SqlConnection($"{cs}TrustServerCertificate=True;");
 
