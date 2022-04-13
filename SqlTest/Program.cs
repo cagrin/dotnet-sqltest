@@ -11,29 +11,29 @@ public static class Program
             throw new ArgumentNullException(nameof(args), "Value cannot be null.");
         }
 
-        var imageOption = new Option<string>("--image");
-        var projectOption = new Option<string>("--project");
+        var imageOption = new Option<string>(new[] { "--image", "-i" }, "Docker image.");
+        var projectOption = new Option<string>(new[] { "--project", "-p" }, "Database project.");
 
-        var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.")
+        var runAll = new Command("runall", "Run all tests.")
         {
             imageOption,
             projectOption,
         };
 
-        rootCommand.SetHandler((string image, string project) => InvokeSqlTest(image, project), imageOption, projectOption);
+        runAll.SetHandler((string image, string project) => InvokeSqlTest(image, project), imageOption, projectOption);
+
+        var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.")
+        {
+            runAll,
+        };
 
         _ = rootCommand.Invoke(args);
     }
 
     public static void InvokeSqlTest(string image, string project)
     {
-        if (image != null && project != null)
-        {
-            using var stc = new SqlTestContainer();
+        using var stc = new SqlTestContainer();
 
-            var cs = stc.InvokeProject(image, project);
-
-            Console.WriteLine(cs);
-        }
+        _ = stc.InvokeProject(image, project);
     }
 }

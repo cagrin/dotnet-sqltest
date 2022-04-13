@@ -37,7 +37,7 @@ public class PowerShellExtensionsTests
         "mcr.microsoft.com/azure-sql-edge";
 #endif
 
-        var results = PowerShellExtensions.RunScript($"dotnet SqlTest.dll --image {image} --project ../../../../Database.Tests");
+        var results = PowerShellExtensions.RunScript($"dotnet SqlTest.dll runall --image {image} --project ../../../../Database.Tests");
 
         Assert.That.IsLike(results.Last().ToString(), "%Successfully deployed database%");
     }

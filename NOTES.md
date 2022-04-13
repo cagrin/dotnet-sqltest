@@ -4,4 +4,4 @@
 
 ## Run project
 
-```dotnet run --project SqlTest -- --help```
+```dotnet run --project SqlTest -- runall --image cagrin/azure-sql-edge-arm64 --project Database.Tests```
