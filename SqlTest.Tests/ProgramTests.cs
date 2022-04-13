@@ -9,6 +9,6 @@ public class ProgramTests
     [ExpectedException(typeof(ArgumentNullException))]
     public void MainShouldThrowArgumentNullException()
     {
-        Program.Main(null!);
+        _ = Program.Main(null!);
     }
 }

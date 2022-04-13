@@ -3,32 +3,32 @@ namespace SqlTest.Tests;
 using LikeComparison.TransactSql;
 
 [TestClass]
-public class PowerShellExtensionsTests
+public class PowerShellCommandTests
 {
     [TestMethod]
-    public void RunScriptError()
+    public void InvokeDotnetError()
     {
-        _ = PowerShellExtensions.RunScript("dotnet --error");
+        _ = PowerShellCommand.Invoke("dotnet --error");
     }
 
     [TestMethod]
-    public void RunScriptGetVersion()
+    public void InvokeSqlTestVersion()
     {
-        var results = PowerShellExtensions.RunScript("dotnet SqlTest.dll --version");
+        var results = PowerShellCommand.Invoke("dotnet SqlTest.dll --version");
 
         Assert.That.IsLike(results.First().ToString(), "%.%.%+%");
     }
 
     [TestMethod]
-    public void RunScriptGetHelp()
+    public void InvokeSqlTestHelp()
     {
-        var results = PowerShellExtensions.RunScript("dotnet SqlTest.dll --help");
+        var results = PowerShellCommand.Invoke("dotnet SqlTest.dll --help");
 
         Assert.That.IsLike(results.First().ToString(), "Description:");
     }
 
     [TestMethod]
-    public void RunScriptGetInvokeProject()
+    public void InvokeSqlTestRunAll()
     {
         string image =
 #if DEBUG
@@ -37,7 +37,7 @@ public class PowerShellExtensionsTests
         "mcr.microsoft.com/azure-sql-edge";
 #endif
 
-        var results = PowerShellExtensions.RunScript($"dotnet SqlTest.dll runall --image {image} --project ../../../../Database.Tests");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project ../../../../Database.Tests");
 
         Assert.That.IsLike(results.Last().ToString(), "%Successfully deployed database%");
     }

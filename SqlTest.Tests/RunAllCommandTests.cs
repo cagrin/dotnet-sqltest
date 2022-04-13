@@ -3,11 +3,11 @@ namespace SqlTest.Tests;
 using SqlTest;
 
 [TestClass]
-public class SqlTestContainerTests
+public class RunAllCommandTests
 {
     [TestMethod]
     public void ShoudRunDispose()
     {
-        using var stc = new SqlTestContainer();
+        using var stc = new RunAllCommand();
     }
 }

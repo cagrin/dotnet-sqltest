@@ -4,7 +4,7 @@ using System.CommandLine;
 
 public static class Program
 {
-    public static void Main(string[] args)
+    public static int Main(string[] args)
     {
         if (args == null)
         {
@@ -20,20 +20,20 @@ public static class Program
             projectOption,
         };
 
-        runAll.SetHandler((string image, string project) => InvokeSqlTest(image, project), imageOption, projectOption);
+        runAll.SetHandler((string image, string project) => InvokeRunAll(image, project), imageOption, projectOption);
 
         var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.")
         {
             runAll,
         };
 
-        _ = rootCommand.Invoke(args);
+        return rootCommand.Invoke(args);
     }
 
-    public static void InvokeSqlTest(string image, string project)
+    public static void InvokeRunAll(string image, string project)
     {
-        using var stc = new SqlTestContainer();
+        using var stc = new RunAllCommand();
 
-        _ = stc.InvokeProject(image, project);
+        _ = stc.Invoke(image, project);
     }
 }

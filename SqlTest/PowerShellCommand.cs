@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 
-public static class PowerShellExtensions
+public static class PowerShellCommand
 {
-    public static Collection<PSObject> RunScript(string script)
+    public static Collection<PSObject> Invoke(string script)
     {
         var runspace = RunspaceFactory.CreateRunspace(InitialSessionState.CreateDefault());
         runspace.Open();
