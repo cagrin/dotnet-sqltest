@@ -34,6 +34,6 @@ public static class Program
     {
         using var stc = new RunAllCommand();
 
-        _ = stc.Invoke(image, project);
+        stc.Invoke(image, project);
     }
 }
