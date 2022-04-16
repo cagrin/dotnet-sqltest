@@ -6,7 +6,7 @@
 # dotnet-sqltest
 Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.
 
-## Usase
+## Usage
 Install the tool from the package:
 
 ```dotnet tool install -g dotnet-sqltest```
