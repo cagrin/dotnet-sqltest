@@ -18,8 +18,13 @@ public class RunAllCommand : IDisposable
 
     public void Invoke(string image, string project)
     {
+        Console.WriteLine("Creating container...".ToString());
         this.CreateContainer(image);
+
+        Console.WriteLine("Deploying database...".ToString());
         this.DeployDatabase(project);
+
+        Console.WriteLine("Running all tests....".ToString());
         this.RunTests();
     }
 

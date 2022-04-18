@@ -39,6 +39,6 @@ public class PowerShellCommandTests
 
         var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {image} --project ../../../../Database.Tests");
 
-        Assert.That.IsLike(results.Last().ToString(), "%Successfully deployed database%");
+        Assert.That.IsLike(results.Last().ToString(), "%Running all tests%");
     }
 }
