@@ -64,11 +64,11 @@ public class RunAllCommand : IDisposable
 
         if (!results.Last().ToString().Like("%Successfully deployed database%"))
         {
-            string error = string.Empty;
+            string error = "  Deploying database failed:";
 
             foreach (var result in results)
             {
-                error = (error.Length > 0) ? $"{error}\n  {result}" : $"  {result}";
+                error = $"{error}\n  {result}";
             }
 
             Console.ForegroundColor = ConsoleColor.Red;
