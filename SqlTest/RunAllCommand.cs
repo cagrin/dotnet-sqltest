@@ -5,6 +5,7 @@ using Dapper;
 using DotNet.Testcontainers.Containers.Builders;
 using DotNet.Testcontainers.Containers.Configurations.Databases;
 using DotNet.Testcontainers.Containers.Modules.Databases;
+using LikeComparison.TransactSql;
 
 public class RunAllCommand : IDisposable
 {
@@ -58,7 +59,22 @@ public class RunAllCommand : IDisposable
     {
         string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName=Database.Tests /p:TargetUser=sa /p:TargetPassword={this.password}";
 
-        _ = new PowerShellCommand().Invoke(script);
+        var results = new PowerShellCommand().Invoke(script);
+
+        if (!results.Last().ToString().Like("%Successfully deployed database%"))
+        {
+            string error = string.Empty;
+
+            foreach (var result in results)
+            {
+                if (result.ToString().Like("%error%"))
+                {
+                    error += result + "\n";
+                }
+            }
+
+            throw new InvalidOperationException(error);
+        }
     }
 
     private void RunTests()

@@ -1,0 +1,10 @@
+<Project Sdk="MSBuild.Sdk.SqlProj/2.0.0">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <SqlServerVersion>Sql150</SqlServerVersion>
+        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="tSQLt.Edge" Version="0.7.0" />
+    </ItemGroup>
+</Project>

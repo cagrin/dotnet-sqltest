@@ -5,6 +5,13 @@ using LikeComparison.TransactSql;
 [TestClass]
 public class PowerShellCommandTests
 {
+    private readonly string image =
+#if DEBUG
+        "cagrin/azure-sql-edge-arm64";
+#else
+        "mcr.microsoft.com/azure-sql-edge";
+#endif
+
     [TestMethod]
     public void InvokeDotnetError()
     {
@@ -30,15 +37,16 @@ public class PowerShellCommandTests
     [TestMethod]
     public void InvokeSqlTestRunAll()
     {
-        string image =
-#if DEBUG
-        "cagrin/azure-sql-edge-arm64";
-#else
-        "mcr.microsoft.com/azure-sql-edge";
-#endif
+        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok");
 
-        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {image} --project ../../../../Database.Tests");
+        Assert.That.IsLike(results.Last().ToString(), "Running all tests....");
+    }
 
-        Assert.That.IsLike(results.Last().ToString(), "%Running all tests%");
+    [TestMethod]
+    public void InvokeSqlTestRunAllFail()
+    {
+        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Fail");
+
+        Assert.That.IsLike(results.Last().ToString(), "Deploying database...");
     }
 }

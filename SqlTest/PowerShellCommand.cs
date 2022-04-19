@@ -19,6 +19,13 @@ public class PowerShellCommand
 
         var results = ps.Invoke();
 
+        foreach (var error in ps.Streams.Error)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(error);
+            Console.ResetColor();
+        }
+
         this.runspace.Close();
 
         return results;
