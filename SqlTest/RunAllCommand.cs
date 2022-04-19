@@ -57,7 +57,7 @@ public class RunAllCommand : IDisposable
 
     private void DeployDatabase(string project)
     {
-        string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName=Database.Tests /p:TargetUser=sa /p:TargetPassword={this.password}";
+        string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName=Database.Tests /p:TargetUser=sa /p:TargetPassword={this.password} --nologo";
 
         var results = new PowerShellCommand().Invoke(script);
 
@@ -67,10 +67,7 @@ public class RunAllCommand : IDisposable
 
             foreach (var result in results)
             {
-                if (result.ToString().Like("%error%"))
-                {
-                    error += result + "\n";
-                }
+                error = $"{error}\n{result}";
             }
 
             throw new InvalidOperationException(error);
