@@ -23,10 +23,11 @@ public class RunAllCommand : IDisposable
         this.CreateContainer(image);
 
         Console.WriteLine("Deploying database...".ToString());
-        this.DeployDatabase(project);
-
-        Console.WriteLine("Running all tests....".ToString());
-        this.RunTests();
+        if (this.DeployDatabase(project))
+        {
+            Console.WriteLine("Running all tests....".ToString());
+            this.RunTests();
+        }
     }
 
     public void Dispose()
@@ -55,7 +56,7 @@ public class RunAllCommand : IDisposable
         this.cs = this.testcontainer.ConnectionString;
     }
 
-    private void DeployDatabase(string project)
+    private bool DeployDatabase(string project)
     {
         string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName=Database.Tests /p:TargetUser=sa /p:TargetPassword={this.password} --nologo";
 
@@ -67,11 +68,16 @@ public class RunAllCommand : IDisposable
 
             foreach (var result in results)
             {
-                error = $"{error}\n{result}";
+                error = (error.Length > 0) ? $"{error}\n  {result}" : $"  {result}";
             }
 
-            throw new InvalidOperationException(error);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(error);
+            Console.ResetColor();
+            return false;
         }
+
+        return true;
     }
 
     private void RunTests()

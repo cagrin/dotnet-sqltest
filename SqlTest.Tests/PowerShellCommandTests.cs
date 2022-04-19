@@ -1,3 +1,5 @@
+[assembly: Parallelize(Workers = 8, Scope = ExecutionScope.MethodLevel)]
+
 namespace SqlTest.Tests;
 
 using LikeComparison.TransactSql;
@@ -47,6 +49,6 @@ public class PowerShellCommandTests
     {
         var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Fail");
 
-        Assert.That.IsLike(results.Last().ToString(), "Deploying database...");
+        Assert.That.IsLike(results.Last().ToString(), "%error MSB3073%");
     }
 }
