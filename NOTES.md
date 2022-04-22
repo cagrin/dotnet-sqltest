@@ -4,7 +4,7 @@
 
 ## Run project
 
-```dotnet run --project SqlTest -- runall --image cagrin/azure-sql-edge-arm64 --project Database.Tests```
+```dotnet run --project SqlTest -- runall --image cagrin/azure-sql-edge-arm64 --project Database.Tests/Ok```
 
 ## Switch dotnet cli to a non-system language
 

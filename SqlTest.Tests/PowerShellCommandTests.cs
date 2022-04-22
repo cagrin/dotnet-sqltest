@@ -41,7 +41,7 @@ public class PowerShellCommandTests
     {
         var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok");
 
-        Assert.That.IsLike(results.Last().ToString(), "Running all tests....");
+        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1.");
     }
 
     [TestMethod]
@@ -49,6 +49,14 @@ public class PowerShellCommandTests
     {
         var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Fail");
 
-        Assert.That.IsLike(results.Last().ToString(), "%error MSB3073%");
+        Assert.That.IsLike(results.Last().ToString(), "Failed: 1, Passed: 0.");
+    }
+
+    [TestMethod]
+    public void InvokeSqlTestRunAllError()
+    {
+        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Error");
+
+        Assert.That.IsLike(results.Last().ToString(), "Deploying database failed.");
     }
 }
