@@ -11,6 +11,10 @@ Install the tool from the package:
 
 ```dotnet tool install -g dotnet-sqltest```
 
+Update the tool to newer version:
+
+```dotnet tool update dotnet-sqltest -g```
+
 Invoke the tool:
 
 ```sqltest [command] [options]```
