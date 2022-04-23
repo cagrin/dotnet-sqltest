@@ -21,13 +21,10 @@ public class RunAllCommand : IDisposable
 
     public void Invoke(string image, string project)
     {
-        Console.WriteLine("Creating container...".ToString());
         this.CreateContainer(image);
 
-        Console.WriteLine("Deploying database...".ToString());
         if (this.DeployDatabase(project))
         {
-            Console.WriteLine("Running all tests....".ToString());
             this.RunTests();
         }
     }
@@ -45,6 +42,8 @@ public class RunAllCommand : IDisposable
 
     private void CreateContainer(string image)
     {
+        var stopwatchLog = new StopwatchLog().Start("Creating container...");
+
         var testcontainersBuilder = new TestcontainersBuilder<MsSqlTestcontainer>()
             .WithDatabase(new MsSqlTestcontainerConfiguration(image)
             {
@@ -56,13 +55,19 @@ public class RunAllCommand : IDisposable
 
         this.port = this.testcontainer.Port;
         this.cs = this.testcontainer.ConnectionString;
+
+        stopwatchLog.Stop();
     }
 
     private bool DeployDatabase(string project)
     {
+        var stopwatchLog = new StopwatchLog().Start("Deploying database...");
+
         string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName={this.database} /p:TargetUser=sa /p:TargetPassword={this.password} --nologo";
 
         var results = new PowerShellCommand().Invoke(script);
+
+        stopwatchLog.Stop();
 
         if (!results.Last().ToString().Like("%Successfully deployed database%"))
         {
@@ -86,14 +91,20 @@ public class RunAllCommand : IDisposable
 
     private void RunTests()
     {
+        var stopwatchLog = new StopwatchLog().Start("Running all tests....");
+
         using var con = new SqlConnection($"{this.cs}TrustServerCertificate=True;");
 
         try
         {
             _ = con.Execute($"EXEC [{this.database}].tSQLt.RunAll");
+
+            stopwatchLog.Stop();
         }
         catch (SqlException ex)
         {
+            stopwatchLog.Stop();
+
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(ex.Message);
             Console.ResetColor();
