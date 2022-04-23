@@ -9,11 +9,11 @@ Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects
 ## Usage
 Install the tool from the package:
 
-```dotnet tool install -g dotnet-sqltest```
+```dotnet tool install --global dotnet-sqltest```
 
 Update the tool to newer version:
 
-```dotnet tool update dotnet-sqltest -g```
+```dotnet tool update --global dotnet-sqltest```
 
 Invoke the tool:
 
