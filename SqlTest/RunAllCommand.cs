@@ -2,9 +2,9 @@ namespace SqlTest;
 
 using System.Data.SqlClient;
 using Dapper;
-using DotNet.Testcontainers.Containers.Builders;
-using DotNet.Testcontainers.Containers.Configurations.Databases;
-using DotNet.Testcontainers.Containers.Modules.Databases;
+using DotNet.Testcontainers.Builders;
+using DotNet.Testcontainers.Configurations;
+using DotNet.Testcontainers.Containers;
 using LikeComparison.TransactSql;
 
 public class RunAllCommand : IDisposable
@@ -44,13 +44,15 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Creating container...");
 
-        var testcontainersBuilder = new TestcontainersBuilder<MsSqlTestcontainer>()
-            .WithDatabase(new MsSqlTestcontainerConfiguration(image)
-            {
-                Password = this.password,
-            });
+        using var config = new MsSqlTestcontainerConfiguration(image)
+        {
+            Password = this.password,
+        };
 
-        this.testcontainer = testcontainersBuilder.Build();
+        this.testcontainer = new TestcontainersBuilder<MsSqlTestcontainer>()
+            .WithDatabase(config)
+            .Build();
+
         this.testcontainer.StartAsync().Wait();
 
         this.port = this.testcontainer.Port;

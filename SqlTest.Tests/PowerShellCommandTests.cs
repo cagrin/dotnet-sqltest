@@ -37,7 +37,7 @@ public class PowerShellCommandTests
     }
 
     [TestMethod]
-    public void InvokeSqlTestRunAll()
+    public void InvokeSqlTestRunAllOk()
     {
         var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok");
 
