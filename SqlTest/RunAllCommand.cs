@@ -6,6 +6,7 @@ using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Configurations;
 using DotNet.Testcontainers.Containers;
 using LikeComparison.TransactSql;
+using SQLCover;
 
 public class RunAllCommand : IDisposable
 {
@@ -18,6 +19,10 @@ public class RunAllCommand : IDisposable
     private string cs = string.Empty;
 
     private MsSqlTestcontainer? testcontainer;
+
+    private CodeCoverage? coverage;
+
+    private CoverageResult? code;
 
     public void Invoke(string image, string project)
     {
@@ -95,32 +100,43 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Running all tests....");
 
-        using var con = new SqlConnection($"{this.cs}TrustServerCertificate=True;");
+        string fcs = $"{this.cs}TrustServerCertificate=True;";
+
+        this.coverage = new CodeCoverage(fcs, this.database);
+
+        using var con = new SqlConnection(fcs);
 
         try
         {
+            _ = this.coverage.Start();
+
             _ = con.Execute($"EXEC [{this.database}].tSQLt.RunAll");
+
+            this.code = this.coverage.Stop();
 
             stopwatchLog.Stop();
         }
         catch (SqlException ex)
         {
+            this.code = this.coverage.Stop();
+
             stopwatchLog.Stop();
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(ex.Message);
             Console.ResetColor();
         }
-        finally
-        {
-            var results = con.Query<TestResult>($"SELECT Name, Result FROM [{this.database}].tSQLt.TestResult");
 
-            int passed = results.Where(p => p.Result == "Success").Count();
-            int failed = results.Where(p => p.Result == "Failure").Count();
+        var results = con.Query<TestResult>($"SELECT Name, Result FROM [{this.database}].tSQLt.TestResult");
 
-            Console.ForegroundColor = failed > 0 ? ConsoleColor.Red : ConsoleColor.Green;
-            Console.WriteLine($"Failed: {failed}, Passed: {passed}.");
-            Console.ResetColor();
-        }
+        int passed = results.Where(p => p.Result == "Success").Count();
+        int failed = results.Where(p => p.Result == "Failure").Count();
+
+        long cr = Convert.ToInt64(Convert.ToDouble(this.code.CoveredStatementCount) / Convert.ToDouble(this.code.StatementCount) * 100.0);
+        string cc = $", Coverage: {cr}% ({this.code.CoveredStatementCount}/{this.code.StatementCount})";
+
+        Console.ForegroundColor = failed > 0 ? ConsoleColor.Red : ConsoleColor.Green;
+        Console.WriteLine($"Failed: {failed}, Passed: {passed}{cc}");
+        Console.ResetColor();
     }
 }
