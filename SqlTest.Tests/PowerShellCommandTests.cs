@@ -41,7 +41,7 @@ public class PowerShellCommandTests
     {
         var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok");
 
-        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: 100% (10/10)");
+        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: 100% (3/3)");
     }
 
     [TestMethod]
@@ -49,7 +49,7 @@ public class PowerShellCommandTests
     {
         var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Fail");
 
-        Assert.That.IsLike(results.Last().ToString(), "Failed: 1, Passed: 0, Coverage: 100% (1/1)");
+        Assert.That.IsLike(results.Last().ToString(), "Failed: 1, Passed: 0, Coverage: 0% (0/0)");
     }
 
     [TestMethod]

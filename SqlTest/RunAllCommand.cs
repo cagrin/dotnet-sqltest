@@ -132,7 +132,7 @@ public class RunAllCommand : IDisposable
         int passed = results.Where(p => p.Result == "Success").Count();
         int failed = results.Where(p => p.Result == "Failure").Count();
 
-        long cr = Convert.ToInt64(Convert.ToDouble(this.code.CoveredStatementCount) / Convert.ToDouble(this.code.StatementCount) * 100.0);
+        long cr = this.code.StatementCount == 0 ? 0 : Convert.ToInt64(Convert.ToDouble(this.code.CoveredStatementCount) / Convert.ToDouble(this.code.StatementCount) * 100.0);
         string cc = $", Coverage: {cr}% ({this.code.CoveredStatementCount}/{this.code.StatementCount})";
 
         Console.ForegroundColor = failed > 0 ? ConsoleColor.Red : ConsoleColor.Green;
