@@ -23,7 +23,14 @@ Invoke the tool:
 
 Running all tSQLt tests inside throwaway SQL Server 2019 container:
 
-```sqltest runall --project Database.Tests --image mcr.microsoft.com/mssql/server```
+```sqltest runall --project Database.Tests/Ok --image mcr.microsoft.com/mssql/server```
+
+```pwsh
+Creating container... 7 s
+Deploying database... 12 s
+Running all tests.... 2 s
+Failed: 0, Passed: 1, Coverage: 100% (3/3)
+```
 
 ## Build
 
@@ -33,4 +40,5 @@ Powered by:
 - [Dapper](https://www.nuget.org/packages/Dapper)
 - [DotNet.Testcontainers](https://www.nuget.org/packages/DotNet.Testcontainers)
 - [Microsoft.PowerShell.SDK](https://www.nuget.org/packages/Microsoft.PowerShell.SDK)
+- [SQLCoverLib](https://www.nuget.org/packages/SQLCoverLib)
 - [System.CommandLine](https://www.nuget.org/packages/System.CommandLine)
