@@ -134,11 +134,23 @@ public class RunAllCommand : IDisposable
 
         if (failed > 0)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             foreach (var result in results.Where(p => p.Result == "Failure"))
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(result.Name);
-                Console.WriteLine(result.Msg);
+                Console.WriteLine($"{result.Name}: {result.Msg}");
+            }
+        }
+
+        var uncoveredBatches = this.code.Batches.Where(p => p.Statements.Any(r => r.HitCount == 0));
+        if (uncoveredBatches.Any())
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            foreach (var batch in uncoveredBatches)
+            {
+                foreach (var statement in batch.Statements.Where(p => p.HitCount == 0))
+                {
+                    Console.WriteLine($"{batch.ObjectName}: {statement.Text}");
+                }
             }
         }
 

@@ -18,3 +18,12 @@ BEGIN
     EXEC tSQLt.AssertNotEquals 'hello', 'hallo';
 END;
 GO
+
+CREATE PROCEDURE [dbo].[Some_Uncovered]
+AS
+BEGIN
+    EXEC tSQLt.AssertEquals 'uncovered', 'uncovered';
+
+    EXEC tSQLt.AssertEqualsString 'uncovered', 'uncovered';
+END;
+GO

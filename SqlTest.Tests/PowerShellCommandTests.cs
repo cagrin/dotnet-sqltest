@@ -41,7 +41,7 @@ public class PowerShellCommandTests
     {
         var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok");
 
-        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: 100% (3/3)");
+        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: 60% (3/5)");
     }
 
     [TestMethod]
