@@ -59,4 +59,12 @@ public class PowerShellCommandTests
 
         Assert.That.IsLike(results.Last().ToString(), "Deploying database failed.");
     }
+
+    [TestMethod]
+    public void InvokeSqlTestRunAllException()
+    {
+        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Exception");
+
+        Assert.That.IsLike(results.Last().ToString(), "Failed: 1, Passed: 0, Coverage: 0% (0/0)");
+    }
 }
