@@ -127,10 +127,20 @@ public class RunAllCommand : IDisposable
             Console.ResetColor();
         }
 
-        var results = con.Query<TestResult>($"SELECT Name, Result FROM [{this.database}].tSQLt.TestResult");
+        var results = con.Query<TestResult>($"SELECT Name, Result, Msg FROM [{this.database}].tSQLt.TestResult");
 
         int passed = results.Where(p => p.Result == "Success").Count();
         int failed = results.Where(p => p.Result == "Failure").Count();
+
+        if (failed > 0)
+        {
+            foreach (var result in results.Where(p => p.Result == "Failure"))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(result.Name);
+                Console.WriteLine(result.Msg);
+            }
+        }
 
         long cr = this.code.StatementCount == 0 ? 0 : Convert.ToInt64(Convert.ToDouble(this.code.CoveredStatementCount) / Convert.ToDouble(this.code.StatementCount) * 100.0);
         string cc = $", Coverage: {cr}% ({this.code.CoveredStatementCount}/{this.code.StatementCount})";
