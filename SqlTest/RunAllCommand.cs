@@ -24,9 +24,9 @@ public class RunAllCommand : IDisposable
 
     private CoverageResult? code;
 
-    public void Invoke(string image, string project)
+    public void Invoke(string image, string project, string collation)
     {
-        this.CreateContainer(image);
+        this.CreateContainer(image, collation);
 
         if (this.DeployDatabase(project))
         {
@@ -45,7 +45,7 @@ public class RunAllCommand : IDisposable
         this.testcontainer?.DisposeAsync().AsTask().Wait();
     }
 
-    private void CreateContainer(string image)
+    private void CreateContainer(string image, string collation)
     {
         var stopwatchLog = new StopwatchLog().Start("Creating container...");
 
@@ -54,8 +54,12 @@ public class RunAllCommand : IDisposable
             Password = this.password,
         };
 
+        string name = "MSSQL_COLLATION";
+        string value = string.IsNullOrEmpty(collation) ? "SQL_Latin1_General_CP1_CI_AS" : collation;
+
         this.testcontainer = new TestcontainersBuilder<MsSqlTestcontainer>()
             .WithDatabase(config)
+            .WithEnvironment(name, value)
             .Build();
 
         this.testcontainer.StartAsync().Wait();
