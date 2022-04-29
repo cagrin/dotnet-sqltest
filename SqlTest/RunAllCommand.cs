@@ -49,25 +49,29 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Creating container...");
 
-        using var config = new MsSqlTestcontainerConfiguration(image)
-        {
-            Password = this.password,
-        };
-
-        string name = "MSSQL_COLLATION";
-        string value = string.IsNullOrEmpty(collation) ? "SQL_Latin1_General_CP1_CI_AS" : collation;
-
-        this.testcontainer = new TestcontainersBuilder<MsSqlTestcontainer>()
-            .WithDatabase(config)
-            .WithEnvironment(name, value)
-            .Build();
-
+        this.testcontainer = CreateTestcontainer(image, collation);
         this.testcontainer.StartAsync().Wait();
 
         this.port = this.testcontainer.Port;
         this.cs = this.testcontainer.ConnectionString;
 
         stopwatchLog.Stop();
+
+        MsSqlTestcontainer CreateTestcontainer(string image, string collation)
+        {
+            using var config = new MsSqlTestcontainerConfiguration(image)
+            {
+                Password = this.password,
+            };
+
+            string name = "MSSQL_COLLATION";
+            string value = string.IsNullOrEmpty(collation) ? "SQL_Latin1_General_CP1_CI_AS" : collation;
+
+            return new TestcontainersBuilder<MsSqlTestcontainer>()
+                .WithDatabase(config)
+                .WithEnvironment(name, value)
+                .Build();
+        }
     }
 
     private bool DeployDatabase(string project)
