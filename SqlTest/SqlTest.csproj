@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-        <OutputType>Exe</OutputType>
-        <PackAsTool>true</PackAsTool>
-        <ToolCommandName>sqltest</ToolCommandName>
+		<OutputType>Exe</OutputType>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>sqltest</ToolCommandName>
 		<PackageId>dotnet-sqltest</PackageId>
 		<Authors>Krzysztof Strugiński</Authors>
 		<Description>dotnet-sqltest</Description>
@@ -19,7 +19,7 @@
 		<None Include="../License" Pack="true" Visible="false" PackagePath=""/>
 		<None Include="../README.md" Pack="true" PackagePath=""/>
 		<PackageReference Include="Dapper" Version="2.0.123"/>
-		<PackageReference Include="DotNet.Testcontainers" Version="1.6.0-beta.2185"/>
+		<PackageReference Include="DotNet.Testcontainers" Version="1.6.0-beta.2191"/>
 		<PackageReference Include="LikeComparison" Version="1.1.1"/>
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0"/>
 		<PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.3"/>
