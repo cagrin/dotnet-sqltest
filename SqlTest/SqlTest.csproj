@@ -1,31 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<OutputType>Exe</OutputType>
-		<PackAsTool>true</PackAsTool>
-		<ToolCommandName>sqltest</ToolCommandName>
-		<PackageId>dotnet-sqltest</PackageId>
-		<Authors>Krzysztof Strugiński</Authors>
-		<Description>dotnet-sqltest</Description>
-		<PackageLicenseFile>License</PackageLicenseFile>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
-		<None Include="../License" Pack="true" Visible="false" PackagePath=""/>
-		<None Include="../README.md" Pack="true" PackagePath=""/>
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Dapper" Version="2.0.123"/>
-		<PackageReference Include="DotNet.Testcontainers" Version="1.6.0-beta.2197"/>
-		<PackageReference Include="LikeComparison" Version="1.1.1"/>
-		<PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0"/>
-		<PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.3"/>
-		<PackageReference Include="SQLCoverLib" Version="0.6.0-preview3"/>
-		<PackageReference Include="System.CommandLine" Version="2.0.0-beta3.22114.1"/>
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <PackAsTool>true</PackAsTool>
+        <ToolCommandName>sqltest</ToolCommandName>
+        <PackageId>dotnet-sqltest</PackageId>
+        <Authors>Krzysztof Strugiński</Authors>
+        <Description>dotnet-sqltest</Description>
+        <PackageLicenseFile>License</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+        <None Include="../License" Pack="true" Visible="false" PackagePath=""/>
+        <None Include="../README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Dapper" Version="2.0.123"/>
+        <PackageReference Include="DotNet.Testcontainers" Version="1.6.0-beta.2197"/>
+        <PackageReference Include="LikeComparison" Version="1.1.1"/>
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0"/>
+        <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.3"/>
+        <PackageReference Include="SQLCoverLib" Version="0.6.0-preview3"/>
+        <PackageReference Include="System.CommandLine" Version="2.0.0-beta3.22114.1"/>
+    </ItemGroup>
 </Project>
