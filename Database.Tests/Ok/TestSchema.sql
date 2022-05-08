@@ -1,7 +1,7 @@
-CREATE SCHEMA [Test_Interfaces];
+CREATE SCHEMA [TestSchema];
 GO
 
-CREATE PROCEDURE [Test_Interfaces].[Test_Assertions]
+CREATE PROCEDURE [TestSchema].[test that this test is ok]
 AS
 BEGIN
     EXEC dbo.Some_Assertions;

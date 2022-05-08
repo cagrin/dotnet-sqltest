@@ -1,7 +1,7 @@
-CREATE SCHEMA [Test_Interfaces];
+CREATE SCHEMA [TestSchema];
 GO
 
-CREATE PROCEDURE [Test_Interfaces].[Test_Collations]
+CREATE PROCEDURE [TestSchema].[test that database has tha same collation than server]
 AS
 BEGIN
     SELECT collation_name = 'Polish_CI_AS'

@@ -1,7 +1,7 @@
-CREATE SCHEMA [Test_Interfaces];
+CREATE SCHEMA [TestSchema];
 GO
 
-CREATE PROCEDURE [Test_Interfaces].[Test_Assertions]
+CREATE PROCEDURE [TestSchema].[test that messed up transaction raise an exception]
 AS
 BEGIN
     BEGIN TRANSACTION
