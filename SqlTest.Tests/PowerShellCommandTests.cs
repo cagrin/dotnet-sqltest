@@ -1,4 +1,6 @@
-// [assembly: Parallelize(Workers = 8, Scope = ExecutionScope.MethodLevel)]
+#if DEBUG
+[assembly: Parallelize(Workers = 8, Scope = ExecutionScope.MethodLevel)]
+#endif
 
 namespace SqlTest.Tests;
 
