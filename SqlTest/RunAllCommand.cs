@@ -110,7 +110,7 @@ public class RunAllCommand : IDisposable
 
         string fcs = $"{this.cs}TrustServerCertificate=True;";
 
-        this.coverage = new CodeCoverage(fcs, this.database);
+        this.coverage = new CodeCoverage(fcs, this.database, new string[] { ".*tSQLt.*" });
 
         using var con = new SqlConnection(fcs);
 
