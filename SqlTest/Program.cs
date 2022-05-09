@@ -14,15 +14,17 @@ public static class Program
         var imageOption = new Option<string>(new[] { "--image", "-i" }, "Docker image.");
         var projectOption = new Option<string>(new[] { "--project", "-p" }, "Database project.");
         var collationOption = new Option<string>(new[] { "--collation", "-c" }, "Server collation.") { IsRequired = false };
+        var ccIncludeTsqltOption = new Option<bool>(new[] { "--cc-include-tsqlt" }, "Include code coverage of tSQLt schema.") { IsRequired = false };
 
         var runAll = new Command("runall", "Run all tests.")
         {
             imageOption,
             projectOption,
             collationOption,
+            ccIncludeTsqltOption,
         };
 
-        runAll.SetHandler((string image, string project, string collation) => InvokeRunAll(image, project, collation), imageOption, projectOption, collationOption);
+        runAll.SetHandler((string image, string project, string collation, bool ccIncludeTsqlt) => InvokeRunAll(image, project, collation, ccIncludeTsqlt), imageOption, projectOption, collationOption, ccIncludeTsqltOption);
 
         var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.")
         {
@@ -32,10 +34,10 @@ public static class Program
         return rootCommand.Invoke(args);
     }
 
-    public static void InvokeRunAll(string image, string project, string collation)
+    public static void InvokeRunAll(string image, string project, string collation, bool ccIncludeTsqlt)
     {
         using var stc = new RunAllCommand();
 
-        stc.Invoke(image, project, collation);
+        stc.Invoke(image, project, collation, ccIncludeTsqlt);
     }
 }

@@ -24,13 +24,13 @@ public class RunAllCommand : IDisposable
 
     private CoverageResult? code;
 
-    public void Invoke(string image, string project, string collation)
+    public void Invoke(string image, string project, string collation, bool ccIncludeTsqlt)
     {
         this.CreateContainer(image, collation);
 
         if (this.DeployDatabase(project))
         {
-            this.RunTests();
+            this.RunTests(ccIncludeTsqlt);
         }
     }
 
@@ -104,13 +104,13 @@ public class RunAllCommand : IDisposable
         return true;
     }
 
-    private void RunTests()
+    private void RunTests(bool ccIncludeTsqlt)
     {
         var stopwatchLog = new StopwatchLog().Start("Running all tests....");
 
         string fcs = $"{this.cs}TrustServerCertificate=True;";
 
-        this.coverage = new CodeCoverage(fcs, this.database, new string[] { ".*tSQLt.*" });
+        this.coverage = new CodeCoverage(fcs, this.database, ccIncludeTsqlt ? null : new[] { ".*tSQLt.*" });
 
         using var con = new SqlConnection(fcs);
 

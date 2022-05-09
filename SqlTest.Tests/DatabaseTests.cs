@@ -1,7 +1,3 @@
-#if DEBUG
-[assembly: Parallelize(Workers = 8, Scope = ExecutionScope.MethodLevel)]
-#endif
-
 namespace SqlTest.Tests;
 
 using LikeComparison.TransactSql;
@@ -22,6 +18,14 @@ public class DatabaseTests
         var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok");
 
         Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: 60% (3/5)");
+    }
+
+    [TestMethod]
+    public void InvokeSqlTestRunAllOkWithIncludeTsqlt()
+    {
+        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok --cc-include-tsqlt");
+
+        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: __[%] (%/%)");
     }
 
     [TestMethod]
