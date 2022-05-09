@@ -17,7 +17,16 @@ Update the tool to newer version:
 
 Invoke the tool:
 
-```sqltest [command] [options]```
+```sqltest runall [options]```
+
+```
+Options:
+  -i, --image <image>          Docker image.
+  -p, --project <project>      Database project.
+  -c, --collation <collation>  Server collation.
+  --cc-include-tsqlt           Include code coverage of tSQLt schema.
+  -?, -h, --help               Show help and usage information
+```
 
 ## Example
 
