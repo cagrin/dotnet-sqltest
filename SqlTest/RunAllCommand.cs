@@ -157,7 +157,7 @@ public class RunAllCommand : IDisposable
             {
                 foreach (var statement in batch.Statements.Where(p => p.HitCount == 0))
                 {
-                    Console.WriteLine($"{batch.ObjectName}: {statement.Text}");
+                    Console.WriteLine($"{batch.ObjectName}: {statement.Text.FirstLine()}");
                 }
             }
         }
