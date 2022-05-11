@@ -15,7 +15,7 @@ public class DatabaseTests
     [TestMethod]
     public void InvokeSqlTestRunAllOk()
     {
-        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok");
 
         Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: 60% (3/5)");
     }
@@ -23,7 +23,7 @@ public class DatabaseTests
     [TestMethod]
     public void InvokeSqlTestRunAllOkWithIncludeTsqlt()
     {
-        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok --cc-include-tsqlt");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Ok --cc-include-tsqlt");
 
         Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: __[%] (%/%)");
     }
@@ -31,7 +31,7 @@ public class DatabaseTests
     [TestMethod]
     public void InvokeSqlTestRunAllFail()
     {
-        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Fail");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Fail");
 
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "%failed%");
         Assert.That.IsLike(results.Last().ToString(), "Failed: 1, Passed: 0, %");
@@ -40,7 +40,7 @@ public class DatabaseTests
     [TestMethod]
     public void InvokeSqlTestRunAllError()
     {
-        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Error");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Error");
 
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "%error MSB3073%");
         Assert.That.IsLike(results.Last().ToString(), "Deploying database failed.");
@@ -49,7 +49,7 @@ public class DatabaseTests
     [TestMethod]
     public void InvokeSqlTestRunAllException()
     {
-        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Exception");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Exception");
 
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "%Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements%");
         Assert.That.IsLike(results.Last().ToString(), "Failed: 1, Passed: 0, %");
@@ -58,7 +58,7 @@ public class DatabaseTests
     [TestMethod]
     public void InvokeSqlTestRunAllCollationPassed()
     {
-        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Collation --collation Polish_CI_AS");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Collation --collation Polish_CI_AS");
 
         Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, %");
     }
@@ -66,7 +66,7 @@ public class DatabaseTests
     [TestMethod]
     public void InvokeSqlTestRunAllCollationFailed()
     {
-        var results = new PowerShellCommand().Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Collation");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.image} --project ../../../../Database.Tests/Collation");
 
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "%Cannot resolve the collation conflict%");
         Assert.That.IsLike(results.Last().ToString(), "Failed: 1, Passed: 0, %");

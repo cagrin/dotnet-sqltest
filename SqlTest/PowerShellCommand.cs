@@ -1,23 +1,26 @@
 namespace SqlTest;
 
-using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 
-public class PowerShellCommand
+public static class PowerShellCommand
 {
-    private Runspace? runspace;
-
-    public Collection<PSObject> Invoke(string script)
+    public static PSDataCollection<PSObject> Invoke(string script)
     {
-        this.runspace = RunspaceFactory.CreateRunspace(InitialSessionState.CreateDefault());
-        this.runspace.Open();
+        return InvokeAsync(script).Result;
+    }
+
+    public static async Task<PSDataCollection<PSObject>> InvokeAsync(string script)
+    {
+        var runspace = RunspaceFactory.CreateRunspace(InitialSessionState.CreateDefault());
+
+        runspace.Open();
 
         using var ps = PowerShell.Create();
         _ = ps.AddScript(script);
-        ps.Runspace = this.runspace;
+        ps.Runspace = runspace;
 
-        var results = ps.Invoke();
+        var results = await ps.InvokeAsync().ConfigureAwait(false);
 
         foreach (var error in ps.Streams.Error)
         {
@@ -26,7 +29,7 @@ public class PowerShellCommand
             Console.ResetColor();
         }
 
-        this.runspace.Close();
+        runspace.Close();
 
         return results;
     }

@@ -26,7 +26,7 @@ public class RunAllCommand : IDisposable
 
     public void Invoke(string image, string project, string collation, bool ccIncludeTsqlt)
     {
-        this.CreateContainer(image, collation);
+        this.PrepareDatabase(image, project, collation);
 
         if (this.DeployDatabase(project))
         {
@@ -45,17 +45,25 @@ public class RunAllCommand : IDisposable
         this.testcontainer?.DisposeAsync().AsTask().Wait();
     }
 
-    private void CreateContainer(string image, string collation)
+    private void PrepareDatabase(string image, string project, string collation)
     {
-        var stopwatchLog = new StopwatchLog().Start("Creating container...");
+        var stopwatchLog = new StopwatchLog().Start("Preparing database...");
 
+        var createContainerTask = this.CreateContainer(image, collation);
+        var buildDatabaseTask = this.CleanBuildDatabase(project);
+
+        Task.WhenAll(createContainerTask, buildDatabaseTask).Wait();
+
+        stopwatchLog.Stop();
+    }
+
+    private async Task CreateContainer(string image, string collation)
+    {
         this.testcontainer = CreateTestcontainer(image, collation);
-        this.testcontainer.StartAsync().Wait();
+        await this.testcontainer.StartAsync().ConfigureAwait(false);
 
         this.port = this.testcontainer.Port;
         this.cs = this.testcontainer.ConnectionString;
-
-        stopwatchLog.Stop();
 
         MsSqlTestcontainer CreateTestcontainer(string image, string collation)
         {
@@ -74,13 +82,22 @@ public class RunAllCommand : IDisposable
         }
     }
 
+    private async Task CleanBuildDatabase(string project)
+    {
+        _ = this.database;
+
+        string script = $"dotnet clean {project}\ndotnet build {project}";
+
+        _ = await PowerShellCommand.InvokeAsync(script).ConfigureAwait(false);
+    }
+
     private bool DeployDatabase(string project)
     {
         var stopwatchLog = new StopwatchLog().Start("Deploying database...");
 
         string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName={this.database} /p:TargetUser=sa /p:TargetPassword={this.password} --nologo";
 
-        var results = new PowerShellCommand().Invoke(script);
+        var results = PowerShellCommand.Invoke(script);
 
         stopwatchLog.Stop();
 
