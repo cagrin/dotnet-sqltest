@@ -1,7 +1,5 @@
 namespace SqlTest.Tests;
 
-using LikeComparison.TransactSql;
-
 [TestClass]
 public class PowerShellCommandTests
 {
