@@ -10,7 +10,7 @@ public static class ResultLog
 
         if (expression != first)
         {
-            first += $"  [...]";
+            first += $" [...]";
         }
 
         return first;

@@ -4,11 +4,11 @@ GO
 CREATE PROCEDURE [TestSchema].[test that this test is ok]
 AS
 BEGIN
-    EXEC dbo.Some_Assertions;
+    EXEC dbo.Assertions;
 END;
 GO
 
-CREATE PROCEDURE [dbo].[Some_Assertions]
+CREATE PROCEDURE [dbo].[Assertions]
 AS
 BEGIN
     EXEC tSQLt.AssertEquals 'hallo', 'hallo';
@@ -19,11 +19,12 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE [dbo].[Some_Uncovered]
+CREATE PROCEDURE [dbo].[Example]
 AS
 BEGIN
-    EXEC tSQLt.AssertEquals 'uncovered', 'uncovered';
+    SELECT A = 1 INTO #Example
 
-    EXEC tSQLt.AssertEqualsString 'uncovered', 'uncovered';
+    UPDATE #Example SET
+        A = 2
 END;
 GO

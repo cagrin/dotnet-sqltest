@@ -34,11 +34,14 @@ Running all tSQLt tests inside throwaway SQL Server 2019 container:
 
 ```sqltest runall --project Database.Tests/Ok --image mcr.microsoft.com/mssql/server```
 
-```pwsh
-Creating container... 7 s
+```
+Preparing database... 7 s
 Deploying database... 12 s
 Running all tests.... 2 s
-Failed: 0, Passed: 1, Coverage: 100% (3/3)
+Uncovered statements:
+  [dbo].[Example]: SELECT A = 1 INTO #Example
+  [dbo].[Example]: UPDATE #Example SET [...]
+Failed: 0, Passed: 1, Coverage: 60% (3/5)
 ```
 
 ## Build

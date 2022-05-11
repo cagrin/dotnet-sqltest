@@ -160,9 +160,10 @@ public class RunAllCommand : IDisposable
         if (failed > 0)
         {
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Failed test messages:");
             foreach (var result in results.Where(p => p.Result == "Failure"))
             {
-                Console.WriteLine($"{result.Name}: {result.Msg}");
+                Console.WriteLine($"  {result.Name}: {result.Msg}");
             }
         }
 
@@ -170,11 +171,12 @@ public class RunAllCommand : IDisposable
         if (uncoveredBatches.Any())
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Uncovered statements:");
             foreach (var batch in uncoveredBatches)
             {
                 foreach (var statement in batch.Statements.Where(p => p.HitCount == 0))
                 {
-                    Console.WriteLine($"{batch.ObjectName}: {statement.Text.FirstLine()}");
+                    Console.WriteLine($"  {batch.ObjectName}: {statement.Text.FirstLine()}");
                 }
             }
         }

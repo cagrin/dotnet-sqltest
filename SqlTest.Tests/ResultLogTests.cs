@@ -24,7 +24,7 @@ public class ResultLogTests
         and second line
         and third.";
 
-        string expected = @"    Some first line  [...]";
+        string expected = @"    Some first line [...]";
 
         string actual = expression.FirstLine();
 
@@ -38,7 +38,7 @@ public class ResultLogTests
         starts from second line
         and continue on third.";
 
-        string expected = @"  [...]";
+        string expected = @" [...]";
 
         string actual = expression.FirstLine();
 
