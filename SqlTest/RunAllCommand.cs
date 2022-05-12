@@ -31,6 +31,7 @@ public class RunAllCommand : IDisposable
         if (this.DeployDatabase(project))
         {
             this.RunTests(ccIncludeTsqlt);
+            this.ResultLog();
         }
     }
 
@@ -151,6 +152,13 @@ public class RunAllCommand : IDisposable
             Console.WriteLine(ex.Message);
             Console.ResetColor();
         }
+    }
+
+    private void ResultLog()
+    {
+        string fcs = $"{this.cs}TrustServerCertificate=True;";
+
+        using var con = new SqlConnection(fcs);
 
         var results = con.Query<TestResult>($"SELECT Name, Result, Msg FROM [{this.database}].tSQLt.TestResult");
 
@@ -167,22 +175,26 @@ public class RunAllCommand : IDisposable
             }
         }
 
-        var uncoveredBatches = this.code.Batches.Where(p => p.Statements.Any(r => r.HitCount == 0));
-        if (uncoveredBatches.Any())
+        string cc = string.Empty;
+        if (this.code != null)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Uncovered statements:");
-            foreach (var batch in uncoveredBatches)
+            var uncoveredBatches = this.code.Batches.Where(p => p.Statements.Any(r => r.HitCount == 0));
+            if (uncoveredBatches.Any())
             {
-                foreach (var statement in batch.Statements.Where(p => p.HitCount == 0))
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Uncovered statements:");
+                foreach (var batch in uncoveredBatches)
                 {
-                    Console.WriteLine($"  {batch.ObjectName}: {statement.Text.FirstLine()}");
+                    foreach (var statement in batch.Statements.Where(p => p.HitCount == 0))
+                    {
+                        Console.WriteLine($"  {batch.ObjectName}: {statement.Text.FirstLine()}");
+                    }
                 }
             }
-        }
 
-        long cr = this.code.StatementCount == 0 ? 0 : Convert.ToInt64(Convert.ToDouble(this.code.CoveredStatementCount) / Convert.ToDouble(this.code.StatementCount) * 100.0);
-        string cc = $", Coverage: {cr}% ({this.code.CoveredStatementCount}/{this.code.StatementCount})";
+            long cr = this.code.StatementCount == 0 ? 0 : Convert.ToInt64(Convert.ToDouble(this.code.CoveredStatementCount) / Convert.ToDouble(this.code.StatementCount) * 100.0);
+            cc = $", Coverage: {cr}% ({this.code.CoveredStatementCount}/{this.code.StatementCount})";
+        }
 
         Console.ForegroundColor = failed > 0 ? ConsoleColor.Red : ConsoleColor.Green;
         Console.WriteLine($"Failed: {failed}, Passed: {passed}{cc}");
