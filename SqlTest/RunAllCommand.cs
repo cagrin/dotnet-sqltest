@@ -138,6 +138,10 @@ public class RunAllCommand : IDisposable
 
             _ = con.Execute($"EXEC [{this.database}].tSQLt.RunAll");
 
+            stopwatchLog.Stop();
+
+            stopwatchLog = new StopwatchLog().Start("Gathering coverage...");
+
             this.code = this.coverage.Stop();
 
             stopwatchLog.Stop();
