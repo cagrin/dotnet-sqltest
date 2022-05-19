@@ -6,7 +6,7 @@ public class StopwatchLog
 {
     private readonly Stopwatch stopwatch = new Stopwatch();
 
-    public StopwatchLog Start(string message)
+    public StopwatchLog Start(string message = "")
     {
         Console.Write(message);
 

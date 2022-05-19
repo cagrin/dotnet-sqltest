@@ -10,6 +10,8 @@ using SQLCover;
 
 public class RunAllCommand : IDisposable
 {
+    private readonly StopwatchLog stopwatchLogAll = new StopwatchLog();
+
     private readonly string database = "database_tests";
 
     private readonly string password = "A.794613";
@@ -26,6 +28,8 @@ public class RunAllCommand : IDisposable
 
     public void Invoke(string image, string project, string collation, bool ccIncludeTsqlt)
     {
+        _ = this.stopwatchLogAll.Start();
+
         this.PrepareDatabase(image, project, collation);
 
         if (this.DeployDatabase(project))
@@ -201,7 +205,8 @@ public class RunAllCommand : IDisposable
         }
 
         Console.ForegroundColor = failed > 0 ? ConsoleColor.Red : ConsoleColor.Green;
-        Console.WriteLine($"Failed: {failed}, Passed: {passed}{cc}");
+        Console.Write($"Failed: {failed}, Passed: {passed}{cc}, Duration:");
+        this.stopwatchLogAll.Stop();
         Console.ResetColor();
     }
 }

@@ -8,7 +8,7 @@ public class OkDatabaseTests : DatabaseTests
     {
         var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.Image} --project ../../../../Database.Tests/Ok");
 
-        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: 60% (3/5)");
+        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: 60% (3/5), Duration: %");
     }
 
     [TestMethod]
@@ -16,6 +16,6 @@ public class OkDatabaseTests : DatabaseTests
     {
         var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.Image} --project ../../../../Database.Tests/Ok --cc-include-tsqlt");
 
-        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: __[%] (%/%)");
+        Assert.That.IsLike(results.Last().ToString(), "Failed: 0, Passed: 1, Coverage: __[%] (%/%), Duration: %");
     }
 }
