@@ -35,13 +35,14 @@ Running all tSQLt tests inside throwaway SQL Server 2019 container:
 ```sqltest runall --project Database.Tests/Ok --image mcr.microsoft.com/mssql/server```
 
 ```
-Preparing database... 7 s
-Deploying database... 12 s
-Running all tests.... 2 s
+Preparing database... 6 s
+Deploying database... 10 s
+Running all tests.... 435 ms
+Gathering coverage... 1 s
 Uncovered statements:
   [dbo].[Example]: SELECT A = 1 INTO #Example
   [dbo].[Example]: UPDATE #Example SET [...]
-Failed: 0, Passed: 1, Coverage: 60% (3/5)
+Failed: 0, Passed: 1, Coverage: 60% (3/5), Duration: 18 s
 ```
 
 ## Build
