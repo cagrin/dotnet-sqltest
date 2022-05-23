@@ -26,7 +26,7 @@ public class RunAllCommand : IDisposable
 
     private CoverageResult? code;
 
-    public void Invoke(string image, string project, string collation, bool ccIncludeTsqlt)
+    public int Invoke(string image, string project, string collation, bool ccIncludeTsqlt)
     {
         _ = this.stopwatchLogAll.Start();
 
@@ -35,8 +35,10 @@ public class RunAllCommand : IDisposable
         if (this.DeployDatabase(project))
         {
             this.RunTests(ccIncludeTsqlt);
-            this.ResultLog();
+            return this.ResultLog();
         }
+
+        return 2;
     }
 
     public void Dispose()
@@ -162,7 +164,7 @@ public class RunAllCommand : IDisposable
         }
     }
 
-    private void ResultLog()
+    private int ResultLog()
     {
         string fcs = $"{this.cs}TrustServerCertificate=True;";
 
@@ -208,5 +210,7 @@ public class RunAllCommand : IDisposable
         Console.Write($"Failed: {failed}, Passed: {passed}{cc}, Duration:");
         this.stopwatchLogAll.Stop();
         Console.ResetColor();
+
+        return (failed > 0) ? 1 : 0;
     }
 }

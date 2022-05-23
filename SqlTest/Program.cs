@@ -4,6 +4,8 @@ using System.CommandLine;
 
 public static class Program
 {
+    public static int Result { get; set; }
+
     public static int Main(string[] args)
     {
         if (args == null)
@@ -31,13 +33,13 @@ public static class Program
             runAll,
         };
 
-        return rootCommand.Invoke(args);
+        return rootCommand.Invoke(args) + Result;
     }
 
     public static void InvokeRunAll(string image, string project, string collation, bool ccIncludeTsqlt)
     {
         using var stc = new RunAllCommand();
 
-        stc.Invoke(image, project, collation, ccIncludeTsqlt);
+        Result = stc.Invoke(image, project, collation, ccIncludeTsqlt);
     }
 }
