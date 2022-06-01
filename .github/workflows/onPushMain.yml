@@ -21,3 +21,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./SqlTest.Tests/coverage.info
         if: github.event_name != 'pull_request'
+  simple-test-on-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run simple tests
+        shell: pwsh
+        run: dotnet run --project SqlTest -- runall --image cagrin/mssql-server-ltsc2022:2019-latest --windows-container --project Database.Tests/Ok

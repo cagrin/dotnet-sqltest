@@ -17,6 +17,7 @@ public static class Program
         var projectOption = new Option<string>(new[] { "--project", "-p" }, "Database project.");
         var collationOption = new Option<string>(new[] { "--collation", "-c" }, "Server collation.") { IsRequired = false };
         var ccIncludeTsqltOption = new Option<bool>(new[] { "--cc-include-tsqlt" }, "Include code coverage of tSQLt schema.") { IsRequired = false };
+        var windowsContainerOption = new Option<bool>(new[] { "--windows-container" }, "Run as Windows container.") { IsRequired = false };
 
         var runAll = new Command("runall", "Run all tests.")
         {
@@ -24,9 +25,10 @@ public static class Program
             projectOption,
             collationOption,
             ccIncludeTsqltOption,
+            windowsContainerOption,
         };
 
-        runAll.SetHandler((string image, string project, string collation, bool ccIncludeTsqlt) => InvokeRunAll(image, project, collation, ccIncludeTsqlt), imageOption, projectOption, collationOption, ccIncludeTsqltOption);
+        runAll.SetHandler((string image, string project, string collation, bool ccIncludeTsqlt, bool windowsContainer) => InvokeRunAll(image, project, collation, ccIncludeTsqlt, windowsContainer), imageOption, projectOption, collationOption, ccIncludeTsqltOption, windowsContainerOption);
 
         var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.")
         {
@@ -36,10 +38,10 @@ public static class Program
         return rootCommand.Invoke(args) + Result;
     }
 
-    public static void InvokeRunAll(string image, string project, string collation, bool ccIncludeTsqlt)
+    public static void InvokeRunAll(string image, string project, string collation, bool ccIncludeTsqlt, bool windowsContainer)
     {
         using var stc = new RunAllCommand();
 
-        Result = stc.Invoke(image, project, collation, ccIncludeTsqlt);
+        Result = stc.Invoke(image, project, collation, ccIncludeTsqlt, windowsContainer);
     }
 }

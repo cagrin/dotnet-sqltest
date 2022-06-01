@@ -25,6 +25,7 @@ Options:
   -p, --project <project>      Database project.
   -c, --collation <collation>  Server collation.
   --cc-include-tsqlt           Include code coverage of tSQLt schema.
+  --windows-container          Run as Windows container.
   -?, -h, --help               Show help and usage information
 ```
 

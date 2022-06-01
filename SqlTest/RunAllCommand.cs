@@ -2,8 +2,6 @@ namespace SqlTest;
 
 using System.Data.SqlClient;
 using Dapper;
-using DotNet.Testcontainers.Builders;
-using DotNet.Testcontainers.Configurations;
 using DotNet.Testcontainers.Containers;
 using LikeComparison.TransactSql;
 using SQLCover;
@@ -14,7 +12,7 @@ public class RunAllCommand : IDisposable
 
     private readonly string database = "database_tests";
 
-    private readonly string password = "A.794613";
+    private string password = string.Empty;
 
     private int port;
 
@@ -26,11 +24,11 @@ public class RunAllCommand : IDisposable
 
     private CoverageResult? code;
 
-    public int Invoke(string image, string project, string collation, bool ccIncludeTsqlt)
+    public int Invoke(string image, string project, string collation, bool ccIncludeTsqlt, bool windowsContainer)
     {
         _ = this.stopwatchLogAll.Start();
 
-        this.PrepareDatabase(image, project, collation);
+        this.PrepareDatabase(image, project, collation, windowsContainer);
 
         if (this.DeployDatabase(project))
         {
@@ -52,11 +50,11 @@ public class RunAllCommand : IDisposable
         this.testcontainer?.DisposeAsync().AsTask().Wait();
     }
 
-    private void PrepareDatabase(string image, string project, string collation)
+    private void PrepareDatabase(string image, string project, string collation, bool windowsContainer)
     {
         var stopwatchLog = new StopwatchLog().Start("Preparing database...");
 
-        var createContainerTask = this.CreateContainer(image, collation);
+        var createContainerTask = this.CreateContainer(image, collation, windowsContainer);
         var buildDatabaseTask = this.CleanBuildDatabase(project);
 
         Task.WhenAll(createContainerTask, buildDatabaseTask).Wait();
@@ -64,29 +62,14 @@ public class RunAllCommand : IDisposable
         stopwatchLog.Stop();
     }
 
-    private async Task CreateContainer(string image, string collation)
+    private async Task CreateContainer(string image, string collation, bool windowsContainer)
     {
-        this.testcontainer = CreateTestcontainer(image, collation);
+        this.testcontainer = MsSqlFactory.CreateTestcontainer(image, collation, windowsContainer);
         await this.testcontainer.StartAsync().ConfigureAwait(false);
 
+        this.password = this.testcontainer.Password;
         this.port = this.testcontainer.Port;
         this.cs = this.testcontainer.ConnectionString;
-
-        MsSqlTestcontainer CreateTestcontainer(string image, string collation)
-        {
-            using var config = new MsSqlTestcontainerConfiguration(image)
-            {
-                Password = this.password,
-            };
-
-            string name = "MSSQL_COLLATION";
-            string value = string.IsNullOrEmpty(collation) ? "SQL_Latin1_General_CP1_CI_AS" : collation;
-
-            return new TestcontainersBuilder<MsSqlTestcontainer>()
-                .WithDatabase(config)
-                .WithEnvironment(name, value)
-                .Build();
-        }
     }
 
     private async Task CleanBuildDatabase(string project)
