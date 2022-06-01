@@ -23,8 +23,12 @@ jobs:
         if: github.event_name != 'pull_request'
   simple-test-on-windows:
     runs-on: windows-latest
+    env:
+      IMAGE_NAME: cagrin/mssql-server-ltsc2022:2019-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Pull image
+        run: docker pull ${{env.IMAGE_NAME}}
       - name: Run simple tests
         shell: pwsh
-        run: dotnet run --project SqlTest -- runall --image cagrin/mssql-server-ltsc2022:2019-latest --windows-container --project Database.Tests/Ok
+        run: dotnet run --project SqlTest -- runall --image ${{env.IMAGE_NAME}} --windows-container --project Database.Tests/Ok
