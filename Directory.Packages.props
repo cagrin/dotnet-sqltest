@@ -1,0 +1,22 @@
+<Project>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageVersion Include="coverlet.collector" Version="3.1.2"/>
+        <PackageVersion Include="coverlet.msbuild" Version="3.1.2"/>
+        <PackageVersion Include="Dapper" Version="2.0.123"/>
+        <PackageVersion Include="DotNet.Testcontainers" Version="1.6.0-beta.GitHub-457"/>
+        <PackageVersion Include="LikeComparison" Version="1.1.1"/>
+        <PackageVersion Include="Microsoft.Data.SqlClient" Version="4.1.0"/>
+        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.2.0"/>
+        <PackageVersion Include="Microsoft.PowerShell.SDK" Version="7.2.4"/>
+        <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1"/>
+        <PackageVersion Include="MSTest.TestAdapter" Version="2.2.10"/>
+        <PackageVersion Include="MSTest.TestFramework" Version="2.2.10"/>
+        <PackageVersion Include="SQLCoverLib" Version="0.6.0-preview4"/>
+        <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.435"/>
+        <PackageVersion Include="System.CommandLine" Version="2.0.0-beta3.22114.1"/>
+        <PackageVersion Include="tSQLt.Edge" Version="0.7.5"/>
+    </ItemGroup>
+</Project>

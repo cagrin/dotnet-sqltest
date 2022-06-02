@@ -14,17 +14,17 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All"/>
         <None Include="../License" Pack="true" Visible="false" PackagePath=""/>
         <None Include="../README.md" Pack="true" PackagePath=""/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Dapper" Version="2.0.123"/>
-        <PackageReference Include="DotNet.Testcontainers" Version="1.6.0-beta.2226"/>
-        <PackageReference Include="LikeComparison" Version="1.1.1"/>
-        <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0"/>
-        <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.4"/>
-        <PackageReference Include="SQLCoverLib" Version="0.6.0-preview4"/>
-        <PackageReference Include="System.CommandLine" Version="2.0.0-beta3.22114.1"/>
+        <PackageReference Include="Dapper"/>
+        <PackageReference Include="DotNet.Testcontainers"/>
+        <PackageReference Include="LikeComparison"/>
+        <PackageReference Include="Microsoft.Data.SqlClient"/>
+        <PackageReference Include="Microsoft.PowerShell.SDK"/>
+        <PackageReference Include="SQLCoverLib"/>
+        <PackageReference Include="System.CommandLine"/>
     </ItemGroup>
 </Project>

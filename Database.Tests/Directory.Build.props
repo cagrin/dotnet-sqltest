@@ -5,6 +5,6 @@
         <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="tSQLt.Edge" Version="0.7.5" />
+        <PackageReference Include="tSQLt.Edge"/>
     </ItemGroup>
 </Project>
