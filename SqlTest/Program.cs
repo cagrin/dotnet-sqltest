@@ -16,7 +16,7 @@ public static class Program
         var imageOption = new Option<string>(new[] { "--image", "-i" }, "Docker image.");
         var projectOption = new Option<string>(new[] { "--project", "-p" }, "Database project.");
         var collationOption = new Option<string>(new[] { "--collation", "-c" }, "Server collation.") { IsRequired = false };
-        var resultOption = new Option<string>(new[] { "--result", "-r" }, "Save test results in JUnit XML format.") { IsRequired = false };
+        var resultOption = new Option<string>(new[] { "--result", "-r" }, "Save result in JUnit XML file.") { IsRequired = false };
         var ccIncludeTsqltOption = new Option<bool>(new[] { "--cc-include-tsqlt" }, "Include code coverage of tSQLt schema.") { IsRequired = false };
         var windowsContainerOption = new Option<bool>(new[] { "--windows-container" }, "Run as Windows container.") { IsRequired = false };
 

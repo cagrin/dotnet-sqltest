@@ -1,5 +1,6 @@
 namespace SqlTest;
 
+using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using DotNet.Testcontainers.Containers;
@@ -211,7 +212,13 @@ public class RunAllCommand : IDisposable
 
     private void ResultXml(string result)
     {
-        _ = result;
-        _ = this.database;
+        string fcs = $"{this.cs}TrustServerCertificate=True;";
+        string sql = $"[{this.database}].tSQLt.XmlResultFormatter";
+
+        using var con = new SqlConnection(fcs);
+        using var file = new StreamWriter(result);
+
+        string xml = con.Query<string>(sql, CommandType.StoredProcedure).First();
+        file.Write(xml);
     }
 }

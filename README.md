@@ -24,6 +24,7 @@ Options:
   -i, --image <image>          Docker image.
   -p, --project <project>      Database project.
   -c, --collation <collation>  Server collation.
+  -r, --result <result>        Save result in JUnit XML file.
   --cc-include-tsqlt           Include code coverage of tSQLt schema.
   --windows-container          Run as Windows container.
   -?, -h, --help               Show help and usage information

@@ -1,6 +1,6 @@
 ## Show output during test
 
-```dotnet test ./SqlTest.Tests -l "console;verbosity=detailed" /p:CollectCoverage=true /p:CoverletOutputFormat=lcov```
+```dotnet test ./SqlTest.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=lcov -l "console;verbosity=detailed" ```
 
 ## Run project
 
