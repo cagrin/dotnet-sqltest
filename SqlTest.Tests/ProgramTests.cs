@@ -6,9 +6,12 @@ using SqlTest;
 public class ProgramTests
 {
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void MainShouldThrowArgumentNullException()
     {
-        _ = Program.Main(null!);
+        var exception = Assert.ThrowsException<ArgumentNullException>(() => _ = Program.Main(null!));
+
+        var message = "Value cannot be null. (Parameter 'args')";
+
+        Assert.AreEqual(message, exception.Message);
     }
 }
