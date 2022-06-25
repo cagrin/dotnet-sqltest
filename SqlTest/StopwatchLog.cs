@@ -8,9 +8,9 @@ public class StopwatchLog
 
     private readonly Stopwatch stopwatch = new Stopwatch();
 
-    public StopwatchLog(IConsole? console = null)
+    public StopwatchLog(IConsole? mockConsole = null)
     {
-        this.console = console ?? SystemConsole.This;
+        this.console = mockConsole ?? SystemConsole.This;
     }
 
     public StopwatchLog Start(string message = "")

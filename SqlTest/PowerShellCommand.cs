@@ -5,13 +5,15 @@ using System.Management.Automation.Runspaces;
 
 public static class PowerShellCommand
 {
-    public static PSDataCollection<PSObject> Invoke(string script)
+    public static PSDataCollection<PSObject> Invoke(string script, IConsole? mockConsole = null)
     {
-        return InvokeAsync(script).Result;
+        return InvokeAsync(script, mockConsole).Result;
     }
 
-    public static async Task<PSDataCollection<PSObject>> InvokeAsync(string script)
+    public static async Task<PSDataCollection<PSObject>> InvokeAsync(string script, IConsole? mockConsole = null)
     {
+        var console = mockConsole ?? SystemConsole.This;
+
         var runspace = RunspaceFactory.CreateRunspace(InitialSessionState.CreateDefault());
 
         runspace.Open();
@@ -24,9 +26,9 @@ public static class PowerShellCommand
 
         foreach (var error in ps.Streams.Error)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(error);
-            Console.ResetColor();
+            console.ForegroundColor = ConsoleColor.Red;
+            console.WriteLine(error);
+            console.ResetColor();
         }
 
         runspace.Close();

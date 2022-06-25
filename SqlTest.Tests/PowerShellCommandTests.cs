@@ -4,9 +4,14 @@ namespace SqlTest.Tests;
 public class PowerShellCommandTests
 {
     [TestMethod]
-    public void InvokeDotnetError()
+    public void InvokeSqlTestError()
     {
-        _ = PowerShellCommand.Invoke("dotnet --error");
+        var mock = new MockIConsole();
+
+        _ = PowerShellCommand.Invoke("dotnet SqlTest.dll --error", mock.Object);
+
+        // Assert.That.IsLike(mock.Output, "Required command was not provided.%Unrecognized command or argument '--error'.%");
+        Assert.IsTrue(mock.Output.StartsWith("Required command was not provided.\nUnrecognized command or argument '--error'.", StringComparison.CurrentCulture));
     }
 
     [TestMethod]

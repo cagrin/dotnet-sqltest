@@ -11,6 +11,9 @@ public class MockIConsole : Mock<IConsole>
         _ = this.Setup(f => f.Write(It.IsAny<string?>()))
                 .Callback((string? s) => this.sb.Append(s));
 
+        _ = this.Setup(f => f.WriteLine(It.IsAny<object?>()))
+                .Callback((object? o) => this.sb.AppendLine(o?.ToString()));
+
         _ = this.Setup(f => f.WriteLine(It.IsAny<string?>()))
                 .Callback((string? s) => this.sb.AppendLine(s));
     }
