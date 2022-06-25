@@ -6,10 +6,12 @@ using SqlTest;
 public class StopwatchLogTests
 {
     [TestMethod]
-    public void ShoudRunBelowSecond()
+    public void ShoudRunBelowMilisecond()
     {
-        var stopwatchLog = new StopwatchLog().Start("Something...");
+        var mock = new MockIConsole();
 
-        stopwatchLog.Stop();
+        new StopwatchLog(mock.Object).Start("Something...").Stop();
+
+        Assert.That.IsLike(mock.Output, "Something... _ ms");
     }
 }

@@ -4,11 +4,18 @@ using System.Diagnostics;
 
 public class StopwatchLog
 {
+    private readonly IConsole console;
+
     private readonly Stopwatch stopwatch = new Stopwatch();
+
+    public StopwatchLog(IConsole? console = null)
+    {
+        this.console = console ?? SystemConsole.This;
+    }
 
     public StopwatchLog Start(string message = "")
     {
-        Console.Write(message);
+        this.console.Write(message);
 
         this.stopwatch.Start();
 
@@ -23,6 +30,6 @@ public class StopwatchLog
             $" {(int)this.stopwatch.Elapsed.TotalMilliseconds} ms" :
             $" {(int)this.stopwatch.Elapsed.TotalSeconds} s";
 
-        Console.WriteLine(message);
+        this.console.WriteLine(message);
     }
 }

@@ -17,6 +17,10 @@
         <PackageReference Include="MSTest.TestFramework"/>
     </ItemGroup>
     <ItemGroup>
+        <Using Include="Moq"/>
+        <PackageReference Include="Moq"/>
+    </ItemGroup>
+    <ItemGroup>
         <Using Include="LikeComparison.TransactSql"/>
         <PackageReference Include="LikeComparison"/>
     </ItemGroup>
