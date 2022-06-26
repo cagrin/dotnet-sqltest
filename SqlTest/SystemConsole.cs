@@ -12,6 +12,7 @@ public class SystemConsole : IConsole
 
     public void ResetColor()
     {
+        _ = this.ForegroundColor;
         Console.ResetColor();
     }
 
