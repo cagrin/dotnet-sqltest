@@ -4,7 +4,7 @@ namespace SqlTest.Tests;
 public class PowerShellCommandTests
 {
     [TestMethod]
-    public void InvokeSqlTestError()
+    public void InvokeSqlTestErrorWithMock()
     {
         var mock = new MockIConsole();
 
@@ -12,6 +12,14 @@ public class PowerShellCommandTests
 
         // Assert.That.IsLike(mock.Output, "Required command was not provided.%Unrecognized command or argument '--error'.%");
         Assert.IsTrue(mock.Output.StartsWith("Required command was not provided.\nUnrecognized command or argument '--error'.", StringComparison.CurrentCulture));
+    }
+
+    [TestMethod]
+    public void InvokeSqlTestError()
+    {
+        var results = PowerShellCommand.Invoke("dotnet SqlTest.dll --error");
+
+        Assert.That.IsLike(results.First().ToString(), "Description:");
     }
 
     [TestMethod]
