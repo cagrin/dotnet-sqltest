@@ -8,6 +8,8 @@ public class RunAllCommandTests
     [TestMethod]
     public void ShoudRunDispose()
     {
-        using var stc = new RunAllCommand();
+        var mock = new MockIConsole();
+
+        using var stc = new RunAllCommand(mock.Object);
     }
 }

@@ -9,6 +9,8 @@ using SQLCover;
 
 public class RunAllCommand : IDisposable
 {
+    private readonly IConsole console;
+
     private readonly StopwatchLog stopwatchLogAll = new StopwatchLog();
 
     private readonly string database = "database_tests";
@@ -24,6 +26,11 @@ public class RunAllCommand : IDisposable
     private CodeCoverage? coverage;
 
     private CoverageResult? code;
+
+    public RunAllCommand(IConsole? mockConsole = null)
+    {
+        this.console = mockConsole ?? SystemConsole.This;
+    }
 
     public int Invoke(string image, string project, string collation, string result, bool ccIncludeTsqlt, bool windowsContainer)
     {
@@ -103,9 +110,9 @@ public class RunAllCommand : IDisposable
 
             error += "Deploying database failed.";
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(error);
-            Console.ResetColor();
+            this.console.ForegroundColor = ConsoleColor.Red;
+            this.console.WriteLine(error);
+            this.console.ResetColor();
             return false;
         }
 
@@ -142,9 +149,9 @@ public class RunAllCommand : IDisposable
 
             stopwatchLog.Stop();
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(ex.Message);
-            Console.ResetColor();
+            this.console.ForegroundColor = ConsoleColor.Red;
+            this.console.WriteLine(ex.Message);
+            this.console.ResetColor();
         }
     }
 
@@ -173,11 +180,11 @@ public class RunAllCommand : IDisposable
 
         if (failed > 0)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Failed test messages:");
+            this.console.ForegroundColor = ConsoleColor.Red;
+            this.console.WriteLine("Failed test messages:");
             foreach (var result in results.Where(p => p.Result == "Failure"))
             {
-                Console.WriteLine($"  {result.Name}: {result.Msg}");
+                this.console.WriteLine($"  {result.Name}: {result.Msg}");
             }
         }
 
@@ -187,13 +194,13 @@ public class RunAllCommand : IDisposable
             var uncoveredBatches = this.code.Batches.Where(p => p.Statements.Any(r => r.HitCount == 0));
             if (uncoveredBatches.Any())
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Uncovered statements:");
+                this.console.ForegroundColor = ConsoleColor.Yellow;
+                this.console.WriteLine("Uncovered statements:");
                 foreach (var batch in uncoveredBatches)
                 {
                     foreach (var statement in batch.Statements.Where(p => p.HitCount == 0))
                     {
-                        Console.WriteLine($"  {batch.ObjectName}: {statement.Text.FirstLine()}");
+                        this.console.WriteLine($"  {batch.ObjectName}: {statement.Text.FirstLine()}");
                     }
                 }
             }
@@ -202,10 +209,10 @@ public class RunAllCommand : IDisposable
             cc = $", Coverage: {cr}% ({this.code.CoveredStatementCount}/{this.code.StatementCount})";
         }
 
-        Console.ForegroundColor = failed > 0 ? ConsoleColor.Red : ConsoleColor.Green;
-        Console.Write($"Failed: {failed}, Passed: {passed}{cc}, Duration:");
+        this.console.ForegroundColor = failed > 0 ? ConsoleColor.Red : ConsoleColor.Green;
+        this.console.Write($"Failed: {failed}, Passed: {passed}{cc}, Duration:");
         this.stopwatchLogAll.Stop();
-        Console.ResetColor();
+        this.console.ResetColor();
 
         return (failed > 0) ? 1 : 0;
     }
