@@ -32,7 +32,7 @@ public class RunAllCommand : IDisposable
         this.console = mockConsole ?? SystemConsole.This;
     }
 
-    public int Invoke(string image, string project, string collation, string result, bool ccIncludeTsqlt, bool windowsContainer)
+    public int Invoke(string image, string project, string collation, string result, bool ccDisable, bool ccIncludeTsqlt, bool windowsContainer)
     {
         _ = this.stopwatchLogAll.Start();
 
@@ -40,7 +40,7 @@ public class RunAllCommand : IDisposable
 
         if (this.DeployDatabase(project))
         {
-            this.RunTests(ccIncludeTsqlt);
+            this.RunTests(ccDisable, ccIncludeTsqlt);
             return this.ShowResults(result);
         }
 
@@ -119,7 +119,7 @@ public class RunAllCommand : IDisposable
         return true;
     }
 
-    private void RunTests(bool ccIncludeTsqlt)
+    private void RunTests(bool ccDisable, bool ccIncludeTsqlt)
     {
         var stopwatchLog = new StopwatchLog().Start("Running all tests....");
 
@@ -131,21 +131,30 @@ public class RunAllCommand : IDisposable
 
         try
         {
-            _ = this.coverage.Start();
+            if (!ccDisable)
+            {
+                _ = this.coverage.Start();
+            }
 
             _ = con.Execute($"EXEC [{this.database}].tSQLt.RunAll");
 
             stopwatchLog.Stop();
 
-            stopwatchLog = new StopwatchLog().Start("Gathering coverage...");
+            if (!ccDisable)
+            {
+                stopwatchLog = new StopwatchLog().Start("Gathering coverage...");
 
-            this.code = this.coverage.Stop();
+                this.code = this.coverage.Stop();
 
-            stopwatchLog.Stop();
+                stopwatchLog.Stop();
+            }
         }
         catch (SqlException ex)
         {
-            this.code = this.coverage.Stop();
+            if (!ccDisable)
+            {
+                this.code = this.coverage.Stop();
+            }
 
             stopwatchLog.Stop();
 
