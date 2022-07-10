@@ -20,7 +20,7 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Dapper"/>
-        <PackageReference Include="DotNet.Testcontainers"/>
+        <PackageReference Include="Testcontainers"/>
         <PackageReference Include="LikeComparison"/>
         <PackageReference Include="Microsoft.Data.SqlClient"/>
         <PackageReference Include="Microsoft.PowerShell.SDK"/>

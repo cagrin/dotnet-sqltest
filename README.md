@@ -54,7 +54,7 @@ Failed: 0, Passed: 1, Coverage: 60% (3/5), Duration: 18 s
 
 Powered by:
 - [Dapper](https://www.nuget.org/packages/Dapper)
-- [DotNet.Testcontainers](https://www.nuget.org/packages/DotNet.Testcontainers)
 - [Microsoft.PowerShell.SDK](https://www.nuget.org/packages/Microsoft.PowerShell.SDK)
 - [SQLCoverLib](https://www.nuget.org/packages/SQLCoverLib)
 - [System.CommandLine](https://www.nuget.org/packages/System.CommandLine)
+- [Testcontainers](https://www.nuget.org/packages/Testcontainers)
