@@ -6,7 +6,7 @@
         <PackageVersion Include="coverlet.collector" Version="3.1.2"/>
         <PackageVersion Include="coverlet.msbuild" Version="3.1.2"/>
         <PackageVersion Include="Dapper" Version="2.0.123"/>
-        <PackageVersion Include="Testcontainers" Version="2.0.1"/>
+        <PackageVersion Include="Testcontainers" Version="2.1.0-beta.2698157448"/>
         <PackageVersion Include="LikeComparison" Version="1.2.1"/>
         <PackageVersion Include="Microsoft.Data.SqlClient" Version="4.1.0"/>
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.2.0"/>
