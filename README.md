@@ -35,7 +35,7 @@ Options:
 
 Running all tSQLt tests inside throwaway SQL Server 2019 container:
 
-```sqltest runall --project Database.Tests/Ok --image mcr.microsoft.com/mssql/server```
+```sqltest runall --project Database.Tests/Ok --image mcr.microsoft.com/mssql/server:2019-latest```
 
 ```
 Preparing database... 6 s
