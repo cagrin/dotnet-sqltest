@@ -136,7 +136,7 @@ public class RunAllCommand : IDisposable
                 _ = this.coverage.Start();
             }
 
-            _ = con.Execute($"EXEC [{this.database}].tSQLt.RunAll");
+            _ = con.Execute($"EXEC [{this.database}].tSQLt.RunAll", commandTimeout: 0);
 
             stopwatchLog.Stop();
 
