@@ -77,7 +77,7 @@ public class RunAllCommand : IDisposable
 
         this.password = this.testcontainer.Password;
         this.port = this.testcontainer.Port;
-        this.cs = this.testcontainer.ConnectionString;
+        this.cs = $"{this.testcontainer.ConnectionString}TrustServerCertificate=True;";
     }
 
     private async Task CleanBuildDatabase(string project)
@@ -123,11 +123,9 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Running all tests....");
 
-        string fcs = $"{this.cs}TrustServerCertificate=True;";
+        this.coverage = new CodeCoverage(this.cs, this.database, ccIncludeTsqlt ? null : new[] { ".*tSQLt.*" });
 
-        this.coverage = new CodeCoverage(fcs, this.database, ccIncludeTsqlt ? null : new[] { ".*tSQLt.*" });
-
-        using var con = new SqlConnection(fcs);
+        using var con = new SqlConnection(this.cs);
 
         try
         {
@@ -178,9 +176,7 @@ public class RunAllCommand : IDisposable
 
     private int ResultLog()
     {
-        string fcs = $"{this.cs}TrustServerCertificate=True;";
-
-        using var con = new SqlConnection(fcs);
+        using var con = new SqlConnection(this.cs);
 
         var results = con.Query<TestResult>($"SELECT Name, Result, Msg FROM [{this.database}].tSQLt.TestResult");
 
@@ -228,10 +224,9 @@ public class RunAllCommand : IDisposable
 
     private void ResultXml(string result)
     {
-        string fcs = $"{this.cs}TrustServerCertificate=True;";
         string sql = $"[{this.database}].tSQLt.XmlResultFormatter";
 
-        using var con = new SqlConnection(fcs);
+        using var con = new SqlConnection(this.cs);
         using var file = new StreamWriter(result);
 
         string xml = con.Query<string>(sql, CommandType.StoredProcedure).First();
