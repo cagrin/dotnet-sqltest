@@ -9,3 +9,7 @@
 ## Switch dotnet cli to a non-system language
 
 ```$Env:DOTNET_CLI_UI_LANGUAGE="en"```
+
+## Filter smoke tests
+
+```dotnet test ./SqlTest.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)"```

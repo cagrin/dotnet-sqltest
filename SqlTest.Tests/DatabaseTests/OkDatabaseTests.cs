@@ -1,7 +1,7 @@
-namespace SqlTest.Tests;
+namespace SqlTest.DatabaseTests;
 
 [TestClass]
-public class OkDatabaseTests : DatabaseTests
+public class OkDatabaseTests : BaseDatabaseTests
 {
     [TestMethod]
     public void InvokeSqlTestRunAllOk()

@@ -1,7 +1,7 @@
-namespace SqlTest.Tests;
+namespace SqlTest.DatabaseTests;
 
 [TestClass]
-public class CollationDatabaseTests : DatabaseTests
+public class CollationDatabaseTests : BaseDatabaseTests
 {
     [TestMethod]
     public void InvokeSqlTestRunAllCollationPassed()

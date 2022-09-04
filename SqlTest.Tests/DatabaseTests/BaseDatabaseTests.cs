@@ -1,6 +1,6 @@
-namespace SqlTest.Tests;
+namespace SqlTest.DatabaseTests;
 
-public class DatabaseTests
+public class BaseDatabaseTests
 {
     public string Image { get; set; } =
 #if DEBUG

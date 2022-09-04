@@ -1,7 +1,7 @@
-namespace SqlTest.Tests;
+namespace SqlTest.DatabaseTests;
 
 [TestClass]
-public class FailDatabaseTests : DatabaseTests
+public class FailDatabaseTests : BaseDatabaseTests
 {
     [TestMethod]
     public void InvokeSqlTestRunAllFail()
