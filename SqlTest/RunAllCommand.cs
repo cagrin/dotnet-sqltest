@@ -123,7 +123,7 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Running all tests....");
 
-        this.coverage = new CodeCoverage(this.cs, this.database, ccIncludeTsqlt ? null : new[] { ".*tSQLt.*" });
+        this.coverage = new CodeCoverage(this.cs, this.database, ccIncludeTsqlt ? null : new[] { ".*tSQLt[.|\\]].*" });
 
         using var con = new SqlConnection(this.cs);
 
