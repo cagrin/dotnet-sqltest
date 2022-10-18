@@ -6,7 +6,7 @@ using SqlTest;
 public class SystemConsoleTests
 {
     [TestMethod]
-    public void ShoudHaveForegroundColor()
+    public void ShouldHaveForegroundColor()
     {
         IConsole console = SystemConsole.This;
 
@@ -16,7 +16,7 @@ public class SystemConsoleTests
     }
 
     [TestMethod]
-    public void ShoudHaveResetColor()
+    public void ShouldHaveResetColor()
     {
         IConsole console = SystemConsole.This;
 
@@ -27,7 +27,7 @@ public class SystemConsoleTests
     }
 
     [TestMethod]
-    public void ShoudHaveWrites()
+    public void ShouldHaveWrites()
     {
         IConsole console = SystemConsole.This;
 

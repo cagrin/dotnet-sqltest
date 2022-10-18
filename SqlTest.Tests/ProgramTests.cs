@@ -6,7 +6,7 @@ using SqlTest;
 public class ProgramTests
 {
     [TestMethod]
-    public void MainShouldThrowArgumentNullException()
+    public void ShouldThrowArgumentNullException()
     {
         var exception = Assert.ThrowsException<ArgumentNullException>(() => _ = Program.Main(null!));
 

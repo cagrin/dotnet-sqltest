@@ -6,7 +6,7 @@ using SqlTest;
 public class RunAllCommandTests
 {
     [TestMethod]
-    public void ShoudRunDispose()
+    public void ShouldRunDispose()
     {
         var mock = new MockIConsole();
 
