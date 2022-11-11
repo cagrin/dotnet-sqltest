@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.SqlProj/2.1.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/2.2.0">
     <PropertyGroup>
         <PackageId>Database.Tests/Error</PackageId>
     </PropertyGroup>
