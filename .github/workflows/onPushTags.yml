@@ -10,9 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@master
+        with:
+          dotnet-version: '7.0'
       - name: Get version from tag
         run: echo "VERSION=${GITHUB_REF/refs\/tags\/}" >> $GITHUB_ENV
       - name: Pack
-        run: dotnet pack SqlTest --configuration Release -e Version=${VERSION} -e ContinuousIntegrationBuild=true --output .
+        run: dotnet pack SqlTest --configuration Release /p:Version=${VERSION} /p:ContinuousIntegrationBuild=true --output .
       - name: NuGet push
         run: dotnet nuget push dotnet-sqltest.${VERSION}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
