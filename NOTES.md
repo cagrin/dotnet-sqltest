@@ -1,6 +1,6 @@
 ## Show output during test
 
-```dotnet test ./SqlTest.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=lcov -l "console;verbosity=detailed" ```
+```dotnet test ./SqlTest.Tests -e CollectCoverage=true -e CoverletOutputFormat=lcov -l "console;verbosity=detailed" ```
 
 ## Run project
 
@@ -12,4 +12,4 @@
 
 ## Filter smoke tests
 
-```dotnet test ./SqlTest.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)"```
+```dotnet test ./SqlTest.Tests -e CollectCoverage=true -e CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)"```

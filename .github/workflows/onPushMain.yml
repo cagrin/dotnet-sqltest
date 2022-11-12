@@ -14,12 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run unit tests
-        run: dotnet test SqlTest.Tests --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=lcov
+        run: dotnet test SqlTest.Tests --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov
       - name: Run coveralls.io
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./SqlTest.Tests/coverage.info
+          path-to-lcov: ./SqlTest.Tests/coverage.net6.0.info
         if: github.event_name != 'pull_request'
   simple-test-on-windows:
     runs-on: windows-latest
