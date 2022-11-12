@@ -14,9 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup dotnet
-        uses: actions/setup-dotnet@master
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0'
+          dotnet-version: '7.0.x'
       - name: Run unit tests
         run: dotnet test SqlTest.Tests --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov
       - name: Run coveralls.io
@@ -32,11 +32,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup dotnet
-        uses: actions/setup-dotnet@master
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0'
+          dotnet-version: '7.0.x'
       - name: Pull image
         run: docker pull ${{env.IMAGE_NAME}}
       - name: Run simple tests
         shell: pwsh
-        run: dotnet run --project SqlTest -- runall --image ${{env.IMAGE_NAME}} --windows-container --project Database.Tests/Ok
+        run: |
+          dotnet run --project SqlTest --framework net7.0 -- runall --image ${{env.IMAGE_NAME}} --windows-container --project Database.Tests/Ok
+          dotnet run --project SqlTest --framework net6.0 -- runall --image ${{env.IMAGE_NAME}} --windows-container --project Database.Tests/Ok
