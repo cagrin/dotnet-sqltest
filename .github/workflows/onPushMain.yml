@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
       - name: Run unit tests
         run: dotnet test SqlTest.Tests --framework net6.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov
       - name: Run coveralls.io
@@ -37,6 +41,10 @@ jobs:
       IMAGE_NAME: cagrin/mssql-server-ltsc2022:2019-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
       - name: Pull image
         run: docker pull ${{env.IMAGE_NAME}}
       - name: Run simple tests
@@ -45,7 +53,7 @@ jobs:
   simple-test-on-windows-net7:
     runs-on: windows-latest
     env:
-      IMAGE_NAME: cagrin/mssql-server-ltsc2022:2019-latest
+      IMAGE_NAME: cagrin/mssql-server-ltsc2022:2022-preview
     steps:
       - uses: actions/checkout@v3
       - name: Setup dotnet
