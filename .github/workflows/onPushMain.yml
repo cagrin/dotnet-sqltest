@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test-on-ubuntu-net6.0:
+  test-on-ubuntu-net6:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./SqlTest.Tests/coverage.net6.0.info
         if: github.event_name != 'pull_request'
-  test-on-ubuntu-net7.0:
+  test-on-ubuntu-net7:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,7 +31,7 @@ jobs:
           dotnet-version: '7.0.x'
       - name: Run unit tests
         run: dotnet test SqlTest.Tests --framework net7.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov
-  simple-test-on-windows-net6.0:
+  simple-test-on-windows-net6:
     runs-on: windows-latest
     env:
       IMAGE_NAME: cagrin/mssql-server-ltsc2022:2019-latest
@@ -42,7 +42,7 @@ jobs:
       - name: Run simple tests
         shell: pwsh
         run: dotnet run --project SqlTest --framework net6.0 -- runall --image ${{env.IMAGE_NAME}} --windows-container --project Database.Tests/Ok
-  simple-test-on-windows-net7.0:
+  simple-test-on-windows-net7:
     runs-on: windows-latest
     env:
       IMAGE_NAME: cagrin/mssql-server-ltsc2022:2019-latest
