@@ -9,7 +9,19 @@ on:
       - main
 
 jobs:
-  build:
+  test-on-ubuntu-net6.0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run unit tests
+        run: dotnet test SqlTest.Tests --framework net6.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov
+      - name: Run coveralls.io
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./SqlTest.Tests/coverage.net6.0.info
+        if: github.event_name != 'pull_request'
+  test-on-ubuntu-net7.0:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,14 +30,19 @@ jobs:
         with:
           dotnet-version: '7.0.x'
       - name: Run unit tests
-        run: dotnet test SqlTest.Tests --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov
-      - name: Run coveralls.io
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./SqlTest.Tests/coverage.net6.0.info
-        if: github.event_name != 'pull_request'
-  simple-test-on-windows:
+        run: dotnet test SqlTest.Tests --framework net7.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov
+  simple-test-on-windows-net6.0:
+    runs-on: windows-latest
+    env:
+      IMAGE_NAME: cagrin/mssql-server-ltsc2022:2019-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Pull image
+        run: docker pull ${{env.IMAGE_NAME}}
+      - name: Run simple tests
+        shell: pwsh
+        run: dotnet run --project SqlTest --framework net6.0 -- runall --image ${{env.IMAGE_NAME}} --windows-container --project Database.Tests/Ok
+  simple-test-on-windows-net7.0:
     runs-on: windows-latest
     env:
       IMAGE_NAME: cagrin/mssql-server-ltsc2022:2019-latest
@@ -39,6 +56,4 @@ jobs:
         run: docker pull ${{env.IMAGE_NAME}}
       - name: Run simple tests
         shell: pwsh
-        run: |
-          dotnet run --project SqlTest --framework net7.0 -- runall --image ${{env.IMAGE_NAME}} --windows-container --project Database.Tests/Ok
-          dotnet run --project SqlTest --framework net6.0 -- runall --image ${{env.IMAGE_NAME}} --windows-container --project Database.Tests/Ok
+        run: dotnet run --project SqlTest --framework net7.0 -- runall --image ${{env.IMAGE_NAME}} --windows-container --project Database.Tests/Ok
