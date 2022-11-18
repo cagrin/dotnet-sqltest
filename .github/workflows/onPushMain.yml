@@ -53,7 +53,7 @@ jobs:
   simple-test-on-windows-net7:
     runs-on: windows-latest
     env:
-      IMAGE_NAME: cagrin/mssql-server-ltsc2022:2022-preview
+      IMAGE_NAME: cagrin/mssql-server-ltsc2022:2022-latest
     steps:
       - uses: actions/checkout@v3
       - name: Setup dotnet
