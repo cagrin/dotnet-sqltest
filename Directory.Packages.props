@@ -19,6 +19,6 @@
         <PackageVersion Include="SQLCoverLib" Version="0.6.0-preview4"/>
         <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.435"/>
         <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>
-        <PackageVersion Include="tSQLt.Edge" Version="0.9.1"/>
+        <PackageVersion Include="tSQLt.Edge" Version="0.9.2"/>
     </ItemGroup>
 </Project>
