@@ -13,9 +13,9 @@
         <PackageVersion Include="Microsoft.PowerShell.SDK" Version="7.2.7" Condition="'$(TargetFramework)' == 'net6.0'"/>
         <PackageVersion Include="Microsoft.PowerShell.SDK" Version="7.3.0" Condition="'$(TargetFramework)' == 'net7.0'"/>
         <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1"/>
-        <PackageVersion Include="Moq" Version="4.18.2"/>
-        <PackageVersion Include="MSTest.TestAdapter" Version="2.2.10"/>
-        <PackageVersion Include="MSTest.TestFramework" Version="2.2.10"/>
+        <PackageVersion Include="Moq" Version="4.18.3"/>
+        <PackageVersion Include="MSTest.TestAdapter" Version="3.0.0"/>
+        <PackageVersion Include="MSTest.TestFramework" Version="3.0.0"/>
         <PackageVersion Include="SQLCoverLib" Version="0.6.0-preview4"/>
         <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.435"/>
         <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>
