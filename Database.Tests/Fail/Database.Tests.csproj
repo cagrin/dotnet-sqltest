@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.SqlProj/2.3.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/2.4.0">
     <PropertyGroup>
         <PackageId>Database.Tests/Fail</PackageId>
     </PropertyGroup>
