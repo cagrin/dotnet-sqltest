@@ -4,11 +4,11 @@
 
 ## Show output during test with .NET 6
 
-```dotnet test ./SqlTest.Tests --framework net6.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov -l "console;verbosity=detailed" ```
+```cd SqlTest.Tests && dotnet test --framework net6.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov -l "console;verbosity=detailed" && cd..```
 
 ## Filter smoke tests with .NET 6
 
-```dotnet test ./SqlTest.Tests --framework net6.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)"```
+```cd SqlTest.Tests && dotnet test --framework net6.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)" && cd..```
 
 ## Run project with .NET 6
 
