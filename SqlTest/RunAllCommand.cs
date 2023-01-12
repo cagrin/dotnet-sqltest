@@ -178,7 +178,7 @@ public class RunAllCommand : IDisposable
     {
         using var con = new SqlConnection(this.cs);
 
-        var results = con.Query<TestResult>($"SELECT Name, Result, Msg FROM [{this.database}].tSQLt.TestResult");
+        var results = con.Query<TestResult>($"SELECT Name, Result, Msg FROM [{this.database}].tSQLt.TestResult").ToArray();
 
         int passed = results.Where(p => p.Result == "Success").Count();
         int failed = results.Where(p => p.Result == "Failure").Count();
@@ -196,7 +196,7 @@ public class RunAllCommand : IDisposable
         string cc = string.Empty;
         if (this.code != null)
         {
-            var uncoveredBatches = this.code.Batches.Where(p => p.Statements.Any(r => r.HitCount == 0));
+            var uncoveredBatches = this.code.Batches.Where(p => p.Statements.Any(r => r.HitCount == 0)).ToArray();
             if (uncoveredBatches.Any())
             {
                 this.console.ForegroundColor = ConsoleColor.Yellow;
