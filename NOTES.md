@@ -20,5 +20,5 @@ dotnet test ./SqlTest.Tests --framework net6.0 -e CollectCoverage=true -e Coverl
 ## Run project with .NET 6
 
 ```
-dotnet run --project SqlTest --framework net6.0 -- runall --image cagrin/azure-sql-edge-arm64 --project Database.Tests/Ok
+dotnet run --project SqlTest --framework net6.0 -- runall --image mcr.microsoft.com/mssql/server --project Database.Tests/Ok
 ```
