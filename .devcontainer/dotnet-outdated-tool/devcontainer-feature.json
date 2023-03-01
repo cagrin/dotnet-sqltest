@@ -1,0 +1,6 @@
+{
+    "id": "dotnet-outdated-tool",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/dotnet"
+    ]
+}

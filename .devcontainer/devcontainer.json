@@ -1,0 +1,12 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/dotnet:0-7.0",
+    "features":
+    {
+        "./dotnet-install": { },
+        "./dotnet-outdated-tool": { },
+        "ghcr.io/devcontainers/features/docker-in-docker":
+        {
+            "version": "latest"
+        }
+    }
+}

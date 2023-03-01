@@ -1,0 +1,1 @@
+dotnet tool install dotnet-outdated-tool --tool-path /bin
