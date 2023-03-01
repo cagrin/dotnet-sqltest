@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run unit tests
-        run: cd SqlTest.Tests && dotnet test --framework net6.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov && cd ..
+        run: dotnet test ./SqlTest.Tests --framework net6.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov --logger "console;verbosity=normal"
       - name: Run coveralls.io
         uses: coverallsapp/github-action@master
         with:
@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run unit tests
-        run: cd SqlTest.Tests && dotnet test --framework net7.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov && cd ..
+        run: dotnet test ./SqlTest.Tests --framework net7.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov --logger "console;verbosity=normal"
   simple-test-on-windows-net6:
     runs-on: windows-latest
     env:
