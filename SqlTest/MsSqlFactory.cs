@@ -26,7 +26,9 @@ public static class MsSqlFactory
         string name = "MSSQL_COLLATION";
         string value = string.IsNullOrEmpty(collation) ? "SQL_Latin1_General_CP1_CI_AS" : collation;
 
+#pragma warning disable 618
         return new TestcontainersBuilder<MsSqlTestcontainer>()
+#pragma warning restore 618
             .WithDatabase(config)
             .WithEnvironment(name, value)
             .Build();
@@ -39,7 +41,9 @@ public static class MsSqlFactory
             Password = DefaultPassword,
         };
 
+#pragma warning disable 618
         return new TestcontainersBuilder<MsSqlTestcontainer>()
+#pragma warning restore 618
             .WithDatabase(config)
             .WithExposedPort(1433)
             .Build();
