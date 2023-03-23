@@ -26,5 +26,6 @@
         <PackageReference Include="SQLCoverLib"/>
         <PackageReference Include="System.CommandLine"/>
         <PackageReference Include="Testcontainers"/>
+        <PackageReference Include="Testcontainers.MsSql"/>
     </ItemGroup>
 </Project>

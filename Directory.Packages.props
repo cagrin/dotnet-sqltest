@@ -18,7 +18,8 @@
         <PackageVersion Include="SQLCoverLib" Version="0.6.0-preview5"/>
         <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.435"/>
         <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>
-        <PackageVersion Include="Testcontainers" Version="2.4.0"/>
+        <PackageVersion Include="Testcontainers" Version="3.0.0"/>
+        <PackageVersion Include="Testcontainers.MsSql" Version="3.0.0"/>
         <PackageVersion Include="tSQLt.Edge" Version="0.9.5"/>
     </ItemGroup>
 </Project>

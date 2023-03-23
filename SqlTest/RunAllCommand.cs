@@ -3,9 +3,9 @@ namespace SqlTest;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using DotNet.Testcontainers.Containers;
 using LikeComparison.TransactSql;
 using SQLCover;
+using Testcontainers.MsSql;
 
 public class RunAllCommand : IDisposable
 {
@@ -21,7 +21,7 @@ public class RunAllCommand : IDisposable
 
     private string cs = string.Empty;
 
-    private MsSqlTestcontainer? testcontainer;
+    private MsSqlContainer? testcontainer;
 
     private CodeCoverage? coverage;
 
@@ -75,9 +75,9 @@ public class RunAllCommand : IDisposable
         this.testcontainer = MsSqlFactory.CreateTestcontainer(image, collation, windowsContainer);
         await this.testcontainer.StartAsync().ConfigureAwait(false);
 
-        this.password = this.testcontainer.Password;
-        this.port = this.testcontainer.Port;
-        this.cs = $"{this.testcontainer.ConnectionString}TrustServerCertificate=True;";
+        this.password = MsSqlBuilder.DefaultPassword;
+        this.port = this.testcontainer.GetMappedPublicPort(MsSqlBuilder.MsSqlPort);
+        this.cs = this.testcontainer.GetConnectionString();
     }
 
     private async Task CleanBuildDatabase(string project)
@@ -93,7 +93,7 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Deploying database...");
 
-        string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName={this.database} /p:TargetUser=sa /p:TargetPassword={this.password} --nologo";
+        string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName={this.database} /p:TargetUser=sa /p:TargetPassword=\"{this.password}\" --nologo";
 
         var results = PowerShellCommand.Invoke(script);
 
