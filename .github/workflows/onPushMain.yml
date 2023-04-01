@@ -4,29 +4,23 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  test-on-ubuntu-net6:
+  test-on-ubuntu:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        framework: [net6.0, net7.0]
     steps:
       - uses: actions/checkout@v3
       - name: Run unit tests
-        run: dotnet test ./SqlTest.Tests --framework net6.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov --logger "console;verbosity=normal"
+        run: dotnet test ./SqlTest.Tests --framework ${{ matrix.framework }} --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov --logger "console;verbosity=normal"
       - name: Run coveralls.io
+        if: ${{ matrix.framework == 'net6.0' }}
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./SqlTest.Tests/coverage.net6.0.info
-        if: github.event_name != 'pull_request'
-  test-on-ubuntu-net7:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run unit tests
-        run: dotnet test ./SqlTest.Tests --framework net7.0 --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov --logger "console;verbosity=normal"
   simple-test-on-windows:
     strategy:
       matrix:
