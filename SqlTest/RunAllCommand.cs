@@ -64,7 +64,7 @@ public class RunAllCommand : IDisposable
         var createContainerTask = this.CreateContainer(image, collation, windowsContainer);
         var buildDatabaseTask = this.CleanBuildDatabase(project);
 
-        Task.WhenAll(createContainerTask, buildDatabaseTask).Wait();
+        Task.WhenAll(createContainerTask, buildDatabaseTask).Wait(millisecondsTimeout: 120000);
 
         stopwatchLog.Stop();
     }
