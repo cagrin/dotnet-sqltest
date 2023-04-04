@@ -27,9 +27,11 @@ public static class MsSqlFactory
 
     private static MsSqlContainer CreateWindowsTestcontainer(string image)
     {
+        var cmd = $"sqlcmd -S localhost,{MsSqlBuilder.MsSqlPort} -U {MsSqlBuilder.DefaultUsername} -P \"{MsSqlBuilder.DefaultPassword}\"";
+
         return new MsSqlBuilder()
             .WithImage(image)
-            .WithWaitStrategy(Wait.ForWindowsContainer().UntilCommandIsCompleted("sqlcmd", "-S", $"localhost,{MsSqlBuilder.MsSqlPort}", "-U", MsSqlBuilder.DefaultUsername, "-P", MsSqlBuilder.DefaultPassword))
+            .WithWaitStrategy(Wait.ForWindowsContainer().UntilCommandIsCompleted(cmd))
             .Build();
     }
 }
