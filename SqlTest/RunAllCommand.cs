@@ -3,7 +3,6 @@ namespace SqlTest;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using LikeComparison.TransactSql;
 using SQLCover;
 using Testcontainers.MsSql;
 

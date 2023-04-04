@@ -20,12 +20,15 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Dapper"/>
-        <PackageReference Include="LikeComparison"/>
         <PackageReference Include="Microsoft.Data.SqlClient"/>
         <PackageReference Include="Microsoft.PowerShell.SDK"/>
         <PackageReference Include="SQLCoverLib"/>
         <PackageReference Include="System.CommandLine"/>
         <PackageReference Include="Testcontainers"/>
         <PackageReference Include="Testcontainers.MsSql"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Using Include="LikeComparison.TransactSql"/>
+        <PackageReference Include="LikeComparison"/>
     </ItemGroup>
 </Project>

@@ -22,6 +22,6 @@
     </ItemGroup>
     <ItemGroup>
         <Using Include="LikeComparison.TransactSql"/>
-        <PackageReference Include="LikeComparison"/>
+        <PackageReference Include="LikeComparison.MSTest"/>
     </ItemGroup>
 </Project>

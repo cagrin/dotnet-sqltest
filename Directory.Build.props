@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <AnalysisMode>All</AnalysisMode>
         <CodeAnalysisRuleSet>../StyleCop.ruleset</CodeAnalysisRuleSet>
+        <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All" />
