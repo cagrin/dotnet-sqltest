@@ -10,8 +10,8 @@
         <PackageVersion Include="LikeComparison.MSTest" Version="2.0.0"/>
         <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.1.1"/>
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.5.0"/>
-        <PackageVersion Include="Microsoft.PowerShell.SDK" Version="7.2.10" Condition="'$(TargetFramework)' == 'net6.0'"/>
-        <PackageVersion Include="Microsoft.PowerShell.SDK" Version="7.3.3" Condition="'$(TargetFramework)' == 'net7.0'"/>
+        <PackageVersion Include="Microsoft.PowerShell.SDK" Version="7.2.11" Condition="'$(TargetFramework)' == 'net6.0'"/>
+        <PackageVersion Include="Microsoft.PowerShell.SDK" Version="7.3.4" Condition="'$(TargetFramework)' == 'net7.0'"/>
         <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1"/>
         <PackageVersion Include="Moq" Version="4.18.4"/>
         <PackageVersion Include="MSTest.TestAdapter" Version="3.0.2"/>
