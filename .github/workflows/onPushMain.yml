@@ -10,9 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        framework: [net6.0, net7.0]
+        framework: [net6.0, net7.0, net8.0]
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
       - name: Run unit tests
         run: dotnet test ./SqlTest.Tests --framework ${{ matrix.framework }} --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov --logger "console;verbosity=normal"
       - name: Run coveralls.io
@@ -32,6 +35,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
       - name: Pull image
         run: docker pull ${{ matrix.image }}
       - name: Run simple tests

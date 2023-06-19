@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.SqlProj/2.4.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/2.6.0">
     <PropertyGroup>
         <PackageId>Database.Tests/Ok</PackageId>
     </PropertyGroup>
