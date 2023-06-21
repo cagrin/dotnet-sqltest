@@ -5,7 +5,7 @@
     <ItemGroup>
         <PackageVersion Include="coverlet.collector" Version="6.0.0"/>
         <PackageVersion Include="coverlet.msbuild" Version="6.0.0"/>
-        <PackageVersion Include="Dapper" Version="2.0.138"/>
+        <PackageVersion Include="Dapper" Version="2.0.143"/>
         <PackageVersion Include="LikeComparison" Version="2.0.0"/>
         <PackageVersion Include="LikeComparison.MSTest" Version="2.0.0"/>
         <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.1.1"/>
@@ -17,7 +17,7 @@
         <PackageVersion Include="MSTest.TestAdapter" Version="3.0.4"/>
         <PackageVersion Include="MSTest.TestFramework" Version="3.0.4"/>
         <PackageVersion Include="SQLCoverLib" Version="0.6.0-preview5"/>
-        <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.435"/>
+        <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.507"/>
         <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>
         <PackageVersion Include="Testcontainers" Version="3.2.0"/>
         <PackageVersion Include="Testcontainers.MsSql" Version="3.2.0"/>
