@@ -1,6 +1,0 @@
-{
-    "id": "dotnet-install",
-    "installsAfter": [
-        "ghcr.io/devcontainers/features/dotnet"
-    ]
-}
