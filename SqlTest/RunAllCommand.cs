@@ -196,7 +196,7 @@ public class RunAllCommand : IDisposable
         if (this.code != null)
         {
             var uncoveredBatches = this.code.Batches.Where(p => p.Statements.Any(r => r.HitCount == 0)).ToArray();
-            if (uncoveredBatches.Any())
+            if (uncoveredBatches.Length > 0)
             {
                 this.console.ForegroundColor = ConsoleColor.Yellow;
                 this.console.WriteLine("Uncovered statements:");
