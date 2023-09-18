@@ -8,7 +8,7 @@ public class SystemConsoleTests
     [TestMethod]
     public void ShouldHaveForegroundColor()
     {
-        IConsole console = SystemConsole.This;
+        var console = SystemConsole.This;
 
         console.ForegroundColor = ConsoleColor.Black;
 
@@ -18,7 +18,7 @@ public class SystemConsoleTests
     [TestMethod]
     public void ShouldHaveResetColor()
     {
-        IConsole console = SystemConsole.This;
+        var console = SystemConsole.This;
 
         console.ForegroundColor = ConsoleColor.Black;
         console.ResetColor();
@@ -29,7 +29,7 @@ public class SystemConsoleTests
     [TestMethod]
     public void ShouldHaveWrites()
     {
-        IConsole console = SystemConsole.This;
+        var console = SystemConsole.This;
 
         console.Write(string.Empty);
         console.WriteLine(string.Empty);
