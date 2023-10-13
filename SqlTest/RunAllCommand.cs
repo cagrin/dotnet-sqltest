@@ -31,11 +31,11 @@ public class RunAllCommand : IDisposable
         this.console = mockConsole ?? SystemConsole.This;
     }
 
-    public int Invoke(string image, string project, string collation, string result, bool ccDisable, bool ccIncludeTsqlt, bool windowsContainer)
+    public int Invoke(string image, string project, string collation, string result, bool ccDisable, bool ccIncludeTsqlt)
     {
         _ = this.stopwatchLogAll.Start();
 
-        this.PrepareDatabase(image, project, collation, windowsContainer);
+        this.PrepareDatabase(image, project, collation);
 
         if (this.DeployDatabase(project))
         {
@@ -57,21 +57,21 @@ public class RunAllCommand : IDisposable
         this.testcontainer?.DisposeAsync().AsTask().Wait();
     }
 
-    private void PrepareDatabase(string image, string project, string collation, bool windowsContainer)
+    private void PrepareDatabase(string image, string project, string collation)
     {
         var stopwatchLog = new StopwatchLog().Start("Preparing database...");
 
-        var createContainerTask = this.CreateContainer(image, collation, windowsContainer);
+        var createContainerTask = this.CreateContainer(image, collation);
         var buildDatabaseTask = this.CleanBuildDatabase(project);
 
-        Task.WhenAll(createContainerTask, buildDatabaseTask).Wait(millisecondsTimeout: 120000);
+        _ = Task.WhenAll(createContainerTask, buildDatabaseTask).Wait(millisecondsTimeout: 120000);
 
         stopwatchLog.Stop();
     }
 
-    private async Task CreateContainer(string image, string collation, bool windowsContainer)
+    private async Task CreateContainer(string image, string collation)
     {
-        this.testcontainer = MsSqlFactory.CreateTestcontainer(image, collation, windowsContainer);
+        this.testcontainer = MsSqlFactory.CreateTestcontainer(image, collation);
         await this.testcontainer.StartAsync().ConfigureAwait(false);
 
         this.password = MsSqlBuilder.DefaultPassword;

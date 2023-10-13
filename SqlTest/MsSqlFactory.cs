@@ -1,17 +1,16 @@
 namespace SqlTest;
 
-using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Configurations;
 using Microsoft.Extensions.Logging.Abstractions;
 using Testcontainers.MsSql;
 
 public static class MsSqlFactory
 {
-    public static MsSqlContainer CreateTestcontainer(string image, string collation, bool windowsContainer)
+    public static MsSqlContainer CreateTestcontainer(string image, string collation)
     {
         TestcontainersSettings.Logger = NullLogger.Instance;
 
-        return windowsContainer ? CreateWindowsTestcontainer(image) : CreateUnixTestcontainer(image, collation);
+        return CreateUnixTestcontainer(image, collation);
     }
 
     private static MsSqlContainer CreateUnixTestcontainer(string image, string collation)
@@ -22,14 +21,6 @@ public static class MsSqlFactory
         return new MsSqlBuilder()
             .WithImage(image)
             .WithEnvironment(name, value)
-            .Build();
-    }
-
-    private static MsSqlContainer CreateWindowsTestcontainer(string image)
-    {
-        return new MsSqlBuilder()
-            .WithImage(image)
-            .WithWaitStrategy(Wait.ForWindowsContainer().UntilMessageIsLogged("Started SQL Server."))
             .Build();
     }
 }

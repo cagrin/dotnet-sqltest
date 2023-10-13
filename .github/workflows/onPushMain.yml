@@ -1,4 +1,4 @@
-name: Unit tests, coveralls.io
+name: Build, Test, coveralls.io
 
 on:
   push:
@@ -6,7 +6,16 @@ on:
       - main
 
 jobs:
-  test-on-ubuntu:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build
+        run: dotnet build ./SqlTest
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,24 +33,3 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./SqlTest.Tests/coverage.net6.0.info
-  simple-test-on-windows:
-    strategy:
-      matrix:
-        include:
-          - framework: net6.0
-            image: cagrin/mssql-server-ltsc2022:2019-latest
-          - framework: net7.0
-            image: cagrin/mssql-server-ltsc2022:2022-latest
-          - framework: net8.0
-            image: cagrin/mssql-server-ltsc2022:2022-latest
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0.x'
-      - name: Pull image
-        run: docker pull ${{ matrix.image }}
-      - name: Run simple tests
-        shell: pwsh
-        run: dotnet run --project SqlTest --framework ${{ matrix.framework }} -- runall --image ${{ matrix.image }} --windows-container --project Database.Tests/Ok

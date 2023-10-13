@@ -6,7 +6,7 @@ public class MsSqlFactoryTests
     [TestMethod]
     public async Task ShouldBuildWindowsContainer()
     {
-        var tc = MsSqlFactory.CreateTestcontainer(image: "cagrin/mssql-server-ltsc2022", collation: string.Empty, windowsContainer: true);
+        var tc = MsSqlFactory.CreateTestcontainer(image: "mcr.microsoft.com/mssql/server", collation: string.Empty);
         await tc.DisposeAsync().ConfigureAwait(false);
     }
 }

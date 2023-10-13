@@ -19,7 +19,6 @@ public static class Program
         var resultOption = new Option<string>(new[] { "--result", "-r" }, "Save result in JUnit XML file.") { IsRequired = false };
         var ccDisableOption = new Option<bool>(new[] { "--cc-disable" }, "Disable code coverage.") { IsRequired = false };
         var ccIncludeTsqltOption = new Option<bool>(new[] { "--cc-include-tsqlt" }, "Include code coverage of tSQLt schema.") { IsRequired = false };
-        var windowsContainerOption = new Option<bool>(new[] { "--windows-container" }, "Run as Windows container.") { IsRequired = false };
 
         var runAll = new Command("runall", "Run all tests.")
         {
@@ -29,19 +28,17 @@ public static class Program
             resultOption,
             ccDisableOption,
             ccIncludeTsqltOption,
-            windowsContainerOption,
         };
 
         runAll.SetHandler(
-            (string image, string project, string result, string collation, bool ccDisable, bool ccIncludeTsqlt, bool windowsContainer) =>
-            InvokeRunAll(image, project, result, collation, ccDisable, ccIncludeTsqlt, windowsContainer),
+            (string image, string project, string result, string collation, bool ccDisable, bool ccIncludeTsqlt) =>
+            InvokeRunAll(image, project, result, collation, ccDisable, ccIncludeTsqlt),
             imageOption,
             projectOption,
             collationOption,
             resultOption,
             ccDisableOption,
-            ccIncludeTsqltOption,
-            windowsContainerOption);
+            ccIncludeTsqltOption);
 
         var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.")
         {
@@ -51,10 +48,10 @@ public static class Program
         return rootCommand.Invoke(args) + Result;
     }
 
-    public static void InvokeRunAll(string image, string project, string collation, string result, bool ccDisable, bool ccIncludeTsqlt, bool windowsContainer)
+    public static void InvokeRunAll(string image, string project, string collation, string result, bool ccDisable, bool ccIncludeTsqlt)
     {
         using var stc = new RunAllCommand();
 
-        Result = stc.Invoke(image, project, collation, result, ccDisable, ccIncludeTsqlt, windowsContainer);
+        Result = stc.Invoke(image, project, collation, result, ccDisable, ccIncludeTsqlt);
     }
 }
