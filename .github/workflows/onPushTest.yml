@@ -1,0 +1,19 @@
+name: Test in Dev Container
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run unit tests
+        uses: devcontainers/ci@v0.3
+        with:
+          runCmd: |
+            pwsh
+            dotnet test ./SqlTest.Tests --framework net6.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)"
