@@ -6,42 +6,35 @@ on:
       - main
 
 jobs:
-  Build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v3
+      - uses: devcontainers/ci@v0.3
         with:
-          dotnet-version: '8.0.x'
-      - name: Build
-        run: dotnet build ./SqlTest
-  Test:
+          runCmd: dotnet build SqlTest
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         framework: [net6.0, net7.0, net8.0]
     steps:
       - uses: actions/checkout@v4
+      - uses: devcontainers/ci@v0.3
+        with:
+          runCmd: dotnet test SqlTest.Tests --framework ${{ matrix.framework }}
+  coverage:
+    runs-on: ubuntu-latest
+    env:
+      framework: net6.0
+    steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
-      - name: Run unit tests
-        run: dotnet test ./SqlTest.Tests --framework ${{ matrix.framework }} --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov --logger "console;verbosity=normal"
-      - name: Run coveralls.io
-        if: ${{ matrix.framework == 'net6.0' }}
-        uses: coverallsapp/github-action@master
+      - name: Run tests and collect coverage
+        run: dotnet test SqlTest.Tests --framework ${{ env.framework }} --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov
+      - uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./SqlTest.Tests/coverage.net6.0.info
-  Test2:
-    name: Test in Dev Container
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        framework: [net6.0, net7.0, net8.0]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run unit tests
-        uses: devcontainers/ci@v0.3
-        with:
-          runCmd: dotnet test ./SqlTest.Tests --framework ${{ matrix.framework }} --configuration Release -e CollectCoverage=true -e CoverletOutputFormat=lcov --logger "console;verbosity=normal"
+          path-to-lcov: ./SqlTest.Tests/coverage.${{ env.framework }}.info
