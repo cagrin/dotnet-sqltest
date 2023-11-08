@@ -1,13 +1,19 @@
 {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-    "features":
-    {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": { },
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/devcontainers/features/dotnet:2": {
             "version": "6.0",
             "additionalVersions": "7.0, 8.0"
         },
-        "ghcr.io/devcontainers/features/powershell:1": { },
-        "./dotnet-outdated-tool": { }
+        "ghcr.io/devcontainers/features/powershell:1": {},
+        "./dotnet-outdated-tool": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.csdevkit"
+            ]
+        }
     }
 }
