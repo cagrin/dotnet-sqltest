@@ -3,10 +3,13 @@ namespace SqlTest.DatabaseTests;
 [TestClass]
 public class ErrorDatabaseTests : BaseDatabaseTests
 {
+    public static new IEnumerable<object[]> Images => BaseDatabaseTests.Images;
+
     [TestMethod]
-    public void InvokeSqlTestRunAllError()
+    [DynamicData(nameof(Images))]
+    public void InvokeSqlTestRunAllError(string image)
     {
-        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.Image} --project ../../../../Database.Tests/Error\n$LASTEXITCODE");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Error\n$LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "2");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Deploying database failed.");

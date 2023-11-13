@@ -3,38 +3,44 @@ namespace SqlTest.DatabaseTests;
 [TestClass]
 public class OkDatabaseTests : BaseDatabaseTests
 {
+    public static new IEnumerable<object[]> Images => BaseDatabaseTests.Images;
+
     [TestMethod]
-    public void InvokeSqlTestRunAllOk()
+    [DynamicData(nameof(Images))]
+    public void InvokeSqlTestRunAllOk(string image)
     {
-        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.Image} --project ../../../../Database.Tests/Ok\n$LASTEXITCODE");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok\n$LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "0");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Failed: 0, Passed: 1, Coverage: 60% (3/5), Duration: %");
     }
 
     [TestMethod]
-    public void InvokeSqlTestRunAllOkWithCodeCoverageIncludeTsqlt()
+    [DynamicData(nameof(Images))]
+    public void InvokeSqlTestRunAllOkWithCodeCoverageIncludeTsqlt(string image)
     {
-        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.Image} --project ../../../../Database.Tests/Ok --cc-include-tsqlt\n$LASTEXITCODE");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --cc-include-tsqlt\n$LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "0");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Failed: 0, Passed: 1, Coverage: __[%] (%/%), Duration: %");
     }
 
     [TestMethod]
-    public void InvokeSqlTestRunAllOkWithCodeCoverageDisable()
+    [DynamicData(nameof(Images))]
+    public void InvokeSqlTestRunAllOkWithCodeCoverageDisable(string image)
     {
-        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.Image} --project ../../../../Database.Tests/Ok --cc-disable\n$LASTEXITCODE");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --cc-disable\n$LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "0");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Failed: 0, Passed: 1, Duration: %");
     }
 
     [TestMethod]
-    public void InvokeSqlTestRunAllOkWithXmlResult()
+    [DynamicData(nameof(Images))]
+    public void InvokeSqlTestRunAllOkWithXmlResult(string image)
     {
         var filename = $"result.xml";
-        _ = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.Image} --project ../../../../Database.Tests/Ok --result {filename}");
+        _ = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --result {filename}");
 
         using var str = new StreamReader(filename);
         string xml = str.ReadToEnd();

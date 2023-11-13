@@ -2,5 +2,11 @@ namespace SqlTest.DatabaseTests;
 
 public class BaseDatabaseTests
 {
-    public string Image { get; init; } = "mcr.microsoft.com/mssql/server";
+    public static IEnumerable<object[]> Images => new[]
+    {
+        new object[] { "mcr.microsoft.com/mssql/server" },
+        new object[] { "mcr.microsoft.com/azure-sql-edge" },
+    };
+
+    public string Folder { get; init; } = "../../../../Database.Tests";
 }

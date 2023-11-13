@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using SQLCover;
-using Testcontainers.MsSql;
 
 public class RunAllCommand : IDisposable
 {
@@ -20,7 +19,7 @@ public class RunAllCommand : IDisposable
 
     private string cs = string.Empty;
 
-    private MsSqlContainer? testcontainer;
+    private ITestcontainer? testcontainer;
 
     private CodeCoverage? coverage;
 
@@ -54,7 +53,10 @@ public class RunAllCommand : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
-        this.testcontainer?.DisposeAsync().AsTask().Wait();
+        if (disposing)
+        {
+            this.testcontainer?.Dispose();
+        }
     }
 
     private void PrepareDatabase(string image, string project, string collation)
@@ -71,12 +73,13 @@ public class RunAllCommand : IDisposable
 
     private async Task CreateContainer(string image, string collation)
     {
-        this.testcontainer = MsSqlFactory.CreateTestcontainer(image, collation);
-        await this.testcontainer.StartAsync().ConfigureAwait(false);
+        this.testcontainer = image.Contains("azure-sql-edge", StringComparison.InvariantCulture) ? new SqlEdgeTestcontainer() : new MsSqlTestcontainer();
 
-        this.password = MsSqlBuilder.DefaultPassword;
-        this.port = this.testcontainer.GetMappedPublicPort(MsSqlBuilder.MsSqlPort);
-        this.cs = this.testcontainer.GetConnectionString();
+        var (password, port, cs) = await this.testcontainer.StartAsync(image, collation).ConfigureAwait(false);
+
+        this.password = password;
+        this.port = port;
+        this.cs = cs;
     }
 
     private async Task CleanBuildDatabase(string project)

@@ -3,19 +3,23 @@ namespace SqlTest.DatabaseTests;
 [TestClass]
 public class CollationDatabaseTests : BaseDatabaseTests
 {
+    public static new IEnumerable<object[]> Images => BaseDatabaseTests.Images;
+
     [TestMethod]
-    public void InvokeSqlTestRunAllCollationPassed()
+    [DynamicData(nameof(Images))]
+    public void InvokeSqlTestRunAllCollationPassed(string image)
     {
-        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.Image} --project ../../../../Database.Tests/Collation --collation Polish_CI_AS\n$LASTEXITCODE");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Collation --collation Polish_CI_AS\n$LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "0");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Failed: 0, Passed: 1, %");
     }
 
     [TestMethod]
-    public void InvokeSqlTestRunAllCollationFailed()
+    [DynamicData(nameof(Images))]
+    public void InvokeSqlTestRunAllCollationFailed(string image)
     {
-        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {this.Image} --project ../../../../Database.Tests/Collation\n$LASTEXITCODE");
+        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Collation\n$LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "1");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Failed: 1, Passed: 0, %");
