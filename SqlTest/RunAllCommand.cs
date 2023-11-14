@@ -88,7 +88,7 @@ public class RunAllCommand : IDisposable
 
         string script = $"dotnet clean {project}\ndotnet build {project}";
 
-        _ = await PowerShellCommand.InvokeAsync(script).ConfigureAwait(false);
+        _ = await PowerShellConsole.InvokeAsync(script).ConfigureAwait(false);
     }
 
     private bool DeployDatabase(string project)
@@ -97,7 +97,7 @@ public class RunAllCommand : IDisposable
 
         string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName={this.database} /p:TargetUser=sa /p:TargetPassword=\"{this.password}\" --nologo";
 
-        var results = PowerShellCommand.Invoke(script);
+        var results = PowerShellConsole.Invoke(script);
 
         stopwatchLog.Stop();
 

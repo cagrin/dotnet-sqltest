@@ -9,7 +9,7 @@ public class ErrorDatabaseTests : BaseDatabaseTests
     [DynamicData(nameof(Images))]
     public void InvokeSqlTestRunAllError(string image)
     {
-        var results = PowerShellCommand.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Error\n$LASTEXITCODE");
+        var results = PowerShellConsole.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Error\n$LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "2");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Deploying database failed.");

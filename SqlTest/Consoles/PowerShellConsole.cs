@@ -3,7 +3,7 @@ namespace SqlTest;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 
-public static class PowerShellCommand
+public static class PowerShellConsole
 {
     public static PSDataCollection<PSObject> Invoke(string script, IConsole? mockConsole = null)
     {
