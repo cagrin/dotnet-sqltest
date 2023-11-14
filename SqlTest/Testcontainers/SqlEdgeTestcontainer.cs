@@ -6,7 +6,7 @@ using Testcontainers.SqlEdge;
 
 public class SqlEdgeTestcontainer : ITestcontainer
 {
-    private IAsyncDisposable? testcontainer;
+    private SqlEdgeContainer? testcontainer;
 
     public SqlEdgeTestcontainer()
     {

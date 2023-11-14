@@ -6,7 +6,7 @@ using Testcontainers.MsSql;
 
 public class MsSqlTestcontainer : ITestcontainer
 {
-    private IAsyncDisposable? testcontainer;
+    private MsSqlContainer? testcontainer;
 
     public MsSqlTestcontainer()
     {
