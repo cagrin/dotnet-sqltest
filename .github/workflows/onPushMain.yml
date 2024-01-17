@@ -26,7 +26,7 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     env:
-      framework: net6.0
+      framework: net8.0
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
