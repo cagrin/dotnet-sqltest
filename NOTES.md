@@ -4,22 +4,22 @@
 $Env:DOTNET_CLI_UI_LANGUAGE="en"
 ```
 
-## Show output during test with .NET 6
+## Show output during test with .NET 8
 
 ```
-dotnet test ./SqlTest.Tests --framework net6.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov -l "console;verbosity=detailed"
+dotnet test ./SqlTest.Tests --framework net8.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov -l "console;verbosity=detailed"
 ```
 
-## Filter smoke tests with .NET 6
+## Filter smoke tests with .NET 8
 
 ```
 pwsh
-dotnet test ./SqlTest.Tests --framework net6.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)"
+dotnet test ./SqlTest.Tests --framework net8.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)"
 ```
 
-## Run project with .NET 6
+## Run project with .NET 8
 
 ```
-dotnet run --project SqlTest --framework net6.0 -- runall --image mcr.microsoft.com/mssql/server --project Database.Tests/Ok
-dotnet run --project SqlTest --framework net6.0 -- runall --image mcr.microsoft.com/azure-sql-edge --project Database.Tests/Ok
+dotnet run --project SqlTest --framework net8.0 -- runall --image mcr.microsoft.com/mssql/server --project Database.Tests/Ok
+dotnet run --project SqlTest --framework net8.0 -- runall --image mcr.microsoft.com/azure-sql-edge --project Database.Tests/Ok
 ```
