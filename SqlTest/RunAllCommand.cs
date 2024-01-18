@@ -73,7 +73,7 @@ public class RunAllCommand : IDisposable
 
     private async Task CreateContainer(string image, string collation)
     {
-        this.testcontainer = image.Contains("azure-sql-edge", StringComparison.InvariantCulture) ? new SqlEdgeTestcontainer() : new MsSqlTestcontainer();
+        this.testcontainer = TestcontainerFactory.Create(image);
 
         var (password, port, cs) = await this.testcontainer.StartAsync(image, collation).ConfigureAwait(false);
 
