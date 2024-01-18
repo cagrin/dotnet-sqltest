@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        framework: [net6.0, net7.0, net8.0]
+        framework: [net6.0, net8.0]
     steps:
       - uses: actions/checkout@v4
       - uses: devcontainers/ci@v0.3
