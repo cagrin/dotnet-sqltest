@@ -1,0 +1,9 @@
+<Project>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageVersion Include="Microsoft.SqlServer.Dacpacs.Master" Version="150.0.0"/>
+        <PackageVersion Include="tSQLt.Edge" Version="0.9.6"/>
+    </ItemGroup>
+</Project>

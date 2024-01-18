@@ -22,6 +22,5 @@
         <PackageVersion Include="Testcontainers" Version="3.7.0"/>
         <PackageVersion Include="Testcontainers.MsSql" Version="3.7.0"/>
         <PackageVersion Include="Testcontainers.SqlEdge" Version="3.7.0"/>
-        <PackageVersion Include="tSQLt.Edge" Version="0.9.5"/>
     </ItemGroup>
 </Project>
