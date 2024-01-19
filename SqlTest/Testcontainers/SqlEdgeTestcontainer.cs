@@ -15,12 +15,9 @@ public class SqlEdgeTestcontainer : ITestcontainer
 
     public async Task<(string Password, ushort Port, string ConnectionString)> StartAsync(string image, string collation)
     {
-        string name = "MSSQL_COLLATION";
-        string value = string.IsNullOrEmpty(collation) ? "SQL_Latin1_General_CP1_CI_AS" : collation;
-
         var container = new SqlEdgeBuilder()
             .WithImage(image)
-            .WithEnvironment(name, value)
+            .WithEnvironment("MSSQL_COLLATION", TestcontainerFactory.WithCollation(collation))
             .Build();
 
         await container.StartAsync().ConfigureAwait(false);

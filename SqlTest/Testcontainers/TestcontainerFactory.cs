@@ -11,4 +11,9 @@ public static class TestcontainerFactory
 
         return image.Contains("azure-sql-edge", StringComparison.InvariantCulture) ? new SqlEdgeTestcontainer() : new MsSqlTestcontainer();
     }
+
+    public static string WithCollation(string collation)
+    {
+        return string.IsNullOrEmpty(collation) ? "SQL_Latin1_General_CP1_CI_AS" : collation;
+    }
 }
