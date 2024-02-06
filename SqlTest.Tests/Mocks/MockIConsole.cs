@@ -2,7 +2,7 @@ namespace SqlTest.Tests;
 
 using System.Text;
 
-public class MockIConsole : Mock<IConsole>
+internal sealed class MockIConsole : Mock<IConsole>
 {
     private readonly StringBuilder sb = new StringBuilder();
 

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<RuleSet Name="StyleCop.Analyzers rules with default action" Description="StyleCop.Analyzers with default action. Rules with IsEnabledByDefault = false are disabled." ToolsVersion="17.0">
+<RuleSet Name="Project rules with default action" ToolsVersion="17.0">
     <Rules AnalyzerId="Microsoft.CodeAnalysis.CodeStyle" RuleNamespace="Microsoft.CodeAnalysis.CodeStyle">
         <Rule Id="IDE0001" Action="Warning" />          <!-- Simplify name -->
         <Rule Id="IDE0002" Action="Warning" />          <!-- Simplify member access -->
@@ -545,5 +545,14 @@
         <Rule Id="SA1649"  Action="Warning" />          <!-- File name should match first type name -->
         <Rule Id="SA1650"  Action="None" />             <!-- Element documentation should be spelled correctly -->
         <Rule Id="SA1651"  Action="Warning" />          <!-- Do not use placeholder elements -->
+    </Rules>
+
+    <Rules AnalyzerId="MSTest.Analyzers" RuleNamespace="MSTest.Analyzers">
+        <Rule Id="MSTEST0001" Action="Warning" />       <!-- Explicitly enable or disable tests parallelization -->
+        <Rule Id="MSTEST0002" Action="Warning" />       <!-- Test classes should have valid layout -->
+        <Rule Id="MSTEST0003" Action="Warning" />       <!-- Test methods should have valid layout -->
+        <Rule Id="MSTEST0004" Action="Warning" />       <!-- Public types should be test classes -->
+        <Rule Id="MSTEST0005" Action="Warning" />       <!-- Test context property should have valid layout -->
+        <Rule Id="MSTEST0006" Action="Warning" />       <!-- Avoid [ExpectedException] -->
     </Rules>
 </RuleSet>

@@ -1,5 +1,6 @@
 namespace SqlTest.DatabaseTests;
 
+[TestClass]
 public class BaseDatabaseTests
 {
     public static IEnumerable<object[]> Images => new[]

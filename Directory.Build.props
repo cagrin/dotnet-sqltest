@@ -4,7 +4,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AnalysisMode>All</AnalysisMode>
-        <CodeAnalysisRuleSet>../StyleCop.ruleset</CodeAnalysisRuleSet>
+        <CodeAnalysisRuleSet>../SqlTest.ruleset</CodeAnalysisRuleSet>
         <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     </PropertyGroup>
     <ItemGroup>

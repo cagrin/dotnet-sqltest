@@ -13,6 +13,7 @@
     </ItemGroup>
     <ItemGroup>
         <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting"/>
+        <PackageReference Include="MSTest.Analyzers"/>
         <PackageReference Include="MSTest.TestAdapter"/>
         <PackageReference Include="MSTest.TestFramework"/>
     </ItemGroup>
