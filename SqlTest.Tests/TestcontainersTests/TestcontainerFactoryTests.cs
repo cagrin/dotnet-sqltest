@@ -6,13 +6,11 @@ using SqlTest;
 public class TestcontainerFactoryTests
 {
     [TestMethod]
-    public void ShouldThrowArgumentNullException()
+    public void ShouldCreateLocalhostTestcontainer()
     {
-        var exception = Assert.ThrowsException<ArgumentNullException>(() => _ = TestcontainerFactory.Create(null!));
+        var testcontainer = TestcontainerFactory.Create(null!);
 
-        var message = "Value cannot be null. (Parameter 'image')";
-
-        Assert.AreEqual(message, exception.Message);
+        Assert.IsInstanceOfType(testcontainer, typeof(LocalhostTestcontainer));
     }
 
     [TestMethod]

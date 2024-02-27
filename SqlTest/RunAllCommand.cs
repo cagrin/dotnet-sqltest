@@ -11,11 +11,11 @@ public class RunAllCommand : IDisposable
 
     private readonly StopwatchLog stopwatchLogAll = new StopwatchLog();
 
-    private readonly string database = "database_tests";
+    private string database = "database_tests";
 
     private string password = string.Empty;
 
-    private int port;
+    private ushort port;
 
     private string cs = string.Empty;
 
@@ -75,11 +75,12 @@ public class RunAllCommand : IDisposable
     {
         this.testcontainer = TestcontainerFactory.Create(image);
 
-        var (password, port, cs) = await this.testcontainer.StartAsync(image, collation).ConfigureAwait(false);
+        var target = await this.testcontainer.StartAsync(image, collation).ConfigureAwait(false);
 
-        this.password = password;
-        this.port = port;
-        this.cs = cs;
+        this.password = target.TargetPassword;
+        this.port = target.TargetPort;
+        this.cs = target.TargetConnectionString;
+        this.database = target.TargetDatabaseName;
     }
 
     private async Task CleanBuildDatabase(string project)
@@ -95,7 +96,7 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Deploying database...");
 
-        string script = $"dotnet publish {project} /p:TargetServerName=localhost /p:TargetPort={this.port} /p:TargetDatabaseName={this.database} /p:TargetUser=sa /p:TargetPassword=\"{this.password}\" --nologo";
+        string script = TestcontainerTarget.GetPublishScript(project, this.port, this.database, this.password);
 
         var results = PowerShellConsole.Invoke(script);
 

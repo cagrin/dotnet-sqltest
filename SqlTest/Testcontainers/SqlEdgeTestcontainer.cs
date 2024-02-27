@@ -13,7 +13,7 @@ public class SqlEdgeTestcontainer : ITestcontainer
         TestcontainersSettings.Logger = NullLogger.Instance;
     }
 
-    public async Task<(string Password, ushort Port, string ConnectionString)> StartAsync(string image, string collation)
+    public async Task<TestcontainerTarget> StartAsync(string image, string collation)
     {
         var container = new SqlEdgeBuilder()
             .WithImage(image)
@@ -22,13 +22,15 @@ public class SqlEdgeTestcontainer : ITestcontainer
 
         await container.StartAsync().ConfigureAwait(false);
 
-        string password = SqlEdgeBuilder.DefaultPassword;
-        ushort port = container.GetMappedPublicPort(SqlEdgeBuilder.SqlEdgePort);
-        string cs = container.GetConnectionString();
-
         this.testcontainer = container;
 
-        return (password, port, cs);
+        return new TestcontainerTarget()
+        {
+            TargetPassword = SqlEdgeBuilder.DefaultPassword,
+            TargetPort = container.GetMappedPublicPort(SqlEdgeBuilder.SqlEdgePort),
+            TargetConnectionString = container.GetConnectionString(),
+            TargetDatabaseName = "database_tests",
+        };
     }
 
     public void Dispose()

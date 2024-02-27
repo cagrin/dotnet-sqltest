@@ -4,12 +4,18 @@ public static class TestcontainerFactory
 {
     public static ITestcontainer Create(string image)
     {
-        if (image == null)
+        if (string.IsNullOrEmpty(image))
         {
-            throw new ArgumentNullException(nameof(image), "Value cannot be null.");
+            return new LocalhostTestcontainer();
         }
-
-        return image.Contains("azure-sql-edge", StringComparison.InvariantCulture) ? new SqlEdgeTestcontainer() : new MsSqlTestcontainer();
+        else if (image.Contains("azure-sql-edge", StringComparison.InvariantCulture))
+        {
+            return new SqlEdgeTestcontainer();
+        }
+        else
+        {
+            return new MsSqlTestcontainer();
+        }
     }
 
     public static string WithCollation(string collation)
