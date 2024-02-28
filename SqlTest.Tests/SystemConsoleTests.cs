@@ -35,4 +35,10 @@ public class SystemConsoleTests
         console.WriteLine(string.Empty);
         console.WriteLine(new { });
     }
+
+    [TestMethod]
+    public void ShouldThrowsExceptionIfInvokeWithNullScript()
+    {
+        _ = Assert.ThrowsException<ArgumentNullException>(() => SystemConsole.Invoke(script: null!));
+    }
 }
