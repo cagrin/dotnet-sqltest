@@ -91,7 +91,7 @@ public class RunAllCommand : IDisposable
     {
         _ = this.database;
 
-        string script = $"dotnet clean {this.options.Project}\ndotnet build {this.options.Project}";
+        string script = DotnetTool.GetCleanBuildScript(this.options.Project);
 
         _ = await SystemConsole.InvokeAsync(script).ConfigureAwait(false);
     }
@@ -100,7 +100,7 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Deploying database...");
 
-        string script = TestcontainerTarget.GetPublishScript(this.options.Project, this.port, this.database, this.password);
+        string script = DotnetTool.GetPublishScript(this.options.Project, this.port, this.database, this.password);
 
         var results = SystemConsole.Invoke(script);
 
