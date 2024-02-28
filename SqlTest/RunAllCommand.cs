@@ -1,8 +1,8 @@
 namespace SqlTest;
 
 using System.Data;
-using System.Data.SqlClient;
 using Dapper;
+using Microsoft.Data.SqlClient;
 using SQLCover;
 
 public class RunAllCommand : IDisposable
@@ -11,7 +11,7 @@ public class RunAllCommand : IDisposable
 
     private readonly IConsole console;
 
-    private readonly StopwatchLog stopwatchLogAll = new StopwatchLog();
+    private readonly StopwatchLog stopwatchLogAll;
 
     private string database = "database_tests";
 
@@ -31,6 +31,7 @@ public class RunAllCommand : IDisposable
     {
         this.options = options;
         this.console = mockConsole ?? SystemConsole.This;
+        this.stopwatchLogAll = new StopwatchLog();
     }
 
     public int Invoke()
@@ -97,7 +98,7 @@ public class RunAllCommand : IDisposable
 
         string script = $"dotnet clean {project}\ndotnet build {project}";
 
-        _ = await PowerShellConsole.InvokeAsync(script).ConfigureAwait(false);
+        _ = await SystemConsole.InvokeAsync(script).ConfigureAwait(false);
     }
 
     private bool DeployDatabase(string project)
@@ -106,7 +107,7 @@ public class RunAllCommand : IDisposable
 
         string script = TestcontainerTarget.GetPublishScript(project, this.port, this.database, this.password);
 
-        var results = PowerShellConsole.Invoke(script);
+        var results = SystemConsole.Invoke(script);
 
         stopwatchLog.Stop();
 

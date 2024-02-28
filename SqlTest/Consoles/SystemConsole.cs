@@ -12,6 +12,20 @@ public class SystemConsole : IConsole
         set => Console.ForegroundColor = value;
     }
 
+    public static string[] Invoke(string script)
+    {
+        script = (script ?? throw new ArgumentNullException(nameof(script))).Replace("\"", "\\\"", StringComparison.InvariantCulture);
+
+        return Invoke("pwsh", $"-Command \"{script}\"");
+    }
+
+    public static async Task<string[]> InvokeAsync(string script)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+
+        return Invoke(script);
+    }
+
     public static string[] Invoke(string fileName, string arguments)
     {
         var startInfo = new ProcessStartInfo()

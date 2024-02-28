@@ -21,7 +21,6 @@
     <ItemGroup>
         <PackageReference Include="Dapper"/>
         <PackageReference Include="Microsoft.Data.SqlClient"/>
-        <PackageReference Include="Microsoft.PowerShell.SDK"/>
         <PackageReference Include="SQLCoverLib"/>
         <PackageReference Include="System.CommandLine"/>
         <PackageReference Include="System.CommandLine.NamingConventionBinder"/>
