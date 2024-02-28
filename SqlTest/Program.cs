@@ -1,6 +1,8 @@
 namespace SqlTest;
 
 using System.CommandLine;
+using System.CommandLine.NamingConventionBinder;
+using System.CommandLine.Parsing;
 
 public static class Program
 {
@@ -8,37 +10,17 @@ public static class Program
 
     public static int Main(string[] args)
     {
-        if (args == null)
-        {
-            throw new ArgumentNullException(nameof(args), "Value cannot be null.");
-        }
-
-        var imageOption = new Option<string>(new[] { "--image", "-i" }, "Docker image.");
-        var projectOption = new Option<string>(new[] { "--project", "-p" }, "Database project.");
-        var collationOption = new Option<string>(new[] { "--collation", "-c" }, "Server collation.") { IsRequired = false };
-        var resultOption = new Option<string>(new[] { "--result", "-r" }, "Save result in JUnit XML file.") { IsRequired = false };
-        var ccDisableOption = new Option<bool>(new[] { "--cc-disable" }, "Disable code coverage.") { IsRequired = false };
-        var ccIncludeTsqltOption = new Option<bool>(new[] { "--cc-include-tsqlt" }, "Include code coverage of tSQLt schema.") { IsRequired = false };
-
         var runAll = new Command("runall", "Run all tests.")
         {
-            imageOption,
-            projectOption,
-            collationOption,
-            resultOption,
-            ccDisableOption,
-            ccIncludeTsqltOption,
+            new Option<string>(new[] { "--image", "-i" }, "Docker image."),
+            new Option<string>(new[] { "--project", "-p" }, "Database project."),
+            new Option<string>(new[] { "--collation", "-c" }, "Server collation."),
+            new Option<string>(new[] { "--result", "-r" }, "Save result in JUnit XML file."),
+            new Option<bool>(new[] { "--cc-disable" }, "Disable code coverage."),
+            new Option<bool>(new[] { "--cc-include-tsqlt" }, "Include code coverage of tSQLt schema."),
         };
 
-        runAll.SetHandler(
-            (string image, string project, string result, string collation, bool ccDisable, bool ccIncludeTsqlt) =>
-            InvokeRunAll(image, project, result, collation, ccDisable, ccIncludeTsqlt),
-            imageOption,
-            projectOption,
-            collationOption,
-            resultOption,
-            ccDisableOption,
-            ccIncludeTsqltOption);
+        runAll.Handler = CommandHandler.Create<RunAllOptions>(InvokeRunAll);
 
         var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects.")
         {
@@ -48,10 +30,10 @@ public static class Program
         return rootCommand.Invoke(args) + Result;
     }
 
-    public static void InvokeRunAll(string image, string project, string collation, string result, bool ccDisable, bool ccIncludeTsqlt)
+    public static void InvokeRunAll(RunAllOptions options)
     {
-        using var stc = new RunAllCommand();
+        using var stc = new RunAllCommand(options);
 
-        Result = stc.Invoke(image, project, collation, result, ccDisable, ccIncludeTsqlt);
+        Result = stc.Invoke();
     }
 }

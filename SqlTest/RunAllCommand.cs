@@ -7,6 +7,8 @@ using SQLCover;
 
 public class RunAllCommand : IDisposable
 {
+    private readonly RunAllOptions options;
+
     private readonly IConsole console;
 
     private readonly StopwatchLog stopwatchLogAll = new StopwatchLog();
@@ -25,9 +27,15 @@ public class RunAllCommand : IDisposable
 
     private CoverageResult? code;
 
-    public RunAllCommand(IConsole? mockConsole = null)
+    public RunAllCommand(RunAllOptions options, IConsole? mockConsole = null)
     {
+        this.options = options;
         this.console = mockConsole ?? SystemConsole.This;
+    }
+
+    public int Invoke()
+    {
+        return this.Invoke(this.options.Image, this.options.Project, this.options.Collation, this.options.Result, this.options.CcDisable, this.options.CcIncludeTsqlt);
     }
 
     public int Invoke(string image, string project, string collation, string result, bool ccDisable, bool ccIncludeTsqlt)

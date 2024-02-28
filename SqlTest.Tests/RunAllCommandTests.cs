@@ -10,6 +10,6 @@ public class RunAllCommandTests
     {
         var mock = new MockIConsole();
 
-        using var stc = new RunAllCommand(mock.Object);
+        using var stc = new RunAllCommand(new RunAllOptions(), mock.Object);
     }
 }
