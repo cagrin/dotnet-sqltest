@@ -36,19 +36,14 @@ public class RunAllCommand : IDisposable
 
     public int Invoke()
     {
-        return this.Invoke(this.options.Image, this.options.Project, this.options.Collation, this.options.Result, this.options.CcDisable, this.options.CcIncludeTsqlt);
-    }
-
-    public int Invoke(string image, string project, string collation, string result, bool ccDisable, bool ccIncludeTsqlt)
-    {
         _ = this.stopwatchLogAll.Start();
 
-        this.PrepareDatabase(image, project, collation);
+        this.PrepareDatabase();
 
-        if (this.DeployDatabase(project))
+        if (this.DeployDatabase())
         {
-            this.RunTests(ccDisable, ccIncludeTsqlt);
-            return this.ShowResults(result);
+            this.RunTests();
+            return this.ShowResults();
         }
 
         return 2;
@@ -68,23 +63,23 @@ public class RunAllCommand : IDisposable
         }
     }
 
-    private void PrepareDatabase(string image, string project, string collation)
+    private void PrepareDatabase()
     {
         var stopwatchLog = new StopwatchLog().Start("Preparing database...");
 
-        var createContainerTask = this.CreateContainer(image, collation);
-        var buildDatabaseTask = this.CleanBuildDatabase(project);
+        var createContainerTask = this.CreateContainer();
+        var buildDatabaseTask = this.CleanBuildDatabase();
 
         _ = Task.WhenAll(createContainerTask, buildDatabaseTask).Wait(millisecondsTimeout: 120000);
 
         stopwatchLog.Stop();
     }
 
-    private async Task CreateContainer(string image, string collation)
+    private async Task CreateContainer()
     {
-        this.testcontainer = TestcontainerFactory.Create(image);
+        this.testcontainer = TestcontainerFactory.Create(this.options.Image);
 
-        var target = await this.testcontainer.StartAsync(image, collation).ConfigureAwait(false);
+        var target = await this.testcontainer.StartAsync(this.options.Image, this.options.Collation).ConfigureAwait(false);
 
         this.password = target.TargetPassword;
         this.port = target.TargetPort;
@@ -92,20 +87,20 @@ public class RunAllCommand : IDisposable
         this.database = target.TargetDatabaseName;
     }
 
-    private async Task CleanBuildDatabase(string project)
+    private async Task CleanBuildDatabase()
     {
         _ = this.database;
 
-        string script = $"dotnet clean {project}\ndotnet build {project}";
+        string script = $"dotnet clean {this.options.Project}\ndotnet build {this.options.Project}";
 
         _ = await SystemConsole.InvokeAsync(script).ConfigureAwait(false);
     }
 
-    private bool DeployDatabase(string project)
+    private bool DeployDatabase()
     {
         var stopwatchLog = new StopwatchLog().Start("Deploying database...");
 
-        string script = TestcontainerTarget.GetPublishScript(project, this.port, this.database, this.password);
+        string script = TestcontainerTarget.GetPublishScript(this.options.Project, this.port, this.database, this.password);
 
         var results = SystemConsole.Invoke(script);
 
@@ -131,17 +126,17 @@ public class RunAllCommand : IDisposable
         return true;
     }
 
-    private void RunTests(bool ccDisable, bool ccIncludeTsqlt)
+    private void RunTests()
     {
         var stopwatchLog = new StopwatchLog().Start("Running all tests....");
 
-        this.coverage = new CodeCoverage(this.cs, this.database, ccIncludeTsqlt ? null : new[] { ".*tSQLt[.|\\]].*" });
+        this.coverage = new CodeCoverage(this.cs, this.database, this.options.CcIncludeTsqlt ? null : new[] { ".*tSQLt[.|\\]].*" });
 
         using var con = new SqlConnection(this.cs);
 
         try
         {
-            if (!ccDisable)
+            if (!this.options.CcDisable)
             {
                 _ = this.coverage.Start();
             }
@@ -150,7 +145,7 @@ public class RunAllCommand : IDisposable
 
             stopwatchLog.Stop();
 
-            if (!ccDisable)
+            if (!this.options.CcDisable)
             {
                 stopwatchLog = new StopwatchLog().Start("Gathering coverage...");
 
@@ -161,7 +156,7 @@ public class RunAllCommand : IDisposable
         }
         catch (SqlException ex)
         {
-            if (!ccDisable)
+            if (!this.options.CcDisable)
             {
                 this.code = this.coverage.Stop();
             }
@@ -174,13 +169,13 @@ public class RunAllCommand : IDisposable
         }
     }
 
-    private int ShowResults(string result)
+    private int ShowResults()
     {
         int results = this.ResultLog();
 
-        if (!string.IsNullOrEmpty(result))
+        if (!string.IsNullOrEmpty(this.options.Result))
         {
-            this.ResultXml(result);
+            this.ResultXml();
         }
 
         return results;
@@ -234,12 +229,12 @@ public class RunAllCommand : IDisposable
         return (failed > 0) ? 1 : 0;
     }
 
-    private void ResultXml(string result)
+    private void ResultXml()
     {
         string sql = $"[{this.database}].tSQLt.XmlResultFormatter";
 
         using var con = new SqlConnection(this.cs);
-        using var file = new StreamWriter(result);
+        using var file = new StreamWriter(this.options.Result);
 
         string xml = con.Query<string>(sql, CommandType.StoredProcedure).First();
         file.Write(xml);
