@@ -100,7 +100,7 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Deploying database...");
 
-        string script = DotnetTool.GetPublishScript(this.options.Project, this.port, this.database, this.password);
+        string script = DotnetTool.GetPublishScriptWithReferences(this.options.Project, this.port, this.database, this.password);
 
         var results = SystemConsole.Invoke(script);
 

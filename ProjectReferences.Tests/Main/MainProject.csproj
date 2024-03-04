@@ -1,0 +1,9 @@
+<Project Sdk="MSBuild.Sdk.SqlProj/2.6.1">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="../Other/OtherProject.csproj" DatabaseVariableLiteralValue="OtherDatabase" />
+        <PackageReference Include="tSQLt.Edge" />
+    </ItemGroup>
+</Project>
