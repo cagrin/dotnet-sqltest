@@ -70,8 +70,10 @@ public static class DotnetTool
         return Path.GetFileNameWithoutExtension(projectFile);
     }
 
-    private static IEnumerable<ProjectReference> TryGetProjectReferences(string project)
+    private static List<ProjectReference> TryGetProjectReferences(string project)
     {
+        List<ProjectReference> result = new();
+
         try
         {
             string projectFile = GetProjectFullName(project);
@@ -85,18 +87,23 @@ public static class DotnetTool
             foreach (XmlNode reference in references)
             {
                 XmlAttribute include = reference.Attributes!["Include"]!;
-                XmlAttribute databaseVariableLiteralValue = reference.Attributes!["DatabaseVariableLiteralValue"]!;
+                XmlAttribute? databaseVariableLiteralValue = reference.Attributes!["DatabaseVariableLiteralValue"];
 
-                yield return new ProjectReference()
+                if (databaseVariableLiteralValue != null)
                 {
-                    Include = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(projectFile)!, include.Value)),
-                    DatabaseVariableLiteralValue = databaseVariableLiteralValue.Value,
-                };
+                    result.Add(new ProjectReference()
+                    {
+                        Include = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(projectFile)!, include.Value)),
+                        DatabaseVariableLiteralValue = databaseVariableLiteralValue.Value,
+                    });
+                }
             }
         }
         finally
         {
         }
+
+        return result;
     }
 
     private sealed class ProjectReference

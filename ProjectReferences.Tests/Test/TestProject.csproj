@@ -3,6 +3,8 @@
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
+        <ProjectReference Include="../Main/MainProject.csproj" />
         <ProjectReference Include="../Other/OtherProject.csproj" DatabaseVariableLiteralValue="OtherDatabase" />
+        <PackageReference Include="tSQLt.Edge" />
     </ItemGroup>
 </Project>
