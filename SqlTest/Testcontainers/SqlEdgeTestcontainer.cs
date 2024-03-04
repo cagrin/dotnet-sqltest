@@ -29,7 +29,6 @@ public class SqlEdgeTestcontainer : ITestcontainer
             TargetPassword = SqlEdgeBuilder.DefaultPassword,
             TargetPort = container.GetMappedPublicPort(SqlEdgeBuilder.SqlEdgePort),
             TargetConnectionString = container.GetConnectionString(),
-            TargetDatabaseName = "database_tests",
         };
     }
 

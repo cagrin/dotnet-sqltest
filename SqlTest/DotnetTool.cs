@@ -48,19 +48,33 @@ public static class DotnetTool
         return script;
     }
 
-    private static IEnumerable<ProjectReference> TryGetProjectReferences(string projectPath)
+    public static string GetProjectFullName(string project)
+    {
+        string projectFile = project;
+
+        if (Directory.Exists(project))
+        {
+            projectFile = new DirectoryInfo(project)
+                .GetFiles("*.csproj")
+                .First()
+                .FullName;
+        }
+
+        return projectFile;
+    }
+
+    public static string GetDatabaseName(string project)
+    {
+        string projectFile = GetProjectFullName(project);
+
+        return Path.GetFileNameWithoutExtension(projectFile);
+    }
+
+    private static IEnumerable<ProjectReference> TryGetProjectReferences(string project)
     {
         try
         {
-            string projectFile = projectPath;
-
-            if (Directory.Exists(projectPath))
-            {
-                projectFile = new DirectoryInfo(projectPath)
-                    .GetFiles("*.csproj")
-                    .First()
-                    .FullName;
-            }
+            string projectFile = GetProjectFullName(project);
 
             XmlDocument doc = new();
             doc.Load(projectFile);
@@ -75,7 +89,7 @@ public static class DotnetTool
 
                 yield return new ProjectReference()
                 {
-                    Include = Path.GetFullPath(Path.Combine(projectPath, include.Value)),
+                    Include = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(projectFile)!, include.Value)),
                     DatabaseVariableLiteralValue = databaseVariableLiteralValue.Value,
                 };
             }

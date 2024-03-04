@@ -84,12 +84,11 @@ public class RunAllCommand : IDisposable
         this.password = target.TargetPassword;
         this.port = target.TargetPort;
         this.cs = target.TargetConnectionString;
-        this.database = target.TargetDatabaseName;
     }
 
     private async Task CleanBuildDatabase()
     {
-        _ = this.database;
+        this.database = DotnetTool.GetDatabaseName(this.options.Project);
 
         string script = DotnetTool.GetCleanBuildScript(this.options.Project);
 

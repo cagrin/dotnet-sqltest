@@ -29,7 +29,6 @@ public class MsSqlTestcontainer : ITestcontainer
             TargetPassword = MsSqlBuilder.DefaultPassword,
             TargetPort = container.GetMappedPublicPort(MsSqlBuilder.MsSqlPort),
             TargetConnectionString = container.GetConnectionString(),
-            TargetDatabaseName = "database_tests",
         };
     }
 
