@@ -26,15 +26,11 @@ public static class DotnetTool
     {
         string script = $"dotnet publish {project}";
 
-        script += $" /p:TargetServerName=localhost";
+        script += $" /p:TargetDatabaseName={database}";
 
         script += (port > 0) ? $" /p:TargetPort={port}" : string.Empty;
 
-        script += $" /p:TargetDatabaseName={database}";
-
         script += !string.IsNullOrEmpty(password) ? $" /p:TargetUser=sa /p:TargetPassword=\"{password}\"" : string.Empty;
-
-        script += " --nologo";
 
         return script;
     }
@@ -65,21 +61,17 @@ public static class DotnetTool
 
     public static string GetDatabaseName(string project)
     {
-        string projectFile = GetProjectFullName(project);
-
-        return Path.GetFileNameWithoutExtension(projectFile);
+        return Path.GetFileNameWithoutExtension(project);
     }
 
     private static List<ProjectReference> TryGetProjectReferences(string project)
     {
-        List<ProjectReference> result = new();
+        List<ProjectReference> result = [];
 
         try
         {
-            string projectFile = GetProjectFullName(project);
-
             XmlDocument doc = new();
-            doc.Load(projectFile);
+            doc.Load(project);
 
             XmlNode root = doc.DocumentElement!;
             XmlNodeList references = root.SelectNodes("ItemGroup/ProjectReference")!;
@@ -93,7 +85,7 @@ public static class DotnetTool
                 {
                     result.Add(new ProjectReference()
                     {
-                        Include = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(projectFile)!, include.Value)),
+                        Include = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(project)!, include.Value)),
                         DatabaseVariableLiteralValue = databaseVariableLiteralValue.Value,
                     });
                 }

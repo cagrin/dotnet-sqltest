@@ -88,6 +88,8 @@ public class RunAllCommand : IDisposable
 
     private async Task CleanBuildDatabase()
     {
+        this.options.Project = DotnetTool.GetProjectFullName(this.options.Project);
+
         this.database = DotnetTool.GetDatabaseName(this.options.Project);
 
         string script = DotnetTool.GetCleanBuildScript(this.options.Project);
