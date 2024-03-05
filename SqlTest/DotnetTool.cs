@@ -66,7 +66,7 @@ public static class DotnetTool
 
     private static List<ProjectReference> TryGetProjectReferences(string project)
     {
-        List<ProjectReference> result = [];
+        var result = new List<ProjectReference>();
 
         try
         {
