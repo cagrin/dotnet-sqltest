@@ -15,11 +15,7 @@ public class RunAllCommand : IDisposable
 
     private string database = "database_tests";
 
-    private string password = string.Empty;
-
-    private ushort port;
-
-    private string cs = string.Empty;
+    private TestcontainerTarget target;
 
     private ITestcontainer? testcontainer;
 
@@ -32,6 +28,7 @@ public class RunAllCommand : IDisposable
         this.options = options;
         this.console = mockConsole ?? SystemConsole.This;
         this.stopwatchLogAll = new StopwatchLog();
+        this.target = new TestcontainerTarget();
     }
 
     public int Invoke()
@@ -79,11 +76,7 @@ public class RunAllCommand : IDisposable
     {
         this.testcontainer = TestcontainerFactory.Create(this.options.Image);
 
-        var target = await this.testcontainer.StartAsync(this.options.Image, this.options.Collation).ConfigureAwait(false);
-
-        this.password = target.TargetPassword;
-        this.port = target.TargetPort;
-        this.cs = target.TargetConnectionString;
+        this.target = await this.testcontainer.StartAsync(this.options.Image, this.options.Collation).ConfigureAwait(false);
     }
 
     private async Task CleanBuildDatabase()
@@ -101,7 +94,7 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Deploying database...");
 
-        string script = DotnetTool.GetPublishScriptWithReferences(this.options.Project, this.port, this.database, this.password);
+        string script = DotnetTool.GetPublishScriptWithReferences(this.options.Project, this.target.TargetPort, this.database, this.target.TargetPassword);
 
         var results = SystemConsole.Invoke(script);
 
@@ -131,9 +124,9 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Running all tests....");
 
-        this.coverage = new CodeCoverage(this.cs, this.database, this.options.CcIncludeTsqlt ? null : new[] { ".*tSQLt[.|\\]].*" });
+        this.coverage = new CodeCoverage(this.target.TargetConnectionString, this.database, this.options.CcIncludeTsqlt ? null : new[] { ".*tSQLt[.|\\]].*" });
 
-        using var con = new SqlConnection(this.cs);
+        using var con = new SqlConnection(this.target.TargetConnectionString);
 
         try
         {
@@ -184,7 +177,7 @@ public class RunAllCommand : IDisposable
 
     private int ResultLog()
     {
-        using var con = new SqlConnection(this.cs);
+        using var con = new SqlConnection(this.target.TargetConnectionString);
 
         var results = con.Query<TestResult>($"SELECT Name, Result, Msg FROM [{this.database}].tSQLt.TestResult").ToArray();
 
@@ -234,7 +227,7 @@ public class RunAllCommand : IDisposable
     {
         string sql = $"[{this.database}].tSQLt.XmlResultFormatter";
 
-        using var con = new SqlConnection(this.cs);
+        using var con = new SqlConnection(this.target.TargetConnectionString);
         using var file = new StreamWriter(this.options.Result);
 
         string xml = con.Query<string>(sql, CommandType.StoredProcedure).First();
