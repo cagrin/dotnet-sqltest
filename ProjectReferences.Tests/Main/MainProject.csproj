@@ -5,4 +5,7 @@
     <ItemGroup>
         <ProjectReference Include="../Other/OtherProject.csproj" DatabaseVariableLiteralValue="OtherDatabase" />
     </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="../Second/SecondProject.csproj" DatabaseVariableLiteralValue="SecondDatabase" />
+    </ItemGroup>
 </Project>
