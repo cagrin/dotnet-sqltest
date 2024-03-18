@@ -1,5 +1,6 @@
+.mono
 .vscode
 bin
+coverage.*
 obj
 TestResults
-coverage.*
