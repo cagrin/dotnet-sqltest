@@ -9,7 +9,7 @@ public class OkDatabaseTests : BaseDatabaseTests
     [DynamicData(nameof(Images))]
     public void InvokeSqlTestRunAllOk(string image)
     {
-        var results = SystemConsole.Invoke("pwsh", $"-Command dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok; echo $LASTEXITCODE");
+        var results = SystemConsole.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok; echo $LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "0");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Failed: 0, Passed: 1, Coverage: 60% (3/5), Duration: %");
@@ -19,7 +19,7 @@ public class OkDatabaseTests : BaseDatabaseTests
     [DynamicData(nameof(Images))]
     public void InvokeSqlTestRunAllOkWithCodeCoverageIncludeTsqlt(string image)
     {
-        var results = SystemConsole.Invoke("pwsh", $"-Command dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --cc-include-tsqlt; echo $LASTEXITCODE");
+        var results = SystemConsole.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --cc-include-tsqlt; echo $LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "0");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Failed: 0, Passed: 1, Coverage: __[%] (%/%), Duration: %");
@@ -29,7 +29,7 @@ public class OkDatabaseTests : BaseDatabaseTests
     [DynamicData(nameof(Images))]
     public void InvokeSqlTestRunAllOkWithCodeCoverageDisable(string image)
     {
-        var results = SystemConsole.Invoke("pwsh", $"-Command dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --cc-disable; echo $LASTEXITCODE");
+        var results = SystemConsole.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --cc-disable; echo $LASTEXITCODE");
 
         Assert.That.IsLike(results.Reverse().First().ToString(), "0");
         Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), "Failed: 0, Passed: 1, Duration: %");
@@ -40,7 +40,7 @@ public class OkDatabaseTests : BaseDatabaseTests
     public void InvokeSqlTestRunAllOkWithXmlResult(string image)
     {
         var filename = $"result.xml";
-        _ = SystemConsole.Invoke("pwsh", $"-Command dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --result {filename}");
+        _ = SystemConsole.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --result {filename}");
 
         using var str = new StreamReader(filename);
         string xml = str.ReadToEnd();
