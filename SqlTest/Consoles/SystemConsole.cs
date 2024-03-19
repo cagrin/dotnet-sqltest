@@ -28,6 +28,8 @@ public class SystemConsole : IConsole
 
     public static string[] Invoke(string fileName, string arguments)
     {
+        var output = new List<string?>();
+
         var startInfo = new ProcessStartInfo()
         {
             FileName = fileName,
@@ -41,13 +43,19 @@ public class SystemConsole : IConsole
             StartInfo = startInfo,
         };
 
+        process.OutputDataReceived += (sender, data) =>
+        {
+            output.Add(data.Data);
+#if DEBUG
+            Console.WriteLine(data.Data);
+#endif
+        };
+
         _ = process.Start();
-
-        string output = process.StandardOutput.ReadToEnd();
-
+        process.BeginOutputReadLine();
         process.WaitForExit();
 
-        return output.Split(new[] { '\n' }, StringSplitOptions.None).SkipLast(1).ToArray();
+        return output.Where(x => x != null).Select(x => x!).ToArray();
     }
 
     public void ResetColor()

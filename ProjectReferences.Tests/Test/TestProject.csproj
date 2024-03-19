@@ -10,7 +10,7 @@
     </ItemGroup>
     <ItemGroup>
         <SqlCmdVariable Include="SecondDatabase">
-            <DefaultValue>SecondDatabase3</DefaultValue>
+            <DefaultValue>SecondDatabase</DefaultValue>
             <Value>$(SqlCmdVar__1)</Value>
         </SqlCmdVariable>
     </ItemGroup>
