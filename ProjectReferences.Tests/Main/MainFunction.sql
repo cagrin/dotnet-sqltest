@@ -16,7 +16,7 @@ BEGIN
     SELECT
         SecondId,
         SecondColumn
-    FROM SecondDatabase.dbo.SecondTable
+    FROM [$(SecondDatabase)].dbo.SecondTable
 
     RETURN
 END

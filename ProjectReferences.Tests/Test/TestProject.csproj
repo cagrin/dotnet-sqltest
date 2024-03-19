@@ -5,7 +5,13 @@
     <ItemGroup>
         <ProjectReference Include="../Main/MainProject.csproj" />
         <ProjectReference Include="../Other/OtherProject.csproj" DatabaseVariableLiteralValue="OtherDatabase" />
-        <ProjectReference Include="../Second/SecondProject.csproj" DatabaseVariableLiteralValue="SecondDatabase" />
+        <ProjectReference Include="../Second/SecondProject.csproj" DatabaseSqlCmdVariable="SecondDatabase" />
         <PackageReference Include="tSQLt.Edge" />
+    </ItemGroup>
+    <ItemGroup>
+        <SqlCmdVariable Include="SecondDatabase">
+            <DefaultValue>SecondDatabase3</DefaultValue>
+            <Value>$(SqlCmdVar__1)</Value>
+        </SqlCmdVariable>
     </ItemGroup>
 </Project>

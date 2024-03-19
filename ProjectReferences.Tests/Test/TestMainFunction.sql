@@ -1,7 +1,7 @@
-CREATE SCHEMA [TestOtherDatabase];
+CREATE SCHEMA [TestMainFunction];
 GO
 
-CREATE PROCEDURE [TestOtherDatabase].[test that it can reference other database by DatabaseVariableLiteralValue]
+CREATE PROCEDURE [TestMainFunction].[test that it can reference other databases by DatabaseVariableLiteralValue and DatabaseSqlCmdVariable]
 AS
 BEGIN
     SELECT
@@ -24,7 +24,7 @@ BEGIN
     FROM #Expected
     WHERE MainId = 1
 
-    INSERT INTO SecondDatabase.dbo.SecondTable
+    INSERT INTO [$(SecondDatabase)].dbo.SecondTable
     (
         SecondId,
         SecondColumn

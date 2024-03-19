@@ -6,6 +6,12 @@
         <ProjectReference Include="../Other/OtherProject.csproj" DatabaseVariableLiteralValue="OtherDatabase" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="../Second/SecondProject.csproj" DatabaseVariableLiteralValue="SecondDatabase" />
+        <ProjectReference Include="../Second/SecondProject.csproj" DatabaseSqlCmdVariable="SecondDatabase" />
+    </ItemGroup>
+    <ItemGroup>
+        <SqlCmdVariable Include="SecondDatabase">
+            <DefaultValue>SecondDatabase</DefaultValue>
+            <Value>$(SqlCmdVar__1)</Value>
+        </SqlCmdVariable>
     </ItemGroup>
 </Project>

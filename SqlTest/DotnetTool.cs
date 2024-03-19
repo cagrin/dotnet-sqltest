@@ -12,7 +12,7 @@ public static class DotnetTool
 
         foreach (var reference in references)
         {
-            script += GetPublishScript(project: reference.Include, port, database: reference.DatabaseVariableLiteralValue, password);
+            script += GetPublishScript(project: reference.Include, port, database: reference.Database, password);
 
             script += "\n";
         }
@@ -86,7 +86,20 @@ public static class DotnetTool
                     result.Add(new ProjectReference()
                     {
                         Include = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(project)!, include.Value)),
-                        DatabaseVariableLiteralValue = databaseVariableLiteralValue.Value,
+                        Database = databaseVariableLiteralValue.Value,
+                    });
+                }
+
+                XmlAttribute? databaseSqlCmdVariable = reference.Attributes!["DatabaseSqlCmdVariable"];
+
+                if (databaseSqlCmdVariable != null)
+                {
+                    XmlNode defaultValue = doc.SelectSingleNode($"//SqlCmdVariable[@Include='{databaseSqlCmdVariable.Value}']/DefaultValue")!;
+
+                    result.Add(new ProjectReference()
+                    {
+                        Include = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(project)!, include.Value)),
+                        Database = defaultValue.InnerText,
                     });
                 }
             }
@@ -102,6 +115,6 @@ public static class DotnetTool
     {
         public string Include { get; init; } = default!;
 
-        public string DatabaseVariableLiteralValue { get; init; } = default!;
+        public string Database { get; init; } = default!;
     }
 }
