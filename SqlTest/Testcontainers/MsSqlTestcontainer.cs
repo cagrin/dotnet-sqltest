@@ -1,6 +1,5 @@
 namespace SqlTest;
 
-using DotNet.Testcontainers.Configurations;
 using Microsoft.Extensions.Logging.Abstractions;
 using Testcontainers.MsSql;
 
@@ -10,7 +9,6 @@ public class MsSqlTestcontainer : ITestcontainer
 
     public MsSqlTestcontainer()
     {
-        TestcontainersSettings.Logger = NullLogger.Instance;
     }
 
     public async Task<TestcontainerTarget> StartAsync(string image, string collation)
@@ -18,6 +16,7 @@ public class MsSqlTestcontainer : ITestcontainer
         var container = new MsSqlBuilder()
             .WithImage(image)
             .WithEnvironment("MSSQL_COLLATION", TestcontainerFactory.WithCollation(collation))
+            .WithLogger(NullLogger.Instance)
             .Build();
 
         await container.StartAsync().ConfigureAwait(false);
