@@ -8,14 +8,32 @@ public class StopwatchLog
 
     private readonly Stopwatch stopwatch = new Stopwatch();
 
+    private string? title;
+
+    private bool debug;
+
     public StopwatchLog(IConsole? mockConsole = null)
     {
         this.console = mockConsole ?? SystemConsole.This;
     }
 
-    public StopwatchLog Start(string message = "")
+#if DEBUG
+    public StopwatchLog Start(string title = "", bool debug = true)
+#else
+    public StopwatchLog Start(string title = "", bool debug = false)
+#endif
     {
-        this.console.Write(message);
+        if (debug)
+        {
+            this.debug = true;
+            this.title = title;
+
+            this.console.WriteLine(title);
+        }
+        else
+        {
+            this.console.Write(title);
+        }
 
         this.stopwatch.Start();
 
@@ -29,6 +47,11 @@ public class StopwatchLog
         string message = this.stopwatch.Elapsed.TotalSeconds < 1.0 ?
             $" {(int)this.stopwatch.Elapsed.TotalMilliseconds} ms" :
             $" {(int)this.stopwatch.Elapsed.TotalSeconds} s";
+
+        if (this.debug)
+        {
+            message = this.title + message;
+        }
 
         this.console.WriteLine(message);
     }
