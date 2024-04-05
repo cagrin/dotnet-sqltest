@@ -10,4 +10,14 @@ public class BaseDatabaseTests
     };
 
     public string Folder { get; init; } = "../../../../Database.Tests";
+
+    [TestMethod]
+    [DynamicData(nameof(Images))]
+    public void InvokeDockerPullPassed(string image)
+    {
+        var results = SystemConsole.Invoke($"docker pull {image}; echo $LASTEXITCODE");
+
+        Assert.That.IsLike(results.Reverse().First().ToString(), "0");
+        Assert.That.IsLike(results.Reverse().Skip(1).First().ToString(), $"{image}:latest");
+    }
 }

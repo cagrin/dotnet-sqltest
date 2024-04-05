@@ -563,6 +563,6 @@
         <Rule Id="MSTEST0013" Action="Warning" />       <!-- [AssemblyCleanup] should be valid -->
         <Rule Id="MSTEST0014" Action="Warning" />       <!-- [DataRow] should be valid -->
         <Rule Id="MSTEST0015" Action="Warning" />       <!-- Test method should not be ignored -->
-        <Rule Id="MSTEST0016" Action="None" />       <!-- Test class should have test method -->
+        <Rule Id="MSTEST0016" Action="Warning" />       <!-- Test class should have test method -->
     </Rules>
 </RuleSet>
