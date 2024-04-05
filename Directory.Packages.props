@@ -3,18 +3,18 @@
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     </PropertyGroup>
     <ItemGroup>
-        <PackageVersion Include="coverlet.collector" Version="6.0.1"/>
-        <PackageVersion Include="coverlet.msbuild" Version="6.0.1"/>
-        <PackageVersion Include="Dapper" Version="2.1.28"/>
+        <PackageVersion Include="coverlet.collector" Version="6.0.2"/>
+        <PackageVersion Include="coverlet.msbuild" Version="6.0.2"/>
+        <PackageVersion Include="Dapper" Version="2.1.35"/>
         <PackageVersion Include="LikeComparison" Version="2.2.0"/>
         <PackageVersion Include="LikeComparison.MSTest" Version="2.2.0"/>
         <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.2.0"/>
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0"/>
         <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0"/>
         <PackageVersion Include="Moq" Version="4.20.70"/>
-        <PackageVersion Include="MSTest.Analyzers" Version="3.2.2"/>
-        <PackageVersion Include="MSTest.TestAdapter" Version="3.2.2"/>
-        <PackageVersion Include="MSTest.TestFramework" Version="3.2.2"/>
+        <PackageVersion Include="MSTest.Analyzers" Version="3.3.1"/>
+        <PackageVersion Include="MSTest.TestAdapter" Version="3.3.1"/>
+        <PackageVersion Include="MSTest.TestFramework" Version="3.3.1"/>
         <PackageVersion Include="SQLCoverLib" Version="0.6.0-preview6"/>
         <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556"/>
         <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>

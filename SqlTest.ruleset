@@ -554,5 +554,15 @@
         <Rule Id="MSTEST0004" Action="Warning" />       <!-- Public types should be test classes -->
         <Rule Id="MSTEST0005" Action="Warning" />       <!-- Test context property should have valid layout -->
         <Rule Id="MSTEST0006" Action="Warning" />       <!-- Avoid [ExpectedException] -->
+        <Rule Id="MSTEST0007" Action="Warning" />       <!-- [<\Test Attributes>] can only be set on methods marked with [TestMethod] -->
+        <Rule Id="MSTEST0008" Action="Warning" />       <!-- [TestInitialize] should be valid -->
+        <Rule Id="MSTEST0009" Action="Warning" />       <!-- [TestCleanup] should have valid layout -->
+        <Rule Id="MSTEST0010" Action="Warning" />       <!-- [ClassInitialize] should be valid -->
+        <Rule Id="MSTEST0011" Action="Warning" />       <!-- [ClassCleanup] should be valid -->
+        <Rule Id="MSTEST0012" Action="Warning" />       <!-- [AssemblyInitialize] should be valid -->
+        <Rule Id="MSTEST0013" Action="Warning" />       <!-- [AssemblyCleanup] should be valid -->
+        <Rule Id="MSTEST0014" Action="Warning" />       <!-- [DataRow] should be valid -->
+        <Rule Id="MSTEST0015" Action="Warning" />       <!-- Test method should not be ignored -->
+        <Rule Id="MSTEST0016" Action="None" />       <!-- Test class should have test method -->
     </Rules>
 </RuleSet>
