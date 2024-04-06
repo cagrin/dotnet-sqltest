@@ -1,4 +1,4 @@
-namespace SqlTest.Tests;
+namespace SqlTest.Tests.UnitTests;
 
 using SqlTest;
 

@@ -4,6 +4,7 @@
         <LangVersion>preview</LangVersion>
     </PropertyGroup>
     <ItemGroup>
+        <Using Include="SqlTest"/>
         <ProjectReference Include="..\SqlTest\SqlTest.csproj"/>
     </ItemGroup>
     <ItemGroup>
@@ -24,5 +25,9 @@
     <ItemGroup>
         <Using Include="LikeComparison.TransactSql"/>
         <PackageReference Include="LikeComparison.MSTest"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Using Include="Shouldly"/>
+        <PackageReference Include="Shouldly"/>
     </ItemGroup>
 </Project>

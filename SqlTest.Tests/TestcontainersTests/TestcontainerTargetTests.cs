@@ -1,7 +1,5 @@
 namespace SqlTest.Tests;
 
-using SqlTest;
-
 [TestClass]
 public class TestcontainerTargetTests
 {

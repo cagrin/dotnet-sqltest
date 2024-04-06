@@ -1,6 +1,4 @@
-namespace SqlTest.Tests;
-
-using SqlTest;
+namespace SqlTest.Tests.UnitTests;
 
 [TestClass]
 public class DotnetToolTests
