@@ -48,4 +48,44 @@ public class OkDatabaseTests : BaseDatabaseTests
 
         Assert.That.IsLike(xml, pattern);
     }
+
+    [TestMethod]
+    [DynamicData(nameof(Images))]
+    public void InvokeSqlTestRunAllOkWithXmlCobertura(string image)
+    {
+        var filename = $"cobertura.xml";
+        _ = SystemConsole.Invoke($"dotnet SqlTest.dll runall --image {image} --project {this.Folder}/Ok --cc-cobertura {filename}");
+
+        using var str = new StreamReader(filename);
+        string xml = str.ReadToEnd();
+
+        string pattern = """
+<?xml version="1.0"?>
+<!--DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-03.dtd"-->
+<coverage lines-valid="5" lines-covered="3" line-rate="0.6" version="1.9" timestamp="__________.%">
+ <packages>
+  <package name="sql">
+    <classes>
+    <class name="[[]dbo].[[]Assertions]" filename="[[]dbo].[[]Assertions]" lines-valid="3" lines-covered="3" line-rate="1" >
+     <methods/>
+     <lines>
+      <line number="5" hits="1" branch="false" />
+      <line number="7" hits="1" branch="false" />
+      <line number="9" hits="1" branch="false" />
+     </lines>
+    </class>
+    <class name="[[]dbo].[[]Example]" filename="[[]dbo].[[]Example]" lines-valid="2" lines-covered="0" line-rate="0" >
+     <methods/>
+     <lines>
+     </lines>
+    </class>
+
+   </classes>
+  </package>
+ </packages>
+</coverage>%
+""";
+
+        Assert.That.IsLike(xml, pattern);
+    }
 }

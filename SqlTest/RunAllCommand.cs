@@ -145,6 +145,11 @@ public class RunAllCommand : IDisposable
 
                 this.code = this.coverage.Stop();
 
+                if (!string.IsNullOrEmpty(this.options.CcCobertura))
+                {
+                    this.CoberturaXml();
+                }
+
                 stopwatchLog.Stop();
             }
         }
@@ -231,6 +236,14 @@ public class RunAllCommand : IDisposable
         using var file = new StreamWriter(this.options.Result);
 
         string xml = con.Query<string>(sql, CommandType.StoredProcedure).First();
+        file.Write(xml);
+    }
+
+    private void CoberturaXml()
+    {
+        using var file = new StreamWriter(this.options.CcCobertura);
+
+        string xml = this.code!.Cobertura();
         file.Write(xml);
     }
 }

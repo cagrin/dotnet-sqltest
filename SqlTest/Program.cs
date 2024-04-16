@@ -15,7 +15,8 @@ public static class Program
             new Option<string>(new[] { "--image", "-i" }, "Docker image."),
             new Option<string>(new[] { "--project", "-p" }, "Database project."),
             new Option<string>(new[] { "--collation", "-c" }, "Server collation."),
-            new Option<string>(new[] { "--result", "-r" }, "Save result in JUnit XML file."),
+            new Option<string>(new[] { "--result", "-r" }, "Save result to JUnit XML file.") { ArgumentHelpName = "file" },
+            new Option<string>(new[] { "--cc-cobertura" }, "Save code coverage to Cobertura XML file.") { ArgumentHelpName = "file" },
             new Option<bool>(new[] { "--cc-disable" }, "Disable code coverage."),
             new Option<bool>(new[] { "--cc-include-tsqlt" }, "Include code coverage of tSQLt schema."),
         };

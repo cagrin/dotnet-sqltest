@@ -27,7 +27,8 @@ public class RunAllCommandTests
    -i, --image <image>          Docker image.
    -p, --project <project>      Database project.
    -c, --collation <collation>  Server collation.
-   -r, --result <result>        Save result in JUnit XML file.
+   -r, --result <file>          Save result to JUnit XML file.
+   --cc-cobertura <file>        Save code coverage to Cobertura XML file.
    --cc-disable                 Disable code coverage.
    --cc-include-tsqlt           Include code coverage of tSQLt schema.
    -?, -h, --help               Show help and usage information
