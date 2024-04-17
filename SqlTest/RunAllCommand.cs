@@ -243,7 +243,7 @@ public class RunAllCommand : IDisposable
     {
         using var file = new StreamWriter(this.options.CcCobertura);
 
-        string xml = this.code!.Cobertura();
+        string xml = this.code!.Cobertura(this.database);
         file.Write(xml);
     }
 }

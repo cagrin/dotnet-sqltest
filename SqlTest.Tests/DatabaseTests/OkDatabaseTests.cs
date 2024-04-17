@@ -64,7 +64,7 @@ public class OkDatabaseTests : BaseDatabaseTests
 <!--DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-03.dtd"-->
 <coverage lines-valid="5" lines-covered="3" line-rate="0.6" version="1.9" timestamp="__________.%">
  <packages>
-  <package name="sql">
+  <package name="Database.Tests">
     <classes>
     <class name="[[]dbo].[[]Assertions]" filename="[[]dbo].[[]Assertions]" lines-valid="3" lines-covered="3" line-rate="1" >
      <methods/>
