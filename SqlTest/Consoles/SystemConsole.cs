@@ -19,13 +19,6 @@ public class SystemConsole : IConsole
         return Invoke("pwsh", $"-Command \"{script}\"");
     }
 
-    public static async Task<string[]> InvokeAsync(string script)
-    {
-        await Task.CompletedTask.ConfigureAwait(false);
-
-        return Invoke(script);
-    }
-
     public static string[] Invoke(string fileName, string arguments)
     {
         var output = new List<string?>();

@@ -87,7 +87,9 @@ public class RunAllCommand : IDisposable
 
         string script = DotnetTool.GetCleanBuildScript(this.options.Project);
 
-        _ = await SystemConsole.InvokeAsync(script).ConfigureAwait(false);
+        _ = SystemConsole.Invoke(script);
+
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 
     private bool DeployDatabase()
