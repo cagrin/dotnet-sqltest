@@ -29,3 +29,9 @@ dotnet run --project SqlTest --framework net8.0 -- runall --image mcr.microsoft.
 ```
 dotnet-outdated -r -exc "Microsoft.SqlServer.Dacpacs"
 ```
+
+## Run only quick unit tests
+
+```
+dotnet test --framework net8.0 --filter "UnitTests"
+```
