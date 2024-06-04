@@ -8,13 +8,13 @@
         <PackageVersion Include="Dapper" Version="2.1.35"/>
         <PackageVersion Include="LikeComparison" Version="2.2.0"/>
         <PackageVersion Include="LikeComparison.MSTest" Version="2.2.0"/>
-        <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.2.0"/>
-        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0"/>
+        <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.2.1"/>
+        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0"/>
         <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0"/>
         <PackageVersion Include="Moq" Version="4.20.70"/>
-        <PackageVersion Include="MSTest.Analyzers" Version="3.3.1"/>
-        <PackageVersion Include="MSTest.TestAdapter" Version="3.3.1"/>
-        <PackageVersion Include="MSTest.TestFramework" Version="3.3.1"/>
+        <PackageVersion Include="MSTest.Analyzers" Version="3.4.3"/>
+        <PackageVersion Include="MSTest.TestAdapter" Version="3.4.3"/>
+        <PackageVersion Include="MSTest.TestFramework" Version="3.4.3"/>
         <PackageVersion Include="SQLCoverLib" Version="0.6.0-preview6"/>
         <PackageVersion Include="Shouldly" Version="4.2.1"/>
         <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556"/>

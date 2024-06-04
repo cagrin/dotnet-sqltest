@@ -564,5 +564,15 @@
         <Rule Id="MSTEST0014" Action="Warning" />       <!-- [DataRow] should be valid -->
         <Rule Id="MSTEST0015" Action="Warning" />       <!-- Test method should not be ignored -->
         <Rule Id="MSTEST0016" Action="Warning" />       <!-- Test class should have test method -->
+        <Rule Id="MSTEST0017" Action="Warning" />       <!-- Assertion arguments should be passed in the correct order -->
+        <Rule Id="MSTEST0018" Action="Warning" />       <!-- ??? -->
+        <Rule Id="MSTEST0019" Action="Warning" />       <!-- Prefer TestInitialize methods over constructors -->
+        <Rule Id="MSTEST0020" Action="Warning" />       <!-- Prefer constructors over TestInitialize methods -->
+        <Rule Id="MSTEST0021" Action="Warning" />       <!-- Prefer Dispose over TestCleanup methods -->
+        <Rule Id="MSTEST0022" Action="Warning" />       <!-- Prefer TestCleanup over Dispose methods -->
+        <Rule Id="MSTEST0023" Action="Warning" />       <!-- Do not negate boolean assertions -->
+        <Rule Id="MSTEST0024" Action="Warning" />       <!-- Do not store TestContext in a static member -->
+        <Rule Id="MSTEST0025" Action="Warning" />       <!-- Use 'Assert.Fail' instead of an always-failing assert -->
+        <Rule Id="MSTEST0026" Action="Warning" />       <!-- Avoid conditional access in assertions -->
     </Rules>
 </RuleSet>
