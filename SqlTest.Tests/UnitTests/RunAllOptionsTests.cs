@@ -8,11 +8,11 @@ public class RunAllOptionsTests
     {
         var test = new RunAllOptions();
 
-        Assert.IsNull(test.Image);
-        Assert.IsNull(test.Project);
-        Assert.IsNull(test.Collation);
-        Assert.IsNull(test.Result);
-        Assert.IsNull(test.CcCobertura);
+        Assert.IsTrue(string.IsNullOrEmpty(test.Image));
+        Assert.IsTrue(string.IsNullOrEmpty(test.Project));
+        Assert.IsTrue(string.IsNullOrEmpty(test.Collation));
+        Assert.IsTrue(string.IsNullOrEmpty(test.Result));
+        Assert.IsTrue(string.IsNullOrEmpty(test.CcCobertura));
         Assert.IsFalse(test.CcDisable);
         Assert.IsFalse(test.CcIncludeTsqlt);
     }
