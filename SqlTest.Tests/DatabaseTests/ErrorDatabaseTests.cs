@@ -3,7 +3,7 @@ namespace SqlTest.DatabaseTests;
 [TestClass]
 public class ErrorDatabaseTests : BaseDatabaseTests
 {
-    public static new IEnumerable<object[]> Images => BaseDatabaseTests.Images;
+    public static IEnumerable<object[]> Images => BaseImages;
 
     [TestMethod]
     [DynamicData(nameof(Images))]

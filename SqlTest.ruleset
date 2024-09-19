@@ -574,5 +574,12 @@
         <Rule Id="MSTEST0024" Action="Warning" />       <!-- Do not store TestContext in a static member -->
         <Rule Id="MSTEST0025" Action="Warning" />       <!-- Use 'Assert.Fail' instead of an always-failing assert -->
         <Rule Id="MSTEST0026" Action="Warning" />       <!-- Avoid conditional access in assertions -->
+        <Rule Id="MSTEST0029" Action="Warning" />       <!-- Public method should be test method-->
+        <Rule Id="MSTEST0030" Action="Warning" />       <!-- Type containing TestMethod should be marked with TestClass -->
+        <Rule Id="MSTEST0031" Action="Warning" />       <!-- System.ComponentModel.DescriptionAttribute has no effect on test methodss -->
+        <Rule Id="MSTEST0032" Action="Warning" />       <!-- Review or remove the assertion as its condition is known to be always true -->
+        <Rule Id="MSTEST0034" Action="Warning" />       <!-- Use ClassCleanupBehavior.EndOfClass with the ClassCleanup -->
+        <Rule Id="MSTEST0035" Action="Warning" />       <!-- DeploymentItem can be specified only on test class or test method -->
+        <Rule Id="MSTEST0035" Action="Warning" />       <!-- Do not use shadowing inside test class -->
     </Rules>
 </RuleSet>

@@ -5,7 +5,7 @@ using SqlTest.DatabaseTests;
 [TestClass]
 public class IncludeDatabaseTests
 {
-    public static IEnumerable<object[]> Images => BaseDatabaseTests.Images;
+    public static IEnumerable<object[]> Images => BaseDatabaseTests.BaseImages;
 
     public string Folder { get; init; } = "../../../../ProjectReferences.Tests";
 
