@@ -62,7 +62,7 @@ public class OkDatabaseTests : BaseDatabaseTests
         string pattern = """
 <?xml version="1.0"?>
 <!--DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-03.dtd"-->
-<coverage lines-valid="5" lines-covered="3" line-rate="0.6" version="1.9" timestamp="__________.%">
+<coverage lines-valid="5" lines-covered="3" line-rate="0[.,]6" version="1[.,]9" timestamp="__________[.,]%">
  <packages>
   <package name="Database.Tests">
     <classes>

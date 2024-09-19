@@ -19,14 +19,6 @@ public class TestcontainerFactoryTests
         Assert.IsInstanceOfType(testcontainer, typeof(MsSqlTestcontainer));
     }
 
-    [TestMethod]
-    public void ShouldCreateSqlEdgeTestcontainer()
-    {
-        var testcontainer = TestcontainerFactory.Create("mcr.microsoft.com/azure-sql-edge");
-
-        Assert.IsInstanceOfType(testcontainer, typeof(SqlEdgeTestcontainer));
-    }
-
     [DataTestMethod]
     [DataRow("SQL_Latin1_General_CP1_CI_AS", null)]
     [DataRow("SQL_Latin1_General_CP1_CI_AS", "")]

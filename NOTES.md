@@ -20,8 +20,8 @@ dotnet test ./SqlTest.Tests --framework net8.0 -e CollectCoverage=true -e Coverl
 ## Run project with .NET 8
 
 ```
-dotnet run --project SqlTest --framework net8.0 -- runall --image mcr.microsoft.com/mssql/server --project Database.Tests/Ok
-dotnet run --project SqlTest --framework net8.0 -- runall --image mcr.microsoft.com/azure-sql-edge --project Database.Tests/Ok
+dotnet run --project SqlTest --framework net8.0 -- runall --image mcr.microsoft.com/mssql/server:2019-latest --project Database.Tests/Ok
+dotnet run --project SqlTest --framework net8.0 -- runall --image mcr.microsoft.com/mssql/server:2022-latest --project Database.Tests/Ok
 ```
 
 ## Exclude Dacpacks from outdated dependencies

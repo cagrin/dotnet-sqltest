@@ -8,10 +8,6 @@ public static class TestcontainerFactory
         {
             return new LocalhostTestcontainer();
         }
-        else if (image.Contains("azure-sql-edge", StringComparison.InvariantCulture))
-        {
-            return new SqlEdgeTestcontainer();
-        }
         else
         {
             return new MsSqlTestcontainer();

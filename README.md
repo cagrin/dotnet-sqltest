@@ -4,7 +4,7 @@
 
 
 # dotnet-sqltest
-Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects inside throwaway instances of Docker containers for all compatible SQL Server or Azure SQL Edge images.
+Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects inside throwaway instances of Docker containers for all compatible SQL Server images.
 
 ## Usage
 Install the tool from the package:
