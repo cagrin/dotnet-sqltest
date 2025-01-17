@@ -26,7 +26,6 @@
         <PackageReference Include="System.CommandLine.NamingConventionBinder"/>
         <PackageReference Include="Testcontainers"/>
         <PackageReference Include="Testcontainers.MsSql"/>
-        <PackageReference Include="Testcontainers.SqlEdge"/>
     </ItemGroup>
     <ItemGroup>
         <Using Include="LikeComparison.TransactSql"/>

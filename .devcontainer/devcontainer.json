@@ -1,12 +1,11 @@
 {
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-        "ghcr.io/devcontainers/features/dotnet:2": {
-            "version": "6.0",
-            "additionalVersions": "8.0"
+        "ghcr.io/devcontainers/features/docker-in-docker": {},
+        "ghcr.io/devcontainers/features/dotnet": {
+            "version": "8.0"
         },
-        "ghcr.io/devcontainers/features/powershell:1": {},
+        "ghcr.io/devcontainers/features/powershell": {},
         "./dotnet-outdated-tool": {}
     },
     "customizations": {
