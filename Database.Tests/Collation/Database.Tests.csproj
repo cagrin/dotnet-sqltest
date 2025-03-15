@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.SqlProj/3.1.1">
+<Project Sdk="MSBuild.Sdk.SqlProj/3.1.0">
     <PropertyGroup>
         <PackageId>Database.Tests/Collation</PackageId>
         <Collation>Polish_CI_AS</Collation>
