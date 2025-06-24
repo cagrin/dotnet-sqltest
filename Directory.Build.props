@@ -3,8 +3,8 @@
         <TargetFrameworks>net8.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AnalysisMode>All</AnalysisMode>
-        <CodeAnalysisRuleSet>../SqlTest.ruleset</CodeAnalysisRuleSet>
+        <AnalysisLevel>Latest</AnalysisLevel>
+        <MSTestAnalysisMode>All</MSTestAnalysisMode>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All" />
