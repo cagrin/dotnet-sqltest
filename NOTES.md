@@ -27,7 +27,7 @@ dotnet run --project SqlTest --framework net8.0 -- runall --image mcr.microsoft.
 ## Exclude Dacpacks from outdated dependencies
 
 ```
-dotnet-outdated -r -exc "Microsoft.SqlServer.Dacpacs"
+dotnet-outdated -r -vl Major
 ```
 
 ## Run only quick unit tests

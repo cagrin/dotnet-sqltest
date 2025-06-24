@@ -6,21 +6,21 @@
         <PackageVersion Include="coverlet.collector" Version="6.0.4"/>
         <PackageVersion Include="coverlet.msbuild" Version="6.0.4"/>
         <PackageVersion Include="Dapper" Version="2.1.66"/>
-        <PackageVersion Include="LikeComparison" Version="2.3.1"/>
-        <PackageVersion Include="LikeComparison.MSTest" Version="2.3.1"/>
-        <PackageVersion Include="Microsoft.Data.SqlClient" Version="6.0.1"/>
-        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0"/>
+        <PackageVersion Include="LikeComparison" Version="2.3.2"/>
+        <PackageVersion Include="LikeComparison.MSTest" Version="2.3.2"/>
+        <PackageVersion Include="Microsoft.Data.SqlClient" Version="6.0.2"/>
+        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1"/>
         <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0"/>
         <PackageVersion Include="Moq" Version="4.20.72"/>
-        <PackageVersion Include="MSTest.Analyzers" Version="3.8.2"/>
-        <PackageVersion Include="MSTest.TestAdapter" Version="3.8.2"/>
-        <PackageVersion Include="MSTest.TestFramework" Version="3.8.2"/>
+        <PackageVersion Include="MSTest.Analyzers" Version="3.9.3"/>
+        <PackageVersion Include="MSTest.TestAdapter" Version="3.9.3"/>
+        <PackageVersion Include="MSTest.TestFramework" Version="3.9.3"/>
         <PackageVersion Include="SQLCoverLib" Version="0.6.0-preview7"/>
         <PackageVersion Include="Shouldly" Version="4.3.0"/>
         <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556"/>
         <PackageVersion Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>
         <PackageVersion Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta4.22272.1" />
-        <PackageVersion Include="Testcontainers" Version="4.3.0"/>
-        <PackageVersion Include="Testcontainers.MsSql" Version="4.3.0"/>
+        <PackageVersion Include="Testcontainers" Version="4.6.0"/>
+        <PackageVersion Include="Testcontainers.MsSql" Version="4.6.0"/>
     </ItemGroup>
 </Project>
