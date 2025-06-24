@@ -3,7 +3,7 @@
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     </PropertyGroup>
     <ItemGroup>
-        <PackageVersion Include="Microsoft.SqlServer.Dacpacs.Master" Version="150.0.0"/>
+        <PackageVersion Include="Microsoft.SqlServer.Dacpacs.Master" Version="150.1.2"/>
         <PackageVersion Include="tSQLt.Edge" Version="0.9.9"/>
     </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
-<Project Sdk="MSBuild.Sdk.SqlProj/3.1.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/3.1.3">
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="../Main/MainProject.csproj" />
