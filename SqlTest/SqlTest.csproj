@@ -23,7 +23,6 @@
         <PackageReference Include="Microsoft.Data.SqlClient"/>
         <PackageReference Include="SQLCoverLib"/>
         <PackageReference Include="System.CommandLine"/>
-        <PackageReference Include="System.CommandLine.NamingConventionBinder"/>
         <PackageReference Include="Testcontainers"/>
         <PackageReference Include="Testcontainers.MsSql"/>
     </ItemGroup>
