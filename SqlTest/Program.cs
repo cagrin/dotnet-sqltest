@@ -6,13 +6,13 @@ public static class Program
 {
     public static int Main(string[] args)
     {
-        var imageOption = new Option<string>("--image", "-i") { Description = "Docker image." };
-        var projectOption = new Option<string>("--project", "-p") { Description = "Database project." };
-        var collationOption = new Option<string>("--collation", "-c") { Description = "Server collation." };
-        var resultOption = new Option<string>("--result", "-r") { Description = "Save result to JUnit XML file." };
-        var ccCoberturaOption = new Option<string>("--cc-cobertura") { Description = "Save code coverage to Cobertura XML file." };
-        var ccDisableOption = new Option<bool>("--cc-disable") { Description = "Disable code coverage." };
-        var ccIncludeTsqltOption = new Option<bool>("--cc-include-tsqlt") { Description = "Include code coverage of tSQLt schema." };
+        var imageOption = new Option<string>("--image", "-i") { Description = "Docker image" };
+        var projectOption = new Option<string>("--project", "-p") { Description = "Database project" };
+        var collationOption = new Option<string>("--collation", "-c") { Description = "Server collation" };
+        var resultOption = new Option<string>("--result", "-r") { Description = "Save result to JUnit XML file" };
+        var ccCoberturaOption = new Option<string>("--cc-cobertura") { Description = "Save code coverage to Cobertura XML file" };
+        var ccDisableOption = new Option<bool>("--cc-disable") { Description = "Disable code coverage" };
+        var ccIncludeTsqltOption = new Option<bool>("--cc-include-tsqlt") { Description = "Include code coverage of tSQLt schema" };
 
         var runAll = new Command("runall", "Run all tests.")
         {
