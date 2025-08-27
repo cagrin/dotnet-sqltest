@@ -147,10 +147,7 @@ public class RunAllCommand : IDisposable
 
                 this.code = this.coverage.Stop();
 
-                if (!string.IsNullOrEmpty(this.options.CcCobertura))
-                {
-                    this.CoberturaXml();
-                }
+                this.CoberturaXml();
 
                 stopwatchLog.Stop();
             }
@@ -174,10 +171,7 @@ public class RunAllCommand : IDisposable
     {
         int results = this.ResultLog();
 
-        if (!string.IsNullOrEmpty(this.options.Result))
-        {
-            this.ResultXml();
-        }
+        this.ResultXml();
 
         return results;
     }
@@ -232,20 +226,26 @@ public class RunAllCommand : IDisposable
 
     private void ResultXml()
     {
-        string sql = $"[{this.database}].tSQLt.XmlResultFormatter";
+        if (!string.IsNullOrEmpty(this.options.Result))
+        {
+            string sql = $"[{this.database}].tSQLt.XmlResultFormatter";
 
-        using var con = new SqlConnection(this.target.TargetConnectionString);
-        using var file = new StreamWriter(this.options.Result);
+            using var con = new SqlConnection(this.target.TargetConnectionString);
+            using var file = new StreamWriter(this.options.Result);
 
-        string xml = con.Query<string>(sql, CommandType.StoredProcedure).First();
-        file.Write(xml);
+            string xml = con.Query<string>(sql, CommandType.StoredProcedure).First();
+            file.Write(xml);
+        }
     }
 
     private void CoberturaXml()
     {
-        using var file = new StreamWriter(this.options.CcCobertura);
+        if (!string.IsNullOrEmpty(this.options.CcCobertura))
+        {
+            using var file = new StreamWriter(this.options.CcCobertura);
 
-        string xml = this.code!.Cobertura(this.database);
-        file.Write(xml);
+            string xml = this.code!.Cobertura(this.database);
+            file.Write(xml);
+        }
     }
 }

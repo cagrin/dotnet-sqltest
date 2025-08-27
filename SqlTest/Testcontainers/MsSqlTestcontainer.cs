@@ -11,7 +11,7 @@ public class MsSqlTestcontainer : ITestcontainer
     {
     }
 
-    public async Task<TestcontainerTarget> StartAsync(string image, string collation)
+    public async Task<TestcontainerTarget> StartAsync(string? image, string? collation)
     {
         var container = new MsSqlBuilder()
             .WithImage(image)

@@ -2,15 +2,15 @@ namespace SqlTest;
 
 public class RunAllOptions
 {
-    public string Image { get; set; } = default!;
+    public string Project { get; set; } = string.Empty;
 
-    public string Project { get; set; } = default!;
+    public string? Image { get; set; }
 
-    public string Collation { get; set; } = default!;
+    public string? Collation { get; set; }
 
-    public string Result { get; set; } = default!;
+    public string? Result { get; set; }
 
-    public string CcCobertura { get; set; } = default!;
+    public string? CcCobertura { get; set; }
 
     public bool CcDisable { get; set; }
 

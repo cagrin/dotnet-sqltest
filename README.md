@@ -21,14 +21,14 @@ Invoke the tool:
 
 ```
 Options:
-  -i, --image         Docker image
-  -p, --project       Database project
-  -c, --collation     Server collation
-  -r, --result        Save result to JUnit XML file
-  --cc-cobertura      Save code coverage to Cobertura XML file
-  --cc-disable        Disable code coverage
-  --cc-include-tsqlt  Include code coverage of tSQLt schema
-  -?, -h, --help      Show help and usage information
+  -p, --project (REQUIRED)  Database project
+  -i, --image               Docker image
+  -c, --collation           Server collation
+  -r, --result              Save result to JUnit XML file
+  --cc-cobertura            Save code coverage to Cobertura XML file
+  --cc-disable              Disable code coverage
+  --cc-include-tsqlt        Include code coverage of tSQLt schema
+  -?, -h, --help            Show help and usage information
 ```
 
 ## Example

@@ -11,7 +11,7 @@ public class LocalhostTestcontainer : ITestcontainer
         this.cs = connectionString;
     }
 
-    public async Task<TestcontainerTarget> StartAsync(string image, string collation)
+    public async Task<TestcontainerTarget> StartAsync(string? image, string? collation)
     {
         using var con = new SqlConnection(this.cs);
 
