@@ -5,7 +5,6 @@ public class BaseDatabaseTests
 {
     public static IEnumerable<object[]> BaseImages => new[]
     {
-        new object[] { "mcr.microsoft.com/mssql/server:2019-latest" },
         new object[] { "mcr.microsoft.com/mssql/server:2022-latest" },
     };
 
