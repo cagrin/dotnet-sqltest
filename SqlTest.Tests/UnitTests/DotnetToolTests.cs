@@ -8,7 +8,7 @@ public class DotnetToolTests
     {
         var sut = DotnetTool.GetPublishScript("{project}", 0, "{database}", null!);
 
-        Assert.AreEqual("dotnet publish {project} /p:TargetDatabaseName={database}", sut);
+        Assert.AreEqual("dotnet publish {project} /p:TargetDatabaseName={database} /p:CreateNewDatabase=true", sut);
     }
 
     [TestMethod]

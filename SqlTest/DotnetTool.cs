@@ -32,6 +32,8 @@ public static class DotnetTool
 
         script += !string.IsNullOrEmpty(password) ? $" /p:TargetUser=sa /p:TargetPassword=\"{password}\"" : string.Empty;
 
+        script += $" /p:CreateNewDatabase=true";
+
         return script;
     }
 
