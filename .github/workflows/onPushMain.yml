@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: devcontainers/ci@v0.3
         with:
           runCmd: dotnet build SqlTest
@@ -19,7 +19,7 @@ jobs:
       matrix:
         framework: [net8.0]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: devcontainers/ci@v0.3
         with:
           runCmd: dotnet test SqlTest.Tests --framework ${{ matrix.framework }}
@@ -28,7 +28,7 @@ jobs:
     env:
       framework: net8.0
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '8.0.x'
