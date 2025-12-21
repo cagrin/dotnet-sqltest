@@ -9,7 +9,7 @@ public class LocalhostTestcontainerTests
     public async Task ShouldStartAsyncAndDispose()
     {
         var container = new MsSqlBuilder()
-            .WithImage("mcr.microsoft.com/mssql/server")
+            .WithImage("mcr.microsoft.com/mssql/server:2022-latest")
             .Build();
 
         await container.StartAsync().ConfigureAwait(false);

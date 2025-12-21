@@ -50,7 +50,7 @@ Failed: 0, Passed: 1, Coverage: 60% (3/5), Duration: 18 s
 
 ## Build
 
-[dotnet-sqltest](https://www.nuget.org/packages/dotnet-sqltest) is build with .NET 8.
+[dotnet-sqltest](https://www.nuget.org/packages/dotnet-sqltest) is build with .NET 8 and .NET 10.
 
 Powered by:
 - [Dapper](https://www.nuget.org/packages/Dapper)

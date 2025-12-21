@@ -14,7 +14,7 @@ public class TestcontainerFactoryTests
     [TestMethod]
     public void ShouldCreateMsSqlTestcontainer()
     {
-        var testcontainer = TestcontainerFactory.Create("mcr.microsoft.com/mssql/server");
+        var testcontainer = TestcontainerFactory.Create("mcr.microsoft.com/mssql/server:2022-latest");
 
         Assert.IsInstanceOfType(testcontainer, typeof(MsSqlTestcontainer));
     }

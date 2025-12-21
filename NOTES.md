@@ -4,23 +4,23 @@
 $Env:DOTNET_CLI_UI_LANGUAGE="en"
 ```
 
-## Show output during test with .NET 8
+## Show output during test
 
 ```
-dotnet test ./SqlTest.Tests --framework net8.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov -l "console;verbosity=detailed"
+dotnet test ./SqlTest.Tests --framework net10.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov -l "console;verbosity=detailed"
 ```
 
-## Filter smoke tests with .NET 8
+## Filter smoke tests
 
 ```
 pwsh
-dotnet test ./SqlTest.Tests --framework net8.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)"
+dotnet test ./SqlTest.Tests --framework net10.0 -e CollectCoverage=true -e CoverletOutputFormat=lcov --filter "(ClassName!~SqlTest.DatabaseTests)"
 ```
 
-## Run project with .NET 8
+## Run project
 
 ```
-dotnet run --project SqlTest --framework net8.0 -- runall --image mcr.microsoft.com/mssql/server:2022-latest --project Database.Tests/Ok
+dotnet run --project SqlTest --framework net10.0 -- runall --image mcr.microsoft.com/mssql/server:2022-latest --project Database.Tests/Ok
 ```
 
 ## Exclude Dacpacks from outdated dependencies
@@ -32,5 +32,5 @@ dotnet-outdated -r -vl Major
 ## Run only quick unit tests
 
 ```
-dotnet test --framework net8.0 --filter "UnitTests"
+dotnet test --framework net10.0 --filter "UnitTests"
 ```
