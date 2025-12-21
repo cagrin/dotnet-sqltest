@@ -1,7 +1,4 @@
 <Project Sdk="MSBuild.Sdk.SqlProj">
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-    </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="../Other/OtherProject.csproj" DatabaseVariableLiteralValue="OtherDatabase" />
     </ItemGroup>
