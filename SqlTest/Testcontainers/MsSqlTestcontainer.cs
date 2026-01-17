@@ -13,8 +13,7 @@ public class MsSqlTestcontainer : ITestcontainer
 
     public async Task<TestcontainerTarget> StartAsync(string? image, string? collation)
     {
-        var container = new MsSqlBuilder()
-            .WithImage(image)
+        var container = new MsSqlBuilder(image)
             .WithEnvironment("MSSQL_COLLATION", TestcontainerFactory.WithCollation(collation))
             .WithLogger(NullLogger.Instance)
             .Build();
