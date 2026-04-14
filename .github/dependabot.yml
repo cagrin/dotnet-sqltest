@@ -5,15 +5,6 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "nuget"
-    directory: "/SqlTest"
+    directory: "/"
     schedule:
       interval: "daily"
-  - package-ecosystem: "nuget"
-    directory: "/SqlTest.Tests"
-    schedule:
-      interval: "daily"
-    ignore:
-      - dependency-name: "coverlet.collector"
-      - dependency-name: "coverlet.msbuild"
-      - dependency-name: "MSTest.TestAdapter"
-      - dependency-name: "MSTest.TestFramework"
