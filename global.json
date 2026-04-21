@@ -4,6 +4,6 @@
         "rollForward": "latestFeature"
     },
     "msbuild-sdks": {
-        "MSBuild.Sdk.SqlProj": "3.3.0"
+        "MSBuild.Sdk.SqlProj": "4.2.0"
     }
 }

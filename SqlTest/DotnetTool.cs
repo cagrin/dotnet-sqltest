@@ -24,7 +24,7 @@ public static class DotnetTool
 
     public static string GetPublishScript(string project, string serverName, ushort port, string database, string user, string password)
     {
-        string script = $"dotnet publish {project}";
+        string script = $"dotnet publish {project} /t:PublishDatabase";
 
         script += !string.IsNullOrEmpty(database) ? $" /p:TargetDatabaseName=\"{database}\"" : string.Empty;
 
