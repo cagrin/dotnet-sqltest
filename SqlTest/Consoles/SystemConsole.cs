@@ -4,12 +4,20 @@ using System.Diagnostics;
 
 public class SystemConsole : IConsole
 {
+    private const int UnknownColor = -1;
+
+    private ConsoleColor foregroundColor = (ConsoleColor)UnknownColor;
+
     public static SystemConsole This { get; } = new SystemConsole();
 
     public ConsoleColor ForegroundColor
     {
-        get => Console.ForegroundColor;
-        set => Console.ForegroundColor = value;
+        get => this.foregroundColor;
+        set
+        {
+            this.foregroundColor = value;
+            Console.ForegroundColor = value;
+        }
     }
 
     public static string[] Invoke(string script)
@@ -28,8 +36,11 @@ public class SystemConsole : IConsole
             FileName = fileName,
             Arguments = arguments,
             RedirectStandardOutput = true,
+            RedirectStandardError = true,
             UseShellExecute = false,
         };
+
+        startInfo.Environment["DOTNET_CLI_UI_LANGUAGE"] = "en-US";
 
         using var process = new Process()
         {
@@ -53,7 +64,7 @@ public class SystemConsole : IConsole
 
     public void ResetColor()
     {
-        _ = this.ForegroundColor;
+        this.foregroundColor = (ConsoleColor)UnknownColor;
         Console.ResetColor();
     }
 

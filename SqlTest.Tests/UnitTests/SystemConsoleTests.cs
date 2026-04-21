@@ -37,6 +37,6 @@ public class SystemConsoleTests
     [TestMethod]
     public void ShouldThrowsExceptionIfInvokeWithNullScript()
     {
-        Should.Throw<ArgumentNullException>(() => SystemConsole.Invoke(null!));
+        _ = Should.Throw<ArgumentNullException>(() => SystemConsole.Invoke(null!));
     }
 }

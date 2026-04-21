@@ -35,6 +35,6 @@ Options:
 
 """;
 
-        results.ShouldBeEquivalentTo(expected.Split("\n"));
+        results.ShouldBeEquivalentTo(expected.Split(Environment.NewLine));
     }
 }

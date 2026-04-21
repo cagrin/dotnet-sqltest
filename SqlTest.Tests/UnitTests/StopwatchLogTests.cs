@@ -10,7 +10,7 @@ public class StopwatchLogTests
 
         new StopwatchLog(mock.Object).Start("Something...", debug: false).Stop();
 
-        Assert.That.IsLike(mock.Output, "Something... _ ms");
+        Assert.That.IsLike(mock.Output, $"Something... _ ms{Environment.NewLine}");
     }
 
     [TestMethod]
@@ -22,7 +22,7 @@ public class StopwatchLogTests
         Thread.Sleep(1000);
         watch.Stop();
 
-        Assert.That.IsLike(mock.Output, "Something... _ s");
+        Assert.That.IsLike(mock.Output, $"Something... _ s{Environment.NewLine}");
     }
 
     [TestMethod]
@@ -32,6 +32,6 @@ public class StopwatchLogTests
 
         new StopwatchLog(mock.Object).Start("Something...", debug: true).Stop();
 
-        Assert.That.IsLike(mock.Output, "Something...\nSomething... _ ms");
+        Assert.That.IsLike(mock.Output, $"Something...{Environment.NewLine}Something... _ ms{Environment.NewLine}");
     }
 }

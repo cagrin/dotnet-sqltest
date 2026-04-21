@@ -1,11 +1,18 @@
 namespace SqlTest;
 
 using System.CommandLine;
+using System.Globalization;
 
 public static class Program
 {
     public static int Main(string[] args)
     {
+        // Keep command/help output deterministic regardless of OS locale.
+        var englishCulture = CultureInfo.GetCultureInfo("en-US");
+        CultureInfo.DefaultThreadCurrentCulture = englishCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = englishCulture;
+        Environment.SetEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US");
+
         var projectOption = new Option<string>("--project", "-p") { Description = "Database project", Required = true };
         var imageOption = new Option<string>("--image", "-i") { Description = "Docker image" };
         var collationOption = new Option<string>("--collation", "-c") { Description = "Server collation" };
