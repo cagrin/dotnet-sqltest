@@ -19,7 +19,7 @@ public class MsSqlTestcontainerTests
     public async Task ShouldStartAsyncAndDispose()
     {
         var tc = new MsSqlTestcontainer();
-        _ = await tc.StartAsync(image: "mcr.microsoft.com/mssql/server:2022-latest", collation: "SQL_Latin1_General_CP1_CI_AS").ConfigureAwait(false);
+        _ = await tc.StartAsync(image: "mcr.microsoft.com/mssql/server:2019-latest", collation: "SQL_Latin1_General_CP1_CI_AS").ConfigureAwait(false);
         tc.Dispose();
     }
 

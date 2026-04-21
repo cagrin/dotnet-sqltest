@@ -24,15 +24,15 @@ Usage:
   SqlTest runall [options]
 
 Options:
-  -p, --project <project> (REQUIRED)                               Database project
-  -i, --image <image>                                              Docker image
-  -c, --collation <collation>                                      Server collation
-  -cs, --connection-string <connection-string> Target SQL connection string (mutually exclusive with --image)
-  -r, --result <result>                                            Save result to JUnit XML file
-  --cc-cobertura <cc-cobertura>                                    Save code coverage to Cobertura XML file
-  --cc-disable                                                     Disable code coverage
-  --cc-include-tsqlt                                               Include code coverage of tSQLt schema
-  -?, -h, --help                                                   Show help and usage information
+  -p, --project <project> (REQUIRED)  Database project
+  -i, --image <image>                 Docker image
+  -c, --collation <collation>         Server collation
+  -t, --target <target>               Target connection string (mutually exclusive with --image)
+  -r, --result <result>               Save result to JUnit XML file
+  --cc-cobertura <cc-cobertura>       Save code coverage to Cobertura XML file
+  --cc-disable                        Disable code coverage
+  --cc-include-tsqlt                  Include code coverage of tSQLt schema
+  -?, -h, --help                      Show help and usage information
 
 """;
 

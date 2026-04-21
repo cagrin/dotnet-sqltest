@@ -20,7 +20,7 @@ dotnet test ./SqlTest.Tests --framework net10.0 -e CollectCoverage=true -e Cover
 ## Run project
 
 ```
-dotnet run --project SqlTest --framework net10.0 -- runall --image mcr.microsoft.com/mssql/server:2022-latest --project Database.Tests/Ok
+dotnet run --project SqlTest --framework net10.0 -- runall --image mcr.microsoft.com/mssql/server:2019-latest --project Database.Tests/Ok
 ```
 
 ## Exclude Dacpacks from outdated dependencies

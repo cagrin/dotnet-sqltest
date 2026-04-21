@@ -15,7 +15,7 @@ public static class Program
         var projectOption = new Option<string>("--project", "-p") { Description = "Database project", Required = true };
         var imageOption = new Option<string>("--image", "-i") { Description = "Docker image" };
         var collationOption = new Option<string>("--collation", "-c") { Description = "Server collation" };
-        var targetConnectionStringOption = new Option<string>("--connection-string", "-cs") { Description = "Target SQL connection string (mutually exclusive with --image)" };
+        var targetOption = new Option<string>("--target", "-t") { Description = "Target connection string (mutually exclusive with --image)" };
         var resultOption = new Option<string>("--result", "-r") { Description = "Save result to JUnit XML file" };
         var ccCoberturaOption = new Option<string>("--cc-cobertura") { Description = "Save code coverage to Cobertura XML file" };
         var ccDisableOption = new Option<bool>("--cc-disable") { Description = "Disable code coverage" };
@@ -26,7 +26,7 @@ public static class Program
             projectOption,
             imageOption,
             collationOption,
-            targetConnectionStringOption,
+            targetOption,
             resultOption,
             ccCoberturaOption,
             ccDisableOption,
@@ -35,7 +35,7 @@ public static class Program
 
         runAll.SetAction(parseResult =>
         {
-            var cs = parseResult.GetValue(targetConnectionStringOption);
+            var cs = parseResult.GetValue(targetOption);
             return InvokeRunAll(new RunAllOptions()
             {
                 Project = parseResult.GetRequiredValue(projectOption),

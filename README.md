@@ -21,21 +21,22 @@ Invoke the tool:
 
 ```
 Options:
-  -p, --project <project> (REQUIRED)  Database project
-  -i, --image <image>                 Docker image
-  -c, --collation <collation>         Server collation
-  -r, --result <result>               Save result to JUnit XML file
-  --cc-cobertura <cc-cobertura>       Save code coverage to Cobertura XML file
-  --cc-disable                        Disable code coverage
-  --cc-include-tsqlt                  Include code coverage of tSQLt schema
-  -?, -h, --help                      Show help and usage information
+  -p, --project <project> (REQUIRED)            Database project
+  -i, --image <image>                           Docker image
+  -c, --collation <collation>                   Server collation
+  -cs, --connection-string <connection-string>  Target connection string (mutually exclusive with --image)
+  -r, --result <result>                         Save result to JUnit XML file
+  --cc-cobertura <cc-cobertura>                 Save code coverage to Cobertura XML file
+  --cc-disable                                  Disable code coverage
+  --cc-include-tsqlt                            Include code coverage of tSQLt schema
+  -?, -h, --help                                Show help and usage information
 ```
 
-## Example
+## Examples
 
 Running all tSQLt tests inside throwaway SQL Server container:
 
-```sqltest runall --project Database.Tests/Ok --image mcr.microsoft.com/mssql/server```
+```sqltest runall --project Database.Tests/Ok --image mcr.microsoft.com/mssql/server:2019-latest```
 
 ```
 Preparing database... 6 s
@@ -47,6 +48,14 @@ Uncovered statements:
   [dbo].[Example]: UPDATE #Example SET [...]
 Failed: 0, Passed: 1, Coverage: 60% (3/5), Duration: 18 s
 ```
+
+Running all tSQLt tests against explicit SQL Server instance using connection string:
+
+```sqltest runall --project Database.Tests/Ok --target "Data Source=localhost,1433;Integrated Security=SSPI;TrustServerCertificate=True"```
+
+Running all tSQLt tests against LocalDB on Windows:
+
+```sqltest runall --project Database.Tests/Ok --target "Data Source=(localdb)\MSSQLLocalDB"```
 
 ## Build
 
