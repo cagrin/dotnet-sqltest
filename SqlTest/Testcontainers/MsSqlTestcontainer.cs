@@ -11,10 +11,15 @@ public class MsSqlTestcontainer : ITestcontainer
     {
     }
 
-    public async Task<TestcontainerTarget> StartAsync(string? image, string? collation)
+    public static string WithCollation(string? collation)
+    {
+        return string.IsNullOrEmpty(collation) ? "SQL_Latin1_General_CP1_CI_AS" : collation;
+    }
+
+    public async Task<RunTarget> StartAsync(string? image, string? collation)
     {
         var container = new MsSqlBuilder(image)
-            .WithEnvironment("MSSQL_COLLATION", TestcontainerFactory.WithCollation(collation))
+            .WithEnvironment("MSSQL_COLLATION", WithCollation(collation))
             .WithLogger(NullLogger.Instance)
             .Build();
 
@@ -22,12 +27,7 @@ public class MsSqlTestcontainer : ITestcontainer
 
         this.testcontainer = container;
 
-        return new TestcontainerTarget()
-        {
-            TargetPassword = MsSqlBuilder.DefaultPassword,
-            TargetPort = container.GetMappedPublicPort(MsSqlBuilder.MsSqlPort),
-            TargetConnectionString = container.GetConnectionString(),
-        };
+        return new RunTarget(container.GetConnectionString());
     }
 
     public void Dispose()
