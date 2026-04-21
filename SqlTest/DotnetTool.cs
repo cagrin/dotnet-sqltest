@@ -4,7 +4,7 @@ using System.Xml;
 
 public static class DotnetTool
 {
-    public static string GetPublishScriptWithReferences(string project, ushort port, string database, string password)
+    public static string GetPublishScriptWithReferences(string project, string serverName, ushort port, string database, string user, string password)
     {
         string script = string.Empty;
 
@@ -12,25 +12,29 @@ public static class DotnetTool
 
         foreach (var reference in references)
         {
-            script += GetPublishScript(project: reference.Include, port, database: reference.Database, password);
+            script += GetPublishScript(project: reference.Include, serverName, port, database: reference.Database, user, password);
 
             script += "\n";
         }
 
-        script += GetPublishScript(project, port, database, password);
+        script += GetPublishScript(project, serverName, port, database, user, password);
 
         return script;
     }
 
-    public static string GetPublishScript(string project, ushort port, string database, string password)
+    public static string GetPublishScript(string project, string serverName, ushort port, string database, string user, string password)
     {
         string script = $"dotnet publish {project}";
 
-        script += $" /p:TargetDatabaseName={database}";
+        script += !string.IsNullOrEmpty(database) ? $" /p:TargetDatabaseName=\"{database}\"" : string.Empty;
+
+        script += !string.IsNullOrEmpty(serverName) ? $" /p:TargetServerName=\"{serverName}\"" : string.Empty;
 
         script += (port > 0) ? $" /p:TargetPort={port}" : string.Empty;
 
-        script += !string.IsNullOrEmpty(password) ? $" /p:TargetUser=sa /p:TargetPassword=\"{password}\"" : string.Empty;
+        script += !string.IsNullOrEmpty(user) ? $" /p:TargetUser=\"{user}\"" : string.Empty;
+
+        script += !string.IsNullOrEmpty(password) ? $" /p:TargetPassword=\"{password}\"" : string.Empty;
 
         script += $" /p:CreateNewDatabase=true";
 

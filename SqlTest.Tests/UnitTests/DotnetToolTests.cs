@@ -4,11 +4,19 @@ namespace SqlTest.Tests.UnitTests;
 public class DotnetToolTests
 {
     [TestMethod]
-    public void ShouldGetPublishScriptWithLocalhost()
+    public void ShouldGetPublishScriptWithLocal()
     {
-        var sut = DotnetTool.GetPublishScript("{project}", 0, "{database}", null!);
+        var sut = DotnetTool.GetPublishScript("{project}", "(local)", 0, "{database}", "{user}", "{password}");
 
-        Assert.AreEqual("dotnet publish {project} /p:TargetDatabaseName={database} /p:CreateNewDatabase=true", sut);
+        Assert.AreEqual("dotnet publish {project} /p:TargetDatabaseName=\"{database}\" /p:TargetServerName=\"(local)\" /p:TargetUser=\"{user}\" /p:TargetPassword=\"{password}\" /p:CreateNewDatabase=true", sut);
+    }
+
+    [TestMethod]
+    public void ShouldGetPublishScriptWithLocalDb()
+    {
+        var sut = DotnetTool.GetPublishScript("{project}", "(localdb)", 0, string.Empty, string.Empty, string.Empty);
+
+        Assert.AreEqual("dotnet publish {project} /p:TargetServerName=\"(localdb)\" /p:CreateNewDatabase=true", sut);
     }
 
     [TestMethod]

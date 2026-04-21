@@ -15,7 +15,7 @@ public class RunAllCommand : IDisposable
 
     private string database = "database_tests";
 
-    private TestcontainerTarget target;
+    private RunTarget target;
 
     private ITestcontainer? testcontainer;
 
@@ -28,7 +28,7 @@ public class RunAllCommand : IDisposable
         this.options = options;
         this.console = mockConsole ?? SystemConsole.This;
         this.stopwatchLogAll = new StopwatchLog();
-        this.target = new TestcontainerTarget();
+        this.target = new RunTarget("Data Source=localhost;Integrated Security=SSPI;TrustServerCertificate=True");
     }
 
     public int Invoke()
@@ -74,9 +74,16 @@ public class RunAllCommand : IDisposable
 
     private async Task CreateContainer()
     {
-        this.testcontainer = TestcontainerFactory.Create(this.options.Image);
+        if (this.options.UseExplicitTarget)
+        {
+            this.target = await this.ConnectExplicitTargetAsync().ConfigureAwait(false);
+        }
+        else
+        {
+            this.testcontainer = new MsSqlTestcontainer();
 
-        this.target = await this.testcontainer.StartAsync(this.options.Image, this.options.Collation).ConfigureAwait(false);
+            this.target = await this.testcontainer.StartAsync(this.options.Image, this.options.Collation).ConfigureAwait(false);
+        }
     }
 
     private async Task CleanBuildDatabase()
@@ -84,6 +91,16 @@ public class RunAllCommand : IDisposable
         this.options.Project = DotnetTool.GetProjectFullName(this.options.Project);
 
         this.database = DotnetTool.GetDatabaseName(this.options.Project);
+
+        if (this.options.UseExplicitTarget && !string.IsNullOrWhiteSpace(this.options.TargetConnectionString))
+        {
+            var explicitTarget = new RunTarget(this.options.TargetConnectionString);
+
+            if (!string.IsNullOrWhiteSpace(explicitTarget.TargetDatabaseName))
+            {
+                this.database = explicitTarget.TargetDatabaseName;
+            }
+        }
 
         string script = DotnetTool.GetCleanBuildScript(this.options.Project);
 
@@ -96,7 +113,7 @@ public class RunAllCommand : IDisposable
     {
         var stopwatchLog = new StopwatchLog().Start("Deploying database...");
 
-        string script = DotnetTool.GetPublishScriptWithReferences(this.options.Project, this.target.TargetPort, this.database, this.target.TargetPassword);
+        string script = DotnetTool.GetPublishScriptWithReferences(this.options.Project, this.target.TargetServerName, this.target.TargetPort, this.database, this.target.TargetUser, this.target.TargetPassword);
 
         var results = SystemConsole.Invoke(script);
 
@@ -247,5 +264,20 @@ public class RunAllCommand : IDisposable
             string xml = this.code!.Cobertura(this.database);
             file.Write(xml);
         }
+    }
+
+    private async Task<RunTarget> ConnectExplicitTargetAsync()
+    {
+        if (string.IsNullOrWhiteSpace(this.options.TargetConnectionString))
+        {
+            throw new ArgumentException("Target connection string is required.");
+        }
+
+        var target = new RunTarget(this.options.TargetConnectionString);
+
+        using var con = new SqlConnection(target.TargetConnectionString);
+        await con.OpenAsync().ConfigureAwait(false);
+
+        return target;
     }
 }

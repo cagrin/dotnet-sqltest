@@ -15,4 +15,8 @@ public class RunAllOptions
     public bool CcDisable { get; set; }
 
     public bool CcIncludeTsqlt { get; set; }
+
+    public bool UseExplicitTarget { get; set; }
+
+    public string? TargetConnectionString { get; set; }
 }
