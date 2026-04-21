@@ -8,7 +8,7 @@ public class DotnetToolTests
     {
         var sut = DotnetTool.GetPublishScript("{project}", "(local)", 0, "{database}", "{user}", "{password}");
 
-        Assert.AreEqual("dotnet publish {project} /p:TargetDatabaseName=\"{database}\" /p:TargetServerName=\"(local)\" /p:TargetUser=\"{user}\" /p:TargetPassword=\"{password}\" /p:CreateNewDatabase=true", sut);
+        Assert.AreEqual("dotnet publish {project} /t:PublishDatabase /p:TargetDatabaseName=\"{database}\" /p:TargetServerName=\"(local)\" /p:TargetUser=\"{user}\" /p:TargetPassword=\"{password}\" /p:CreateNewDatabase=true", sut);
     }
 
     [TestMethod]
@@ -16,7 +16,7 @@ public class DotnetToolTests
     {
         var sut = DotnetTool.GetPublishScript("{project}", "(localdb)", 0, string.Empty, string.Empty, string.Empty);
 
-        Assert.AreEqual("dotnet publish {project} /p:TargetServerName=\"(localdb)\" /p:CreateNewDatabase=true", sut);
+        Assert.AreEqual("dotnet publish {project} /t:PublishDatabase /p:TargetServerName=\"(localdb)\" /p:CreateNewDatabase=true", sut);
     }
 
     [TestMethod]
