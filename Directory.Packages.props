@@ -17,7 +17,7 @@
         <PackageVersion Include="tSQLt.Edge" Version="2.0.0"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageVersion Include="coverlet.collector" Version="8.0.1"/>
+        <PackageVersion Include="coverlet.collector" Version="10.0.0"/>
         <PackageVersion Include="coverlet.msbuild" Version="8.0.1"/>
         <PackageVersion Include="LikeComparison.MSTest" Version="2.4.1"/>
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.4.0"/>
