@@ -1,4 +1,4 @@
-namespace SqlTest.Tests;
+namespace SqlTest.TestcontainersTests;
 
 [TestClass]
 public class MsSqlTestcontainerTests

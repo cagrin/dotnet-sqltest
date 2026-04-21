@@ -1,4 +1,4 @@
-namespace SqlTest.Tests;
+namespace SqlTest.UnitTests;
 
 [TestClass]
 public class RunTargetTests
