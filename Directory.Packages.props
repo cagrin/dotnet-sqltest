@@ -5,7 +5,7 @@
     <ItemGroup>
         <PackageVersion Include="Dapper" Version="2.1.72"/>
         <PackageVersion Include="LikeComparison" Version="2.4.1"/>
-        <PackageVersion Include="Microsoft.Data.SqlClient" Version="7.0.0"/>
+        <PackageVersion Include="Microsoft.Data.SqlClient" Version="7.0.1"/>
         <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.102"/>
         <PackageVersion Include="SQLCoverLib" Version="2.0.0"/>
         <PackageVersion Include="System.CommandLine" Version="2.0.6"/>
