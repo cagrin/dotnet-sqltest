@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SqlTest/SqlTest.csproj" />
+  <Project Path="SqlTest.Tests/SqlTest.Tests.csproj" />
+</Solution>
