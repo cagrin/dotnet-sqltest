@@ -5,13 +5,18 @@ using System.Globalization;
 
 public static class Program
 {
-    public static int Main(string[] args)
+    public static Task<int> Main(string[] args)
     {
         var englishCulture = CultureInfo.GetCultureInfo("en-US");
         CultureInfo.DefaultThreadCurrentCulture = englishCulture;
         CultureInfo.DefaultThreadCurrentUICulture = englishCulture;
         Environment.SetEnvironmentVariable("DOTNET_CLI_UI_LANGUAGE", "en-US");
 
+        return RunAsync(args, InvokeRunAllAsync);
+    }
+
+    public static Task<int> RunAsync(string[] args, Func<RunAllOptions, CancellationToken, Task<int>> runAll, InvocationConfiguration? configuration = null)
+    {
         var projectOption = new Option<string>("--project", "-p") { Description = "Database project", Required = true };
         var imageOption = new Option<string>("--image", "-i") { Description = "Docker image" };
         var collationOption = new Option<string>("--collation", "-c") { Description = "Server collation" };
@@ -21,7 +26,7 @@ public static class Program
         var ccDisableOption = new Option<bool>("--cc-disable") { Description = "Disable code coverage" };
         var ccIncludeTsqltOption = new Option<bool>("--cc-include-tsqlt") { Description = "Include code coverage of tSQLt schema" };
 
-        var runAll = new Command("runall", "Run all tests")
+        var runAllCommand = new Command("runall", "Run all tests")
         {
             projectOption,
             imageOption,
@@ -33,36 +38,60 @@ public static class Program
             ccIncludeTsqltOption,
         };
 
-        runAll.SetAction(parseResult =>
+        runAllCommand.Validators.Add(result =>
         {
-            var cs = parseResult.GetValue(targetOption);
-            return InvokeRunAll(new RunAllOptions()
+            if (!string.IsNullOrEmpty(result.GetValue(imageOption)) && !string.IsNullOrEmpty(result.GetValue(targetOption)))
+            {
+                result.AddError("Options --image and --target are mutually exclusive.");
+            }
+        });
+
+        runAllCommand.SetAction((parseResult, cancellationToken) => runAll(
+            new RunAllOptions()
             {
                 Project = parseResult.GetRequiredValue(projectOption),
                 Image = parseResult.GetValue(imageOption),
                 Collation = parseResult.GetValue(collationOption),
-                UseExplicitTarget = !string.IsNullOrEmpty(cs),
-                TargetConnectionString = cs,
+                TargetConnectionString = parseResult.GetValue(targetOption),
                 Result = parseResult.GetValue(resultOption),
                 CcCobertura = parseResult.GetValue(ccCoberturaOption),
                 CcDisable = parseResult.GetValue(ccDisableOption),
                 CcIncludeTsqlt = parseResult.GetValue(ccIncludeTsqltOption),
-            });
-        });
+            },
+            cancellationToken));
 
         var rootCommand = new RootCommand("Command line tool for running tSQLt unit tests from MSBuild.Sdk.SqlProj projects")
         {
-            runAll,
+            runAllCommand,
         };
 
-        var parseResult = rootCommand.Parse(args);
-        return parseResult.Invoke();
+        return rootCommand.Parse(args).InvokeAsync(configuration);
     }
 
-    public static int InvokeRunAll(RunAllOptions options)
+    public static ITargetProvider CreateTargetProvider(RunAllOptions options, ISqlServerClient sqlClient)
     {
-        using var stc = new RunAllCommand(options);
+        return options.UseExplicitTarget
+            ? new ExplicitTarget(options.TargetConnectionString, sqlClient)
+            : new MsSqlTestcontainer(options.Image, options.Collation);
+    }
 
-        return stc.Invoke();
+    public static async Task<int> InvokeRunAllAsync(RunAllOptions options, CancellationToken cancellationToken)
+    {
+        var console = new SystemConsole();
+        var sqlClient = new SqlServerClient();
+#if DEBUG
+        var processRunner = new ProcessRunner(echo: console);
+#else
+        var processRunner = new ProcessRunner();
+#endif
+
+        var targetProvider = CreateTargetProvider(options, sqlClient);
+
+        await using (targetProvider.ConfigureAwait(false))
+        {
+            var command = new RunAllCommand(options, targetProvider, new DotnetTool(processRunner), sqlClient, new SqlCoverCodeCoverage(), console, TimeProvider.System);
+
+            return await command.InvokeAsync(cancellationToken).ConfigureAwait(false);
+        }
     }
 }

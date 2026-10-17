@@ -1,22 +1,25 @@
 namespace SqlTest.UnitTests;
 
 [TestClass]
+[DoNotParallelize]
 public class SystemConsoleTests
 {
     [TestMethod]
     public void ShouldHaveForegroundColor()
     {
-        var console = SystemConsole.This;
+        var console = new SystemConsole();
 
         console.ForegroundColor = ConsoleColor.Black;
 
         Assert.AreEqual(ConsoleColor.Black, console.ForegroundColor);
+
+        console.ResetColor();
     }
 
     [TestMethod]
     public void ShouldHaveResetColor()
     {
-        var console = SystemConsole.This;
+        var console = new SystemConsole();
 
         console.ForegroundColor = ConsoleColor.Black;
         console.ResetColor();
@@ -25,18 +28,25 @@ public class SystemConsoleTests
     }
 
     [TestMethod]
-    public void ShouldHaveWrites()
+    public void ShouldWriteToStandardOutput()
     {
-        var console = SystemConsole.This;
+        var original = Console.Out;
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
 
-        console.Write(string.Empty);
-        console.WriteLine(string.Empty);
-        console.WriteLine(new { });
-    }
+        try
+        {
+            var console = new SystemConsole();
 
-    [TestMethod]
-    public void ShouldThrowsExceptionIfInvokeWithNullScript()
-    {
-        _ = Should.Throw<ArgumentNullException>(() => SystemConsole.Invoke(null!));
+            console.Write("a");
+            console.WriteLine("b");
+            console.WriteLine((object)42);
+        }
+        finally
+        {
+            Console.SetOut(original);
+        }
+
+        Assert.AreEqual($"ab{Environment.NewLine}42{Environment.NewLine}", writer.ToString());
     }
 }

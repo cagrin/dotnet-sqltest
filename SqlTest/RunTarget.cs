@@ -2,7 +2,7 @@ namespace SqlTest;
 
 using Microsoft.Data.SqlClient;
 
-public class RunTarget
+public sealed class RunTarget
 {
     public RunTarget(string targetConnectionString)
     {
@@ -18,10 +18,7 @@ public class RunTarget
             throw new ArgumentException("Target connection string must include Data Source (Server).", nameof(targetConnectionString));
         }
 
-        if (!builder.TrustServerCertificate)
-        {
-            builder.TrustServerCertificate = true;
-        }
+        builder.TrustServerCertificate = true;
 
         string dataSource = builder.DataSource;
         string server = dataSource;
@@ -38,12 +35,16 @@ public class RunTarget
             }
         }
 
+        this.TargetDatabaseName = builder.InitialCatalog;
+
+        // The database may not exist until it is deployed; queries use three-part names instead.
+        builder.InitialCatalog = string.Empty;
+
         this.TargetConnectionString = builder.ConnectionString;
         this.TargetServerName = server;
         this.TargetPort = port;
         this.TargetUser = builder.IntegratedSecurity ? string.Empty : builder.UserID;
         this.TargetPassword = builder.IntegratedSecurity ? string.Empty : builder.Password;
-        this.TargetDatabaseName = builder.InitialCatalog;
     }
 
     public string TargetServerName { get; }

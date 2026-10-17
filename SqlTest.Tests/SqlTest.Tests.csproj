@@ -19,15 +19,14 @@
         <PackageReference Include="MSTest.TestFramework"/>
     </ItemGroup>
     <ItemGroup>
-        <Using Include="Moq"/>
-        <PackageReference Include="Moq"/>
-    </ItemGroup>
-    <ItemGroup>
         <Using Include="LikeComparison.TransactSql"/>
         <PackageReference Include="LikeComparison.MSTest"/>
     </ItemGroup>
     <ItemGroup>
         <Using Include="Shouldly"/>
         <PackageReference Include="Shouldly"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Fixtures\*.json" CopyToOutputDirectory="PreserveNewest"/>
     </ItemGroup>
 </Project>

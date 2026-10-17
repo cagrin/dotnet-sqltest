@@ -1,0 +1,89 @@
+{
+  "Processes": [
+    {
+      "Command": "clean",
+      "Project": "Database.Tests.csproj",
+      "Result": {
+        "ExitCode": 0,
+        "StandardOutput": [
+          "Build started 29.09.2026 12:50:56.",
+          "     1\u003EProject \u0022{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj\u0022 on node 1 (Clean target(s)).",
+          "     1\u003ECoreClean:",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Error\\obj\\Debug\\net8.0\\Database.Tests.GeneratedMSBuildEditorConfig.editorconfig\u0022.",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Error\\obj\\Debug\\net8.0\\Database.Tests.AssemblyInfoInputs.cache\u0022.",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Error\\obj\\Debug\\net8.0\\Database.Tests.AssemblyInfo.cs\u0022.",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Error\\obj\\Debug\\net8.0\\Database.Tests.sourcelink.json\u0022.",
+          "     1\u003EDone Building Project \u0022{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj\u0022 (Clean target(s)).",
+          "",
+          "Build succeeded.",
+          "    0 Warning(s)",
+          "    0 Error(s)",
+          "",
+          "Time Elapsed 00:00:00.60"
+        ],
+        "StandardError": []
+      }
+    },
+    {
+      "Command": "build",
+      "Project": "Database.Tests.csproj",
+      "Result": {
+        "ExitCode": 1,
+        "StandardOutput": [
+          "  Determining projects to restore...",
+          "  All projects are up-to-date for restore.",
+          "  Using target framework net10.0 to run DacpacTool",
+          "  Using DacFX version: 170.3.93.6",
+          "EXEC : DacpacTool warning SQLPROJ0002: You are not using the latest version of this SDK, please update to get the latest bug fixes, features and support. Modify your project file: \u0027\u003CProject Sdk=\u0022MSBuild.Sdk.SqlProj/4.4.0\u0022\u003E\u0027. You can ignore this warning by adding \u0027\u003CNoWarn\u003E$(NoWarn);SQLPROJ0002\u003C/NoWarn\u003E\u0027 to your project file. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "  Using package name Database.Tests and version 1.0.0",
+          "  Using SQL Server version Sql150",
+          "  Adding reference to {UserProfile}\\.nuget\\packages\\tsqlt.edge\\2.0.0/tools/tSQLt.Edge.dacpac with external parts dbl=|dbv=|srv= and SuppressMissingDependenciesErrors False",
+          "  Adding reference to {UserProfile}\\.nuget\\packages\\microsoft.sqlserver.dacpacs.master\\150.1.2/tools/master.dacpac with external parts dbl=master|dbv=|srv= and SuppressMissingDependenciesErrors False",
+          "  Adding {RepositoryRoot}\\Database.Tests\\Error\\TestSchema.sql to the model",
+          "{RepositoryRoot}\\Database.Tests\\Error\\TestSchema.sql(1,1): error SQL46010: Incorrect syntax near \u0027BEGIN\u0027. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "{RepositoryRoot}\\Database.Tests\\Error\\TestSchema.sql(1,1): error SQL46010: Incorrect syntax near \u0027;\u0027. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "{UserProfile}\\.nuget\\packages\\msbuild.sdk.sqlproj\\4.2.0\\Sdk\\Sdk.targets(257,5): error MSB3073: The command \u0022dotnet \u0022{UserProfile}\\.nuget\\packages\\msbuild.sdk.sqlproj\\4.2.0\\Sdk\\../tools/net10.0/DacpacTool.dll\u0022 build -o \u0022obj\\Debug\\net8.0\\Database.Tests.dacpac\u0022 -n \u0022Database.Tests\u0022 -v \u00221.0.0\u0022 -sv Sql150 -i \u0022obj\\Debug\\net8.0\\Database.Tests.InputFiles.txt\u0022 -r \u0022{UserProfile}\\.nuget\\packages\\tsqlt.edge\\2.0.0/tools/tSQLt.Edge.dacpac;dbl=|dbv=|srv=;\u0022 -r \u0022{UserProfile}\\.nuget\\packages\\microsoft.sqlserver.dacpacs.master\\150.1.2/tools/master.dacpac;dbl=master|dbv=|srv=;\u0022   -dp IncludeCompositeObjects=true              \u0022 exited with code 1. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "",
+          "Build FAILED.",
+          "",
+          "EXEC : DacpacTool warning SQLPROJ0002: You are not using the latest version of this SDK, please update to get the latest bug fixes, features and support. Modify your project file: \u0027\u003CProject Sdk=\u0022MSBuild.Sdk.SqlProj/4.4.0\u0022\u003E\u0027. You can ignore this warning by adding \u0027\u003CNoWarn\u003E$(NoWarn);SQLPROJ0002\u003C/NoWarn\u003E\u0027 to your project file. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "{RepositoryRoot}\\Database.Tests\\Error\\TestSchema.sql(1,1): error SQL46010: Incorrect syntax near \u0027BEGIN\u0027. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "{RepositoryRoot}\\Database.Tests\\Error\\TestSchema.sql(1,1): error SQL46010: Incorrect syntax near \u0027;\u0027. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "{UserProfile}\\.nuget\\packages\\msbuild.sdk.sqlproj\\4.2.0\\Sdk\\Sdk.targets(257,5): error MSB3073: The command \u0022dotnet \u0022{UserProfile}\\.nuget\\packages\\msbuild.sdk.sqlproj\\4.2.0\\Sdk\\../tools/net10.0/DacpacTool.dll\u0022 build -o \u0022obj\\Debug\\net8.0\\Database.Tests.dacpac\u0022 -n \u0022Database.Tests\u0022 -v \u00221.0.0\u0022 -sv Sql150 -i \u0022obj\\Debug\\net8.0\\Database.Tests.InputFiles.txt\u0022 -r \u0022{UserProfile}\\.nuget\\packages\\tsqlt.edge\\2.0.0/tools/tSQLt.Edge.dacpac;dbl=|dbv=|srv=;\u0022 -r \u0022{UserProfile}\\.nuget\\packages\\microsoft.sqlserver.dacpacs.master\\150.1.2/tools/master.dacpac;dbl=master|dbv=|srv=;\u0022   -dp IncludeCompositeObjects=true              \u0022 exited with code 1. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "    1 Warning(s)",
+          "    3 Error(s)",
+          "",
+          "Time Elapsed 00:00:11.10"
+        ],
+        "StandardError": []
+      }
+    },
+    {
+      "Command": "publish",
+      "Project": "Database.Tests.csproj",
+      "Result": {
+        "ExitCode": 1,
+        "StandardOutput": [
+          "  Determining projects to restore...",
+          "  All projects are up-to-date for restore.",
+          "  Using target framework net10.0 to run DacpacTool",
+          "  Using DacFX version: 170.3.93.6",
+          "EXEC : DacpacTool warning SQLPROJ0002: You are not using the latest version of this SDK, please update to get the latest bug fixes, features and support. Modify your project file: \u0027\u003CProject Sdk=\u0022MSBuild.Sdk.SqlProj/4.4.0\u0022\u003E\u0027. You can ignore this warning by adding \u0027\u003CNoWarn\u003E$(NoWarn);SQLPROJ0002\u003C/NoWarn\u003E\u0027 to your project file. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "  Using package name Database.Tests and version 1.0.0",
+          "  Using SQL Server version Sql150",
+          "  Adding reference to {UserProfile}\\.nuget\\packages\\tsqlt.edge\\2.0.0/tools/tSQLt.Edge.dacpac with external parts dbl=|dbv=|srv= and SuppressMissingDependenciesErrors False",
+          "  Adding reference to {UserProfile}\\.nuget\\packages\\microsoft.sqlserver.dacpacs.master\\150.1.2/tools/master.dacpac with external parts dbl=master|dbv=|srv= and SuppressMissingDependenciesErrors False",
+          "  Adding {RepositoryRoot}\\Database.Tests\\Error\\TestSchema.sql to the model",
+          "{RepositoryRoot}\\Database.Tests\\Error\\TestSchema.sql(1,1): error SQL46010: Incorrect syntax near \u0027BEGIN\u0027. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "{RepositoryRoot}\\Database.Tests\\Error\\TestSchema.sql(1,1): error SQL46010: Incorrect syntax near \u0027;\u0027. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]",
+          "{UserProfile}\\.nuget\\packages\\msbuild.sdk.sqlproj\\4.2.0\\Sdk\\Sdk.targets(257,5): error MSB3073: The command \u0022dotnet \u0022{UserProfile}\\.nuget\\packages\\msbuild.sdk.sqlproj\\4.2.0\\Sdk\\../tools/net10.0/DacpacTool.dll\u0022 build -o \u0022obj\\Release\\net8.0\\Database.Tests.dacpac\u0022 -n \u0022Database.Tests\u0022 -v \u00221.0.0\u0022 -sv Sql150 -i \u0022obj\\Release\\net8.0\\Database.Tests.InputFiles.txt\u0022 -r \u0022{UserProfile}\\.nuget\\packages\\tsqlt.edge\\2.0.0/tools/tSQLt.Edge.dacpac;dbl=|dbv=|srv=;\u0022 -r \u0022{UserProfile}\\.nuget\\packages\\microsoft.sqlserver.dacpacs.master\\150.1.2/tools/master.dacpac;dbl=master|dbv=|srv=;\u0022   -dp CreateNewDatabase=true -dp IncludeCompositeObjects=true              \u0022 exited with code 1. [{RepositoryRoot}\\Database.Tests\\Error\\Database.Tests.csproj]"
+        ],
+        "StandardError": []
+      }
+    }
+  ],
+  "RunAllError": null,
+  "TestResults": [],
+  "JUnitXml": "",
+  "Coverage": null
+}

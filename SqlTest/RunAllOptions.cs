@@ -1,6 +1,8 @@
 namespace SqlTest;
 
-public class RunAllOptions
+using System.Diagnostics.CodeAnalysis;
+
+public sealed class RunAllOptions
 {
     public string Project { get; set; } = string.Empty;
 
@@ -16,7 +18,10 @@ public class RunAllOptions
 
     public bool CcIncludeTsqlt { get; set; }
 
-    public bool UseExplicitTarget { get; set; }
-
     public string? TargetConnectionString { get; set; }
+
+    public TimeSpan PrepareTimeout { get; set; } = TimeSpan.FromMinutes(2);
+
+    [MemberNotNullWhen(true, nameof(TargetConnectionString))]
+    public bool UseExplicitTarget => !string.IsNullOrWhiteSpace(this.TargetConnectionString);
 }

@@ -1,283 +1,216 @@
 namespace SqlTest;
 
-using System.Data;
-using Dapper;
-using Microsoft.Data.SqlClient;
-using SQLCover;
-
-public class RunAllCommand : IDisposable
+public sealed class RunAllCommand
 {
+    public const int ExitCodeSuccess = 0;
+
+    public const int ExitCodeTestsFailed = 1;
+
+    public const int ExitCodeError = 2;
+
+    public const string TsqltExcludeFilter = @".*tSQLt[.|\]].*";
+
     private readonly RunAllOptions options;
+
+    private readonly ITargetProvider targetProvider;
+
+    private readonly DotnetTool dotnet;
+
+    private readonly ISqlServerClient sqlClient;
+
+    private readonly ICodeCoverage codeCoverage;
 
     private readonly IConsole console;
 
-    private readonly StopwatchLog stopwatchLogAll;
+    private readonly TimeProvider timeProvider;
 
-    private string database = "database_tests";
-
-    private RunTarget target;
-
-    private ITestcontainer? testcontainer;
-
-    private CodeCoverage? coverage;
-
-    private CoverageResult? code;
-
-    public RunAllCommand(RunAllOptions options, IConsole? mockConsole = null)
+    public RunAllCommand(RunAllOptions options, ITargetProvider targetProvider, DotnetTool dotnet, ISqlServerClient sqlClient, ICodeCoverage codeCoverage, IConsole console, TimeProvider timeProvider)
     {
         this.options = options;
-        this.console = mockConsole ?? SystemConsole.This;
-        this.stopwatchLogAll = new StopwatchLog();
-        this.target = new RunTarget("Data Source=localhost;Integrated Security=SSPI;TrustServerCertificate=True");
+        this.targetProvider = targetProvider;
+        this.dotnet = dotnet;
+        this.sqlClient = sqlClient;
+        this.codeCoverage = codeCoverage;
+        this.console = console;
+        this.timeProvider = timeProvider;
     }
 
-    public int Invoke()
+    public async Task<int> InvokeAsync(CancellationToken cancellationToken = default)
     {
-        _ = this.stopwatchLogAll.Start();
-
-        this.PrepareDatabase();
-
-        if (this.DeployDatabase())
-        {
-            this.RunTests();
-            return this.ShowResults();
-        }
-
-        return 2;
-    }
-
-    public void Dispose()
-    {
-        this.Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    protected virtual void Dispose(bool disposing)
-    {
-        if (disposing)
-        {
-            this.testcontainer?.Dispose();
-        }
-    }
-
-    private void PrepareDatabase()
-    {
-        var stopwatchLog = new StopwatchLog().Start("Preparing database...");
-
-        var createContainerTask = this.CreateContainer();
-        var buildDatabaseTask = this.CleanBuildDatabase();
-
-        _ = Task.WhenAll(createContainerTask, buildDatabaseTask).Wait(millisecondsTimeout: 120000);
-
-        stopwatchLog.Stop();
-    }
-
-    private async Task CreateContainer()
-    {
-        if (this.options.UseExplicitTarget)
-        {
-            this.target = await this.ConnectExplicitTargetAsync().ConfigureAwait(false);
-        }
-        else
-        {
-            this.testcontainer = new MsSqlTestcontainer();
-
-            this.target = await this.testcontainer.StartAsync(this.options.Image, this.options.Collation).ConfigureAwait(false);
-        }
-    }
-
-    private async Task CleanBuildDatabase()
-    {
-        this.options.Project = DotnetTool.GetProjectFullName(this.options.Project);
-
-        this.database = DotnetTool.GetDatabaseName(this.options.Project);
-
-        if (this.options.UseExplicitTarget && !string.IsNullOrWhiteSpace(this.options.TargetConnectionString))
-        {
-            var explicitTarget = new RunTarget(this.options.TargetConnectionString);
-
-            if (!string.IsNullOrWhiteSpace(explicitTarget.TargetDatabaseName))
-            {
-                this.database = explicitTarget.TargetDatabaseName;
-            }
-        }
-
-        string script = DotnetTool.GetCleanBuildScript(this.options.Project);
-
-        _ = SystemConsole.Invoke(script);
-
-        await Task.CompletedTask.ConfigureAwait(false);
-    }
-
-    private bool DeployDatabase()
-    {
-        var stopwatchLog = new StopwatchLog().Start("Deploying database...");
-
-        string script = DotnetTool.GetPublishScriptWithReferences(this.options.Project, this.target.TargetServerName, this.target.TargetPort, this.database, this.target.TargetUser, this.target.TargetPassword);
-
-        var results = SystemConsole.Invoke(script);
-
-        stopwatchLog.Stop();
-
-        if (!results.Last().ToString().Like("%Successfully deployed database%"))
-        {
-            string error = string.Empty;
-
-            foreach (var result in results)
-            {
-                error += $"{result}\n";
-            }
-
-            error += "Deploying database failed.";
-
-            this.console.ForegroundColor = ConsoleColor.Red;
-            this.console.WriteLine(error);
-            this.console.ResetColor();
-            return false;
-        }
-
-        return true;
-    }
-
-    private void RunTests()
-    {
-        var stopwatchLog = new StopwatchLog().Start("Running all tests....");
-
-        this.coverage = new CodeCoverage(this.target.TargetConnectionString, this.database, this.options.CcIncludeTsqlt ? null : new[] { ".*tSQLt[.|\\]].*" });
-
-        using var con = new SqlConnection(this.target.TargetConnectionString);
+        var total = this.StartLog();
 
         try
         {
-            if (!this.options.CcDisable)
+            var project = SqlProject.Load(this.options.Project);
+            string database = this.GetDatabaseName(project);
+
+            var target = await this.PrepareDatabaseAsync(project, cancellationToken).ConfigureAwait(false);
+
+            if (!await this.DeployDatabaseAsync(project, target, database, cancellationToken).ConfigureAwait(false))
             {
-                _ = this.coverage.Start();
+                return ExitCodeError;
             }
 
-            _ = con.Execute($"EXEC [{this.database}].tSQLt.RunAll", commandTimeout: 0);
+            var coverage = await this.RunTestsAsync(target, database, cancellationToken).ConfigureAwait(false);
 
-            stopwatchLog.Stop();
-
-            if (!this.options.CcDisable)
-            {
-                stopwatchLog = new StopwatchLog().Start("Gathering coverage...");
-
-                this.code = this.coverage.Stop();
-
-                this.CoberturaXml();
-
-                stopwatchLog.Stop();
-            }
+            return await this.ShowResultsAsync(target, database, coverage, total, cancellationToken).ConfigureAwait(false);
         }
-        catch (SqlException ex)
+        catch (Exception ex) when (ex is SqlTestException or TimeoutException or ArgumentException)
         {
-            if (!this.options.CcDisable)
-            {
-                this.code = this.coverage.Stop();
-            }
-
-            stopwatchLog.Stop();
-
-            this.console.ForegroundColor = ConsoleColor.Red;
-            this.console.WriteLine(ex.Message);
-            this.console.ResetColor();
+            this.WriteLines(ConsoleColor.Red, ex.Message);
+            return ExitCodeError;
         }
     }
 
-    private int ShowResults()
+    private string GetDatabaseName(SqlProject project)
     {
-        int results = this.ResultLog();
+        if (this.options.UseExplicitTarget)
+        {
+            string database = new RunTarget(this.options.TargetConnectionString).TargetDatabaseName;
 
-        this.ResultXml();
+            if (!string.IsNullOrWhiteSpace(database))
+            {
+                return database;
+            }
+        }
 
-        return results;
+        return project.DatabaseName;
     }
 
-    private int ResultLog()
+    private async Task<RunTarget> PrepareDatabaseAsync(SqlProject project, CancellationToken cancellationToken)
     {
-        using var con = new SqlConnection(this.target.TargetConnectionString);
+        var log = this.StartLog("Preparing database...");
 
-        var results = con.Query<TestResult>($"SELECT Name, Result, Msg FROM [{this.database}].tSQLt.TestResult").ToArray();
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeout.CancelAfter(this.options.PrepareTimeout);
 
-        int passed = results.Where(p => p.Result == "Success").Count();
-        int failed = results.Where(p => p.Result == "Failure").Count();
+        var targetTask = this.targetProvider.StartAsync(timeout.Token);
+        var buildTask = this.dotnet.CleanBuildAsync(project.FullName, timeout.Token);
 
-        if (failed > 0)
+        try
         {
-            this.console.ForegroundColor = ConsoleColor.Red;
-            this.console.WriteLine("Failed test messages:");
-            foreach (var result in results.Where(p => p.Result == "Failure"))
-            {
-                this.console.WriteLine($"  {result.Name}: {result.Msg}");
-            }
+            // Build errors are reported by publish, which builds the project again.
+            await Task.WhenAll(targetTask, buildTask).ConfigureAwait(false);
+
+            return await targetTask.ConfigureAwait(false);
+        }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        {
+            throw new TimeoutException($"Preparing database timed out after {this.options.PrepareTimeout}.");
+        }
+        finally
+        {
+            log.Stop();
+        }
+    }
+
+    private async Task<bool> DeployDatabaseAsync(SqlProject project, RunTarget target, string database, CancellationToken cancellationToken)
+    {
+        var log = this.StartLog("Deploying database...");
+
+        var result = await this.dotnet.PublishAsync(project, target, database, cancellationToken).ConfigureAwait(false);
+
+        log.Stop();
+
+        if (result.ExitCode == 0)
+        {
+            return true;
+        }
+
+        this.WriteLines(ConsoleColor.Red, result.StandardOutput.Concat(result.StandardError).Append("Deploying database failed.").ToArray());
+        return false;
+    }
+
+    private async Task<CoverageReport?> RunTestsAsync(RunTarget target, string database, CancellationToken cancellationToken)
+    {
+        var log = this.StartLog("Running all tests....");
+
+        if (!this.options.CcDisable)
+        {
+            this.codeCoverage.Start(target.TargetConnectionString, database, this.options.CcIncludeTsqlt ? null : [TsqltExcludeFilter]);
+        }
+
+        string? error = await this.sqlClient.RunAllTestsAsync(target.TargetConnectionString, database, cancellationToken).ConfigureAwait(false);
+
+        log.Stop();
+
+        if (error != null)
+        {
+            this.WriteLines(ConsoleColor.Red, error);
+        }
+
+        if (this.options.CcDisable)
+        {
+            return null;
+        }
+
+        log = this.StartLog("Gathering coverage...");
+
+        var coverage = this.codeCoverage.Stop();
+
+        if (!string.IsNullOrEmpty(this.options.CcCobertura))
+        {
+            await File.WriteAllTextAsync(this.options.CcCobertura, coverage.CoberturaXml, cancellationToken).ConfigureAwait(false);
+        }
+
+        log.Stop();
+
+        return coverage;
+    }
+
+    private async Task<int> ShowResultsAsync(RunTarget target, string database, CoverageReport? coverage, StopwatchLog total, CancellationToken cancellationToken)
+    {
+        var results = await this.sqlClient.GetTestResultsAsync(target.TargetConnectionString, database, cancellationToken).ConfigureAwait(false);
+
+        int passed = results.Count(p => p.Result == "Success");
+        var failures = results.Where(p => p.Result is "Failure" or "Error").ToArray();
+
+        if (failures.Length > 0)
+        {
+            this.WriteLines(ConsoleColor.Red, ["Failed test messages:", .. failures.Select(p => $"  {p.Name}: {p.Msg}")]);
         }
 
         string cc = string.Empty;
-        if (this.code != null)
+
+        if (coverage != null)
         {
-            var uncoveredBatches = this.code.Batches.Where(p => p.Statements.Any(r => r.HitCount == 0)).ToArray();
-            if (uncoveredBatches.Length > 0)
+            if (coverage.Uncovered.Count > 0)
             {
-                this.console.ForegroundColor = ConsoleColor.Yellow;
-                this.console.WriteLine("Uncovered statements:");
-                foreach (var batch in uncoveredBatches)
-                {
-                    foreach (var statement in batch.Statements.Where(p => p.HitCount == 0))
-                    {
-                        this.console.WriteLine($"  {batch.ObjectName}: {statement.Text.FirstLine()}");
-                    }
-                }
+                this.WriteLines(ConsoleColor.Yellow, ["Uncovered statements:", .. coverage.Uncovered.Select(p => $"  {p.ObjectName}: {p.Text.FirstLine()}")]);
             }
 
-            long cr = this.code.StatementCount == 0 ? 0 : Convert.ToInt64(Convert.ToDouble(this.code.CoveredStatementCount) / Convert.ToDouble(this.code.StatementCount) * 100.0);
-            cc = $", Coverage: {cr}% ({this.code.CoveredStatementCount}/{this.code.StatementCount})";
+            cc = $", Coverage: {coverage.Percent}% ({coverage.CoveredStatementCount}/{coverage.StatementCount})";
         }
 
-        this.console.ForegroundColor = failed > 0 ? ConsoleColor.Red : ConsoleColor.Green;
-        this.console.Write($"Failed: {failed}, Passed: {passed}{cc}, Duration:");
-        this.stopwatchLogAll.Stop();
+        this.console.ForegroundColor = failures.Length > 0 ? ConsoleColor.Red : ConsoleColor.Green;
+        this.console.Write($"Failed: {failures.Length}, Passed: {passed}{cc}, Duration:");
+        total.Stop();
         this.console.ResetColor();
 
-        return (failed > 0) ? 1 : 0;
-    }
-
-    private void ResultXml()
-    {
         if (!string.IsNullOrEmpty(this.options.Result))
         {
-            string sql = $"[{this.database}].tSQLt.XmlResultFormatter";
+            string xml = await this.sqlClient.GetJUnitXmlAsync(target.TargetConnectionString, database, cancellationToken).ConfigureAwait(false);
 
-            using var con = new SqlConnection(this.target.TargetConnectionString);
-            using var file = new StreamWriter(this.options.Result);
-
-            string xml = con.Query<string>(sql, CommandType.StoredProcedure).First();
-            file.Write(xml);
+            await File.WriteAllTextAsync(this.options.Result, xml, cancellationToken).ConfigureAwait(false);
         }
+
+        return failures.Length > 0 ? ExitCodeTestsFailed : ExitCodeSuccess;
     }
 
-    private void CoberturaXml()
+    private StopwatchLog StartLog(string title = "")
     {
-        if (!string.IsNullOrEmpty(this.options.CcCobertura))
-        {
-            using var file = new StreamWriter(this.options.CcCobertura);
-
-            string xml = this.code!.Cobertura(this.database);
-            file.Write(xml);
-        }
+        return new StopwatchLog(this.console, this.timeProvider).Start(title);
     }
 
-    private async Task<RunTarget> ConnectExplicitTargetAsync()
+    private void WriteLines(ConsoleColor color, params string[] lines)
     {
-        if (string.IsNullOrWhiteSpace(this.options.TargetConnectionString))
+        this.console.ForegroundColor = color;
+
+        foreach (string line in lines)
         {
-            throw new ArgumentException("Target connection string is required.");
+            this.console.WriteLine(line);
         }
 
-        var target = new RunTarget(this.options.TargetConnectionString);
-
-        using var con = new SqlConnection(target.TargetConnectionString);
-        await con.OpenAsync().ConfigureAwait(false);
-
-        return target;
+        this.console.ResetColor();
     }
 }

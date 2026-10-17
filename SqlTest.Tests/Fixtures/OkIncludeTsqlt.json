@@ -1,0 +1,1937 @@
+{
+  "Processes": [
+    {
+      "Command": "clean",
+      "Project": "Database.Tests.csproj",
+      "Result": {
+        "ExitCode": 0,
+        "StandardOutput": [
+          "Build started 29.09.2026 12:52:17.",
+          "     1\u003EProject \u0022{RepositoryRoot}\\Database.Tests\\Ok\\Database.Tests.csproj\u0022 on node 1 (Clean target(s)).",
+          "     1\u003ECoreClean:",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Ok\\bin\\Debug\\net8.0\\Database.Tests.deps.json\u0022.",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Ok\\bin\\Debug\\net8.0\\Database.Tests.dacpac\u0022.",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Ok\\obj\\Debug\\net8.0\\Database.Tests.GeneratedMSBuildEditorConfig.editorconfig\u0022.",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Ok\\obj\\Debug\\net8.0\\Database.Tests.AssemblyInfoInputs.cache\u0022.",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Ok\\obj\\Debug\\net8.0\\Database.Tests.AssemblyInfo.cs\u0022.",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Ok\\obj\\Debug\\net8.0\\Database.Tests.sourcelink.json\u0022.",
+          "         Deleting file \u0022{RepositoryRoot}\\Database.Tests\\Ok\\obj\\Debug\\net8.0\\Database.Tests.dacpac\u0022.",
+          "     1\u003EDone Building Project \u0022{RepositoryRoot}\\Database.Tests\\Ok\\Database.Tests.csproj\u0022 (Clean target(s)).",
+          "",
+          "Build succeeded.",
+          "    0 Warning(s)",
+          "    0 Error(s)",
+          "",
+          "Time Elapsed 00:00:01.24"
+        ],
+        "StandardError": []
+      }
+    },
+    {
+      "Command": "build",
+      "Project": "Database.Tests.csproj",
+      "Result": {
+        "ExitCode": 0,
+        "StandardOutput": [
+          "  Determining projects to restore...",
+          "  All projects are up-to-date for restore.",
+          "  Using target framework net10.0 to run DacpacTool",
+          "  Using DacFX version: 170.3.93.6",
+          "EXEC : DacpacTool warning SQLPROJ0002: You are not using the latest version of this SDK, please update to get the latest bug fixes, features and support. Modify your project file: \u0027\u003CProject Sdk=\u0022MSBuild.Sdk.SqlProj/4.4.0\u0022\u003E\u0027. You can ignore this warning by adding \u0027\u003CNoWarn\u003E$(NoWarn);SQLPROJ0002\u003C/NoWarn\u003E\u0027 to your project file. [{RepositoryRoot}\\Database.Tests\\Ok\\Database.Tests.csproj]",
+          "  Using package name Database.Tests and version 1.0.0",
+          "  Using SQL Server version Sql150",
+          "  Adding reference to {UserProfile}\\.nuget\\packages\\tsqlt.edge\\2.0.0/tools/tSQLt.Edge.dacpac with external parts dbl=|dbv=|srv= and SuppressMissingDependenciesErrors False",
+          "  Adding reference to {UserProfile}\\.nuget\\packages\\microsoft.sqlserver.dacpacs.master\\150.1.2/tools/master.dacpac with external parts dbl=master|dbv=|srv= and SuppressMissingDependenciesErrors False",
+          "  Adding {RepositoryRoot}\\Database.Tests\\Ok\\TestSchema.sql to the model",
+          "  Writing model to {RepositoryRoot}\\Database.Tests\\Ok\\obj\\Debug\\net8.0\\Database.Tests.dacpac",
+          "  Database.Tests -\u003E {RepositoryRoot}\\Database.Tests\\Ok\\bin\\Debug\\net8.0\\Database.Tests.dacpac",
+          "",
+          "Build succeeded.",
+          "",
+          "EXEC : DacpacTool warning SQLPROJ0002: You are not using the latest version of this SDK, please update to get the latest bug fixes, features and support. Modify your project file: \u0027\u003CProject Sdk=\u0022MSBuild.Sdk.SqlProj/4.4.0\u0022\u003E\u0027. You can ignore this warning by adding \u0027\u003CNoWarn\u003E$(NoWarn);SQLPROJ0002\u003C/NoWarn\u003E\u0027 to your project file. [{RepositoryRoot}\\Database.Tests\\Ok\\Database.Tests.csproj]",
+          "    1 Warning(s)",
+          "    0 Error(s)",
+          "",
+          "Time Elapsed 00:00:12.80"
+        ],
+        "StandardError": []
+      }
+    },
+    {
+      "Command": "publish",
+      "Project": "Database.Tests.csproj",
+      "Result": {
+        "ExitCode": 0,
+        "StandardOutput": [
+          "  Determining projects to restore...",
+          "  All projects are up-to-date for restore.",
+          "  Using target framework net10.0 to run DacpacTool",
+          "  Database.Tests -\u003E {RepositoryRoot}\\Database.Tests\\Ok\\bin\\Release\\net8.0\\Database.Tests.dacpac",
+          "  Setting property CreateNewDatabase to value True",
+          "  Setting property IncludeCompositeObjects to value True",
+          "  Setting property CreateNewDatabase to value True",
+          "  Setting property CreateNewDatabase to value True",
+          "  Setting property IncludeCompositeObjects to value True",
+          "  Setting property IncludeCompositeObjects to value True",
+          "  Using encrypt: False",
+          "  Using target server \u0027127.0.0.1\u0027 on port 43565",
+          "  Using SQL Server Authentication",
+          "  Deploying package \u0027Database.Tests\u0027 version \u00271.0.0\u0027 to database \u0027Database.Tests\u0027",
+          "  Initializing deployment (Start)",
+          "  Initializing deployment (Complete)",
+          "  Analyzing deployment plan (Start)",
+          "  Analyzing deployment plan (Complete)",
+          "  Updating database (Start)",
+          "  Creating database Database.Tests...",
+          "  Creating User [tSQLt.TestClass]...",
+          "  Creating Schema [TestSchema]...",
+          "  Creating Schema [tSQLt]...",
+          "  Creating User-Defined Table Type [tSQLt].[AssertStringTable]...",
+          "  Creating User-Defined Table Type [tSQLt].[Private_TestNamesType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_ColumnsType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_CheckConstraintsType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_ObjectsType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_IdentityColumnsType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_DefaultConstraintsType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_TypesType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_SynonymsType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_ComputedColumnsType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_ParametersType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_IndexColumnsType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_SqlModulesType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_InterfacesType]...",
+          "  Creating User-Defined Table Type [tSQLt].[System_ForeignKeysType]...",
+          "  Creating Table [tSQLt].[Private_ExpectException]...",
+          "  Creating Table [tSQLt].[TestResult]...",
+          "  Creating Table [tSQLt].[Private_FakeTables]...",
+          "  Creating Function [tSQLt].[Private_ResolveFakeTableNamesForBackwardCompatibility]...",
+          "  Creating Function [tSQLt].[TestCaseSummary]...",
+          "  Creating Function [tSQLt].[System_Tests]...",
+          "  Creating View [tSQLt].[TestClasses]...",
+          "  Creating View [tSQLt].[Tests]...",
+          "  Creating Procedure [tSQLt].[AssertObjectExists]...",
+          "  Creating Procedure [tSQLt].[Internal_XmlResultFormatter]...",
+          "  Creating Procedure [tSQLt].[Private_ResultLog]...",
+          "  Creating Procedure [tSQLt].[ApplyTrigger]...",
+          "  Creating Procedure [tSQLt].[RemoveObjectIfExists]...",
+          "  Creating Procedure [tSQLt].[AssertEqualsString]...",
+          "  Creating Procedure [tSQLt].[DropClass]...",
+          "  Creating Procedure [tSQLt].[FakeTable]...",
+          "  Creating Procedure [tSQLt].[AssertEmptyTable]...",
+          "  Creating Procedure [tSQLt].[NewTestClass]...",
+          "  Creating Procedure [tSQLt].[ExpectException]...",
+          "  Creating Procedure [tSQLt].[AssertNotEqualsString]...",
+          "  Creating Procedure [tSQLt].[SpyProcedure]...",
+          "  Creating Procedure [tSQLt].[Private_GetQuotedObjectName]...",
+          "  Creating Procedure [tSQLt].[System_ExecuteCommand_ColumnId]...",
+          "  Creating Procedure [tSQLt].[Internal_Fail]...",
+          "  Creating Procedure [tSQLt].[ExpectNoException]...",
+          "  Creating Procedure [tSQLt].[XmlResultFormatter]...",
+          "  Creating Procedure [tSQLt].[AssertEqualsTableSchema]...",
+          "  Creating Procedure [tSQLt].[Private_RenameObject]...",
+          "  Creating Procedure [tSQLt].[Fail]...",
+          "  Creating Procedure [tSQLt].[RenameClass]...",
+          "  Creating Procedure [tSQLt].[AssertResultSetsHaveSameMetaData]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertEqualsString]...",
+          "  Creating Procedure [tSQLt].[FakeFunction]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertObjectExists]...",
+          "  Creating Procedure [tSQLt].[Internal_RemoveObject]...",
+          "  Creating Procedure [tSQLt].[System_IdentityColumns]...",
+          "  Creating Procedure [tSQLt].[Private_GetNewTranName]...",
+          "  Creating Procedure [tSQLt].[System_Interfaces]...",
+          "  Creating Procedure [tSQLt].[AssertEquals]...",
+          "  Creating Procedure [tSQLt].[AssertStringIn]...",
+          "  Creating Procedure [tSQLt].[AssertNotEquals]...",
+          "  Creating Procedure [tSQLt].[System_ExecuteCommand_TypeId]...",
+          "  Creating Procedure [tSQLt].[AssertObjectDoesNotExist]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertObjectDoesNotExist]...",
+          "  Creating Procedure [tSQLt].[Private_IsEmptyTable]...",
+          "  Creating Procedure [tSQLt].[Internal_ExpectNoException]...",
+          "  Creating Procedure [tSQLt].[Private_TestNames]...",
+          "  Creating Procedure [tSQLt].[System_DefaultConstraints]...",
+          "  Creating Procedure [tSQLt].[Run]...",
+          "  Creating Procedure [tSQLt].[RemoveObject]...",
+          "  Creating Procedure [tSQLt].[System_ExecuteCommand]...",
+          "  Creating Procedure [tSQLt].[Private_ProcessErrorMessage]...",
+          "  Creating Procedure [tSQLt].[AssertEqualsTable]...",
+          "  Creating Procedure [tSQLt].[Internal_DropClass]...",
+          "  Creating Procedure [tSQLt].[ApplyConstraint]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertNotEqualsString]...",
+          "  Creating Procedure [tSQLt].[System_Types]...",
+          "  Creating Procedure [tSQLt].[Internal_RenameClass]...",
+          "  Creating Procedure [tSQLt].[Private_RemoveLastCharacter]...",
+          "  Creating Procedure [tSQLt].[Private_RunTestSetUp]...",
+          "  Creating Procedure [tSQLt].[RunAll]...",
+          "  Creating Procedure [tSQLt].[System_Synonyms]...",
+          "  Creating Procedure [tSQLt].[System_ComputedColumns]...",
+          "  Creating Procedure [tSQLt].[Internal_RemoveObjectIfExists]...",
+          "  Creating Procedure [tSQLt].[ApplyIndex]...",
+          "  Creating Procedure [tSQLt].[System_ExecuteCommand_ConstraintId]...",
+          "  Creating Procedure [tSQLt].[Internal_ExpectException]...",
+          "  Creating Procedure [tSQLt].[AssertLike]...",
+          "  Creating Procedure [dbo].[Assertions]...",
+          "  Creating Procedure [dbo].[Example]...",
+          "  Creating Procedure [TestSchema].[test that this test is ok]...",
+          "  Creating Procedure [tSQLt].[System_IndexColumns]...",
+          "  Creating Procedure [tSQLt].[System_ForeignKeys]...",
+          "  Creating Procedure [tSQLt].[System_Objects]...",
+          "  Creating Procedure [tSQLt].[Private_ApplyForeignKey]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertStringIn]...",
+          "  Creating Procedure [tSQLt].[Private_GetIdentityColumn]...",
+          "  Creating Procedure [tSQLt].[Internal_NewTestClass]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertEquals]...",
+          "  Creating Procedure [tSQLt].[Private_ProcessConstraintName]...",
+          "  Creating Procedure [tSQLt].[System_Parameters]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertNotEquals]...",
+          "  Creating Procedure [tSQLt].[Internal_ApplyIndex]...",
+          "  Creating Procedure [tSQLt].[Private_GetObjectType]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertLike]...",
+          "  Creating Procedure [tSQLt].[System_Columns]...",
+          "  Creating Procedure [tSQLt].[Private_Run]...",
+          "  Creating Procedure [tSQLt].[Private_GetDefaultConstraints]...",
+          "  Creating Procedure [tSQLt].[Private_GetParametersNames]...",
+          "  Creating Procedure [tSQLt].[Private_GetTypeName]...",
+          "  Creating Procedure [tSQLt].[Private_GetParameters]...",
+          "  Creating Procedure [tSQLt].[Private_GetMetaData]...",
+          "  Creating Procedure [tSQLt].[Private_ProcessTableName]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertResultSetsHaveSameMetaData]...",
+          "  Creating Procedure [tSQLt].[System_SqlModules]...",
+          "  Creating Procedure [tSQLt].[Private_ApplyUniqueConstraint]...",
+          "  Creating Procedure [tSQLt].[Private_GetScalarParameters]...",
+          "  Creating Procedure [tSQLt].[System_CheckConstraints]...",
+          "  Creating Procedure [tSQLt].[Private_GetComputedColumn]...",
+          "  Creating Procedure [tSQLt].[Private_GetSpyProcedureLogSelect]...",
+          "  Creating Procedure [tSQLt].[Private_GetColumnsNames]...",
+          "  Creating Procedure [tSQLt].[Internal_Run]...",
+          "  Creating Procedure [tSQLt].[Private_ProcessTriggerName]...",
+          "  Creating Procedure [tSQLt].[Private_ProcessUncomparableColumns]...",
+          "  Creating Procedure [tSQLt].[Private_ApplyCheckConstraint]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertEmptyTable]...",
+          "  Creating Procedure [tSQLt].[Internal_ApplyTrigger]...",
+          "  Creating Procedure [tSQLt].[Internal_RunAll]...",
+          "  Creating Procedure [tSQLt].[Private_GetType]...",
+          "  Creating Procedure [tSQLt].[Private_GetParametersWithTypes]...",
+          "  Creating Procedure [tSQLt].[Private_CompareTables]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertEqualsTable]...",
+          "  Creating Procedure [tSQLt].[Private_ProcessFakeDataSource]...",
+          "  Creating Procedure [tSQLt].[Private_GetScalarReturnType]...",
+          "  Creating Procedure [tSQLt].[Internal_FakeFunction]...",
+          "  Creating Procedure [tSQLt].[Private_GetFakeColumns]...",
+          "  Creating Procedure [tSQLt].[Private_ApplyPrimaryKey]...",
+          "  Creating Procedure [tSQLt].[Internal_FakeTable]...",
+          "  Creating Procedure [tSQLt].[Private_GetSpyProcedureLogColumns]...",
+          "  Creating Procedure [tSQLt].[Private_GetColumns]...",
+          "  Creating Procedure [tSQLt].[Internal_ApplyConstraint]...",
+          "  Creating Procedure [tSQLt].[Internal_AssertEqualsTableSchema]...",
+          "  Creating Procedure [tSQLt].[Private_ProcessProcedureName]...",
+          "  Creating Procedure [tSQLt].[Internal_SpyProcedure]...",
+          "  Update complete.",
+          "  Updating database (Complete)",
+          "  Successfully deployed database \u0027Database.Tests\u0027"
+        ],
+        "StandardError": []
+      }
+    }
+  ],
+  "RunAllError": null,
+  "TestResults": [
+    {
+      "Name": "[TestSchema].[test that this test is ok]",
+      "Result": "Success",
+      "Msg": ""
+    }
+  ],
+  "JUnitXml": "",
+  "Coverage": {
+    "StatementCount": 474,
+    "CoveredStatementCount": 53,
+    "Uncovered": [
+      {
+        "ObjectName": "[tSQLt].[System_Synonyms]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand @Command, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ComputedColumns]",
+        "Text": "IF OBJECT_ID(CONCAT(\u0027tempdb..\u0027, @ObjectName)) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ComputedColumns]",
+        "Text": "SET @Command = REPLACE(@Command, \u0027FROM sys.\u0027, \u0027FROM tempdb.sys.\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ComputedColumns]",
+        "Text": "SET @Command = REPLACE(@Command, \u0027@ObjectName\u0027, \u0027CONCAT(\u0027\u0027tempdb..\u0027\u0027, @ObjectName)\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ComputedColumns]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand_ColumnId @Command, @ObjectName, @ColumnId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_RemoveObjectIfExists]",
+        "Text": "EXEC tSQLt.RemoveObject @ObjectName, @NewName OUTPUT, @IfExists = 1;"
+      },
+      {
+        "ObjectName": "[tSQLt].[ApplyIndex]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[ApplyIndex]",
+        "Text": "EXEC @Command\n    @TableName = @TableName,\n    @IndexName = @IndexName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand_ConstraintId]",
+        "Text": "IF @DatabaseName IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand_ConstraintId]",
+        "Text": "EXEC sys.sp_executesql @Execute, N\u0027@Command NVARCHAR(MAX), @ConstraintId INT\u0027, @Command, @ConstraintId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand_ConstraintId]",
+        "Text": "EXEC sys.sp_executesql @Command, N\u0027@ConstraintId INT\u0027, @ConstraintId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ExpectException]",
+        "Text": "INSERT INTO tSQLt.Private_ExpectException (ExpectException, ExpectedMessage, ExpectedSeverity, ExpectedState, Message, ExpectedMessagePattern, ExpectedErrorNumber)\n    VALUES (1, @ExpectedMessage, @ExpectedSeverity, @ExpectedState, @Message, @ExpectedMessagePattern, @ExpectedErrorNumber);"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertLike]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertLike]",
+        "Text": "EXEC @Command\n    @ExpectedPattern = @ExpectedPattern,\n    @Actual = @Actual,\n    @Message = @Message;"
+      },
+      {
+        "ObjectName": "[dbo].[Example]",
+        "Text": "SELECT A = 1 INTO #Example"
+      },
+      {
+        "ObjectName": "[dbo].[Example]",
+        "Text": "UPDATE #Example SET\r\n        A = 2"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_IndexColumns]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand @Command, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ForeignKeys]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand_ConstraintId @Command, @ObjectName, @ConstraintId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Objects]",
+        "Text": "IF @ParentObjectFilter = 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Objects]",
+        "Text": "SET @Command = REPLACE(@Command, \u0027WHERE object_id =\u0027, \u0027WHERE parent_object_id =\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Objects]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand @Command, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyForeignKey]",
+        "Text": "INSERT INTO @System_ForeignKeys\n    EXEC tSQLt.System_ForeignKeys @ObjectName, @ConstraintId"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyForeignKey]",
+        "Text": "SELECT\n        @ConstraintName = QUOTENAME(fk.name),\n        @ConstraintDefinition = CONCAT\n        (\n            \u0027(\u0027, fk.foreign_key_columns, \u0027)\u0027,\n            \u0027 REFERENCES \u0027, QUOTENAME(fk.referenced_schema_name), \u0027.\u0027, QUOTENAME(ISNULL(OBJECT_NAME(ft.FakeObjectId), fk.referenced_name)),\n            \u0027 (\u0027, fk.referenced_columns, \u0027)\u0027,\n            CASE WHEN @NoCascade = 1 THEN \u0027\u0027\n            ELSE CONCAT\n            (\n                \u0027 ON UPDATE \u0027, REPLACE(fk.update_referential_action_desc, \u0027_\u0027, \u0027 \u0027),\n                \u0027 ON DELETE \u0027, REPLACE(fk.delete_referential_action_desc, \u0027_\u0027, \u0027 \u0027)\n            )\n            END\n        ),\n        @CreateUniqueIndex = CASE WHEN ft.FakeObjectId IS NOT NULL THEN CONCAT\n        (\n            \u0027CREATE UNIQUE INDEX \u0027, QUOTENAME(CAST(NEWID() AS NVARCHAR(MAX))),\n            \u0027 ON \u0027, QUOTENAME(fk.referenced_schema_name), \u0027.\u0027, QUOTENAME(ISNULL(OBJECT_NAME(ft.FakeObjectId), fk.referenced_name)),\n            \u0027 (\u0027, fk.referenced_columns, \u0027)\u0027\n        ) END\n    FROM @System_ForeignKeys fk\n    LEFT JOIN tSQLt.Private_FakeTables ft ON fk.referenced_object_id = ft.ObjectId"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyForeignKey]",
+        "Text": "EXEC sys.sp_executesql @CreateUniqueIndex;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyForeignKey]",
+        "Text": "EXEC sys.sp_executesql @CreateForeignKey;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertStringIn]",
+        "Text": "IF EXISTS\n    (\n        SELECT 1 FROM @Expected\n        WHERE ([value] IS NOT NULL AND ISNULL([value], \u0027\u0027) = @Actual)\n        OR ([value] IS NULL AND @Actual IS NULL)\n    )"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertStringIn]",
+        "Text": "RETURN;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertStringIn]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetIdentityColumn]",
+        "Text": "INSERT INTO @IdentityColumns\n    EXEC tSQLt.System_IdentityColumns @ObjectName, @ColumnId"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetIdentityColumn]",
+        "Text": "SELECT @IdentityColumn = CONCAT\n    (\n        \u0027IDENTITY(\u0027,\n        CONVERT(NVARCHAR(MAX), seed_value),\n        \u0027,\u0027,\n        CONVERT(NVARCHAR(MAX), increment_value),\n        \u0027)\u0027\n    )\n    FROM @IdentityColumns"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_NewTestClass]",
+        "Text": "EXEC tSQLt.Fail \u0027tSQLt.NewTestClass of\u0027, @ClassName, \u0027is not supported.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEquals]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "IF SCHEMA_ID(@TableName) IS NOT NULL AND OBJECT_ID(CONCAT(@TableName, \u0027.\u0027, @ConstraintName), \u0027U\u0027) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "SELECT @TableName = @TableName1, @ConstraintName = @ConstraintName1, @SchemaName = @SchemaName1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "SET @ObjectName = @TableName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "IF @SchemaName IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "SET @ObjectName = CONCAT(@SchemaName, \u0027.\u0027, @TableName);"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "EXEC tSQLt.AssertObjectExists @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "EXEC tSQLt.Private_GetQuotedObjectName @QuotedObjectName OUTPUT, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "SELECT\n        @ParentName = FakeObjectName\n    FROM tSQLt.Private_FakeTables\n    WHERE ObjectName = @QuotedObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "IF @ParentName IS NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "EXEC tSQLt.Fail \u0027Table\u0027, @ObjectName, \u0027was not faked by tSQLt.FakeTable.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "INSERT INTO @System_Objects\n    EXEC tSQLt.System_Objects @ParentName, @ParentObjectFilter = 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessConstraintName]",
+        "Text": "SELECT\n        @ConstraintId = [object_id],\n        @ConstraintType = [type]\n    FROM @System_Objects\n    WHERE [name] = @ConstraintName OR QUOTENAME([name]) = @ConstraintName"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Parameters]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand @Command, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertNotEquals]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyIndex]",
+        "Text": "EXEC tSQLt.AssertObjectExists @TableName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyIndex]",
+        "Text": "EXEC tSQLt.Private_GetQuotedObjectName @ObjectName OUTPUT, @TableName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyIndex]",
+        "Text": "SELECT\n        @FakeObjectName = FakeObjectName\n    FROM tSQLt.Private_FakeTables\n    WHERE ObjectName = @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyIndex]",
+        "Text": "INSERT INTO @System_IndexColumns\n    EXEC tSQLt.System_IndexColumns @FakeObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyIndex]",
+        "Text": "SELECT\n        @IndexId = [object_id],\n        @IndexName = QUOTENAME([index_name])\n    FROM @System_IndexColumns\n    WHERE @IndexName IN ([index_name], QUOTENAME([index_name]))"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyIndex]",
+        "Text": "IF @IndexId IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyIndex]",
+        "Text": "SELECT\n            @IndexUnique = CASE WHEN [is_unique] = 1 THEN \u0027UNIQUE\u0027 END,\n            @IndexType = [type_desc],\n            @IndexDefinition = CONCAT\n            (\n                \u0027(\u0027, STRING_AGG(QUOTENAME([column_name]), \u0027, \u0027), \u0027)\u0027,\n                CASE WHEN [has_filter] = 1 THEN CONCAT_WS(\u0027 \u0027, \u0027WHERE\u0027, [filter_definition]) END\n            )\n        FROM @System_IndexColumns\n        WHERE [object_id] = @IndexId\n        GROUP BY [type_desc], [is_unique], [has_filter], [filter_definition]"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyIndex]",
+        "Text": "EXEC sys.sp_executesql @CreateIndex;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyIndex]",
+        "Text": "EXEC tSQLt.Fail @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetObjectType]",
+        "Text": "INSERT INTO @System_Objects\n    EXEC tSQLt.System_Objects @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetObjectType]",
+        "Text": "SELECT\n        @ObjectType = type\n    FROM @System_Objects"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertLike]",
+        "Text": "IF LEN(@ExpectedPattern) \u003E 4000"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertLike]",
+        "Text": "EXEC tSQLt.Fail \u0027@ExpectedPattern may not exceed 4000 characters.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertLike]",
+        "Text": "IF (@Actual LIKE @ExpectedPattern) OR (@Actual IS NULL AND @ExpectedPattern IS NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertLike]",
+        "Text": "RETURN;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertLike]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Columns]",
+        "Text": "IF OBJECT_ID(CONCAT(\u0027tempdb..\u0027, @ObjectName)) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Columns]",
+        "Text": "SET @Command = REPLACE(@Command, \u0027FROM sys.\u0027, \u0027FROM tempdb.sys.\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Columns]",
+        "Text": "SET @Command = REPLACE(@Command, \u0027@ObjectName\u0027, \u0027CONCAT(\u0027\u0027tempdb..\u0027\u0027, @ObjectName)\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Columns]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand @Command, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_Run]",
+        "Text": "SAVE TRANSACTION @TranName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_Run]",
+        "Text": "SELECT @ErrorMessage = ERROR_MESSAGE();"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_Run]",
+        "Text": "SELECT @ErrorSeverity = ERROR_SEVERITY();"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_Run]",
+        "Text": "SELECT @ErrorState = ERROR_STATE();"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_Run]",
+        "Text": "SELECT @ErrorNumber = ERROR_NUMBER();"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_Run]",
+        "Text": "IF XACT_STATE() \u003C\u003E -1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_Run]",
+        "Text": "ROLLBACK TRANSACTION @TranName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetDefaultConstraints]",
+        "Text": "INSERT INTO @System_DefaultConstraints\n    EXEC tSQLt.System_DefaultConstraints @ObjectName, @ColumnId"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetDefaultConstraints]",
+        "Text": "SELECT @DefaultConstraints = CONCAT\n    (\n        \u0027DEFAULT \u0027,\n        definition\n    )\n    FROM @System_DefaultConstraints"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersNames]",
+        "Text": "INSERT INTO @System_Parameters\n    EXEC tSQLt.System_Parameters @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersNames]",
+        "Text": "SELECT\n        @ParametersNames = STRING_AGG\n        (\n            REPLACE(name, \u0027@\u0027, \u0027\u0027),\n            \u0027, \u0027\n        ) WITHIN GROUP (ORDER BY parameter_id)\n    FROM @System_Parameters"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetTypeName]",
+        "Text": "INSERT INTO @Types\n    EXEC tSQLt.System_Types @ObjectName, @TypeId"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetTypeName]",
+        "Text": "SELECT\n        @TypeName = CASE\n            WHEN schema_name \u003C\u003E \u0027sys\u0027 THEN CONCAT(QUOTENAME(schema_name), \u0027.\u0027, QUOTENAME(name))\n            ELSE name END\n        FROM @Types"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParameters]",
+        "Text": "INSERT INTO @System_Parameters\n    EXEC tSQLt.System_Parameters @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParameters]",
+        "Text": "SELECT\n        @Parameters = STRING_AGG\n        (\n            CONCAT_WS\n            (\n                \u0027 \u0027,\n                name,\n                CASE WHEN is_output = 1 THEN \u0027OUTPUT\u0027 ELSE NULL END\n            ),\n            \u0027, \u0027\n        ) WITHIN GROUP (ORDER BY parameter_id)\n    FROM @System_Parameters"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetMetaData]",
+        "Text": "EXEC tSQLt.Private_RemoveLastCharacter @CommandToExecute OUTPUT, @Character = \u0027;\u0027"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetMetaData]",
+        "Text": "EXEC sys.sp_executesql @Command, N\u0027@MetaData NVARCHAR(MAX) OUTPUT\u0027, @MetaData OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTableName]",
+        "Text": "IF @SchemaName IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTableName]",
+        "Text": "SELECT\n            @TableName = CONCAT(ISNULL(CleanSchemaName, @SchemaName), \u0027.\u0027, ISNULL(CleanTableName, @TableName))\n        FROM tSQLt.Private_ResolveFakeTableNamesForBackwardCompatibility (@TableName, @SchemaName)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTableName]",
+        "Text": "EXEC tSQLt.AssertObjectExists @TableName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTableName]",
+        "Text": "IF OBJECT_ID(@TableName, \u0027SN\u0027) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTableName]",
+        "Text": "INSERT INTO @System_Synonyms\n        EXEC tSQLt.System_Synonyms @TableName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTableName]",
+        "Text": "IF (@BaseObjectName IS NOT NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTableName]",
+        "Text": "IF (COALESCE(OBJECT_ID(@BaseObjectName, \u0027U\u0027), OBJECT_ID(@BaseObjectName, \u0027V\u0027)) IS NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTableName]",
+        "Text": "EXEC tSQLt.Fail \u0027Cannot process synonym\u0027, @TableName, \u0027as it is pointing to\u0027, @BaseObjectName, \u0027which is not a table or view.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTableName]",
+        "Text": "SET @TableName = @BaseObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertResultSetsHaveSameMetaData]",
+        "Text": "EXEC tSQLt.AssertNotEqualsString NULL, @ExpectedCommand;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertResultSetsHaveSameMetaData]",
+        "Text": "EXEC tSQLt.AssertNotEqualsString NULL, @ActualCommand;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertResultSetsHaveSameMetaData]",
+        "Text": "EXEC tSQLt.Private_GetMetaData @ExpectedCommand, @ExpectedMetaData OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertResultSetsHaveSameMetaData]",
+        "Text": "EXEC tSQLt.Private_GetMetaData @ActualCommand, @ActualMetaData OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertResultSetsHaveSameMetaData]",
+        "Text": "IF (@ExpectedMetaData = @ActualMetaData)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertResultSetsHaveSameMetaData]",
+        "Text": "RETURN;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertResultSetsHaveSameMetaData]",
+        "Text": "EXEC tSQLt.Fail @Message0 = @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_SqlModules]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand @Command, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyUniqueConstraint]",
+        "Text": "INSERT INTO @System_IndexColumns\n    EXEC tSQLt.System_IndexColumns @ParentName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyUniqueConstraint]",
+        "Text": "SET @ConstraintName = QUOTENAME(PARSENAME(@ConstraintName, 1))"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyUniqueConstraint]",
+        "Text": "SELECT\n        @ConstraintDefinition = CONCAT\n        (\n            \u0027(\u0027,\n            STRING_AGG\n            (\n                QUOTENAME([column_name]),\n                \u0027, \u0027\n            ),\n            \u0027)\u0027\n        )\n    FROM @System_IndexColumns\n    WHERE QUOTENAME([index_name]) = @ConstraintName\n    AND [is_unique_constraint] = 1\n    GROUP BY [index_name], [type_desc]"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyUniqueConstraint]",
+        "Text": "EXEC sys.sp_executesql @CreateUniqueConstraint;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetScalarParameters]",
+        "Text": "INSERT INTO @System_Parameters\n    EXEC tSQLt.System_Parameters @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetScalarParameters]",
+        "Text": "SELECT\n        @ScalarParameters = STRING_AGG\n        (\n            name,\n            \u0027, \u0027\n        ) WITHIN GROUP (ORDER BY parameter_id)\n    FROM @System_Parameters\n    WHERE parameter_id \u003E 0"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_CheckConstraints]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand_ConstraintId @Command, @ObjectName, @ConstraintId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetComputedColumn]",
+        "Text": "INSERT INTO @System_ComputedColumns\n    EXEC tSQLt.System_ComputedColumns @ObjectName, @ColumnId"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetComputedColumn]",
+        "Text": "SELECT @ComputedColumn = CONCAT_WS\n    (\n        \u0027 \u0027,\n        \u0027AS\u0027,\n        definition,\n        CASE WHEN is_persisted = 1 THEN \u0027PERSISTED\u0027 ELSE NULL END\n    )\n    FROM @System_ComputedColumns"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogSelect]",
+        "Text": "INSERT INTO @System_Parameters\n    EXEC tSQLt.System_Parameters @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogSelect]",
+        "Text": "INSERT INTO @Result\n    (\n        [name],\n        [parameter_id],\n        [user_type_id],\n        [is_output]\n    )\n    SELECT\n        [name],\n        [parameter_id],\n        [user_type_id],\n        [is_output]\n    FROM @System_Parameters\n    ORDER BY parameter_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogSelect]",
+        "Text": "WHILE (@_i_ \u003C= @_m_)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogSelect]",
+        "Text": "SELECT\n            @user_type_id = [user_type_id]\n        FROM @Result\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogSelect]",
+        "Text": "INSERT INTO @Types\n        EXEC tSQLt.System_Types @ObjectName, @user_type_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogSelect]",
+        "Text": "SELECT @IsTableType = is_table_type FROM @Types"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogSelect]",
+        "Text": "UPDATE @Result\n        SET is_table_type = @IsTableType\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogSelect]",
+        "Text": "SET @_i_ = @_i_ \u002B 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogSelect]",
+        "Text": "SELECT\n        @SpyProcedureLogSelect = STRING_AGG\n        (\n            CONCAT_WS\n            (\n                \u0027 \u0027,\n                CASE\n                    WHEN is_table_type = 1 THEN CONCAT(\u0027(SELECT * FROM \u0027, name, \u0027 FOR XML PATH(\u0027\u0027row\u0027\u0027),TYPE,ROOT(\u0027\u0027\u0027, REPLACE(name, \u0027@\u0027, \u0027\u0027), \u0027\u0027\u0027))\u0027)\n                    ELSE name\n                END,\n                CASE WHEN is_output = 1 THEN \u0027OUTPUT\u0027 ELSE NULL END\n            ),\n            \u0027, \u0027\n        ) WITHIN GROUP (ORDER BY parameter_id)\n    FROM @Result"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumnsNames]",
+        "Text": "INSERT INTO @System_Columns\n    EXEC tSQLt.System_Columns @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumnsNames]",
+        "Text": "SELECT\n        @ColumnsNames = STRING_AGG\n        (\n            QUOTENAME(name),\n            \u0027, \u0027\n        ) WITHIN GROUP (ORDER BY column_id)\n    FROM @System_Columns"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_Run]",
+        "Text": "EXEC tSQLt.Fail \u0027tSQLt.Run with @TestResultFormatter is not supported.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTriggerName]",
+        "Text": "EXEC tSQLt.AssertObjectExists @TableName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTriggerName]",
+        "Text": "EXEC tSQLt.Private_GetQuotedObjectName @QuotedObjectName OUTPUT, @TableName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTriggerName]",
+        "Text": "SELECT\n        @FakeObjectName = FakeObjectName\n    FROM tSQLt.Private_FakeTables\n    WHERE ObjectName = @QuotedObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTriggerName]",
+        "Text": "IF @FakeObjectName IS NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTriggerName]",
+        "Text": "EXEC tSQLt.Fail \u0027Table\u0027, @TableName, \u0027was not faked by tSQLt.FakeTable.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTriggerName]",
+        "Text": "INSERT INTO @System_Objects\n    EXEC tSQLt.System_Objects @FakeObjectName, @ParentObjectFilter = 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTriggerName]",
+        "Text": "SELECT\n        @ObjectName = CONCAT(QUOTENAME(PARSENAME(@FakeObjectName, 2)), \u0027.\u0027, QUOTENAME([name]))\n    FROM @System_Objects\n    WHERE [name] = @TriggerName OR QUOTENAME([name]) = @TriggerName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTriggerName]",
+        "Text": "IF PARSENAME(@TableName, 3) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessTriggerName]",
+        "Text": "SET @ObjectName = CONCAT(QUOTENAME(PARSENAME(@TableName, 3)), \u0027.\u0027, @ObjectName)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessUncomparableColumns]",
+        "Text": "INSERT INTO @System_Columns\n    EXEC tSQLt.System_Columns @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessUncomparableColumns]",
+        "Text": "IF @Command IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessUncomparableColumns]",
+        "Text": "SET @Command =\n        (\n            SELECT CONCAT_WS\n            (\n                \u0027 \u0027,\n                \u0027SELECT * INTO\u0027,\n                @OutputName,\n                \u0027FROM\u0027,\n                @ObjectName,\n                @Command\n            )\n        );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessUncomparableColumns]",
+        "Text": "EXEC sys.sp_executesql @Command;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessUncomparableColumns]",
+        "Text": "SET @ObjectName = @OutputName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyCheckConstraint]",
+        "Text": "INSERT INTO @System_CheckConstraints\n    EXEC tSQLt.System_CheckConstraints @ObjectName, @ConstraintId"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyCheckConstraint]",
+        "Text": "SELECT\n        @ConstraintName = QUOTENAME([name]),\n        @ConstraintDefinition = [definition]\n    FROM @System_CheckConstraints"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyCheckConstraint]",
+        "Text": "EXEC sys.sp_executesql @CreateConstraint;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEmptyTable]",
+        "Text": "EXEC tSQLt.Private_ProcessTableName @TableName OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEmptyTable]",
+        "Text": "EXEC tSQLt.Private_IsEmptyTable @TableName, @IsEmpty OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEmptyTable]",
+        "Text": "IF (@IsEmpty = 1)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEmptyTable]",
+        "Text": "RETURN;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEmptyTable]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyTrigger]",
+        "Text": "EXEC tSQLt.Private_ProcessTriggerName @ObjectName OUTPUT, @TableName, @TriggerName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyTrigger]",
+        "Text": "INSERT INTO @System_SqlModules\n    EXEC tSQLt.System_SqlModules @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyTrigger]",
+        "Text": "IF OBJECT_ID(@ObjectName, \u0027TR\u0027) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyTrigger]",
+        "Text": "EXEC tSQLt.RemoveObject @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyTrigger]",
+        "Text": "IF PARSENAME(@TableName, 3) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyTrigger]",
+        "Text": "EXEC sys.sp_executesql @Execute, N\u0027@CreateTrigger NVARCHAR(MAX)\u0027, @CreateTrigger;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyTrigger]",
+        "Text": "EXEC sys.sp_executesql @CreateTrigger;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyTrigger]",
+        "Text": "EXEC tSQLt.Fail @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetType]",
+        "Text": "IF @TypeId \u003E 256"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetType]",
+        "Text": "EXEC tSQLt.Private_GetTypeName @ObjectName, @TypeName OUTPUT, @TypeId"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetType]",
+        "Text": "SELECT\n        @Type = CONCAT\n        (\n            @TypeName,\n            CASE\n            WHEN @Length = -1 AND @TypeName IN (\u0027nchar\u0027, \u0027nvarchar\u0027, \u0027char\u0027, \u0027varchar\u0027, \u0027binary\u0027, \u0027varbinary\u0027) THEN \u0027(max)\u0027\n            WHEN @TypeName IN (\u0027nchar\u0027, \u0027nvarchar\u0027)                      THEN CONCAT(\u0027(\u0027, @Length / 2, \u0027)\u0027)\n            WHEN @TypeName IN (\u0027char\u0027, \u0027varchar\u0027, \u0027binary\u0027, \u0027varbinary\u0027) THEN CONCAT(\u0027(\u0027, @Length, \u0027)\u0027)\n            WHEN @TypeName IN (\u0027decimal\u0027, \u0027numeric\u0027)                     THEN CONCAT(\u0027(\u0027, @Precision, \u0027,\u0027, @Scale, \u0027)\u0027)\n            WHEN @TypeName IN (\u0027datetime2\u0027, \u0027datetimeoffset\u0027, \u0027time\u0027)    THEN CONCAT(\u0027(\u0027, @Scale, \u0027)\u0027)\n            ELSE \u0027\u0027\n            END,\n            CASE\n            WHEN @CollationName IS NOT NULL AND CONVERT(NVARCHAR(MAX), DATABASEPROPERTYEX(DB_NAME(), \u0027Collation\u0027)) \u003C\u003E ISNULL(@CollationName, \u0027\u0027) THEN CONCAT(\u0027 COLLATE \u0027, @CollationName)\n            ELSE \u0027\u0027\n            END\n        )"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersWithTypes]",
+        "Text": "INSERT INTO @System_Parameters\n    EXEC tSQLt.System_Parameters @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersWithTypes]",
+        "Text": "INSERT INTO @Result\n    (\n        [name],\n        [parameter_id],\n        [user_type_id],\n        [max_length],\n        [precision],\n        [scale],\n        [is_output],\n        [is_readonly]\n    )\n    SELECT\n        [name],\n        [parameter_id],\n        [user_type_id],\n        [max_length],\n        [precision],\n        [scale],\n        [is_output],\n        [is_readonly]\n    FROM @System_Parameters\n    ORDER BY parameter_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersWithTypes]",
+        "Text": "WHILE (@_i_ \u003C= @_m_)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersWithTypes]",
+        "Text": "SELECT\n            @user_type_id = [user_type_id],\n            @max_length = [max_length],\n            @precision = [precision],\n            @scale = [scale]\n        FROM @Result\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersWithTypes]",
+        "Text": "EXEC tSQLt.Private_GetType @ObjectName, @Type OUTPUT, @user_type_id, @max_length, @precision, @scale"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersWithTypes]",
+        "Text": "UPDATE @Result\n        SET definition = @Type\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersWithTypes]",
+        "Text": "SET @_i_ = @_i_ \u002B 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersWithTypes]",
+        "Text": "SET @Scalar = ISNULL(@Scalar, 0)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetParametersWithTypes]",
+        "Text": "SELECT\n        @ParametersWithTypes = STRING_AGG\n        (\n            CONCAT_WS\n            (\n                \u0027 \u0027,\n                name,\n                definition,\n                CASE WHEN @DefaultNulls = 1 THEN CASE WHEN is_readonly = 1 THEN \u0027READONLY\u0027 ELSE \u0027= NULL\u0027 END END,\n                CASE WHEN is_output = 1 THEN \u0027OUTPUT\u0027 ELSE NULL END\n            ),\n            \u0027, \u0027\n        ) WITHIN GROUP (ORDER BY parameter_id)\n    FROM @Result\n    WHERE (@Scalar = 1 AND parameter_id \u003E 0) OR @Scalar = 0"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_CompareTables]",
+        "Text": "EXEC tSQLt.Private_GetColumnsNames @ColumnsNames OUTPUT, @Expected;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_CompareTables]",
+        "Text": "EXEC tSQLt.Private_ProcessUncomparableColumns @Expected OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_CompareTables]",
+        "Text": "EXEC tSQLt.Private_ProcessUncomparableColumns @Actual OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_CompareTables]",
+        "Text": "EXEC sys.sp_executesql @DiffsCommand, N\u0027@Diffs INT OUTPUT\u0027, @Diffs OUTPUT"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTable]",
+        "Text": "EXEC tSQLt.Private_ProcessTableName @Expected OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTable]",
+        "Text": "EXEC tSQLt.Private_ProcessTableName @Actual OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTable]",
+        "Text": "EXEC tSQLt.Private_CompareTables @Expected, @Actual, @Diffs OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTable]",
+        "Text": "IF @Diffs \u003E 0"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTable]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTable]",
+        "Text": "SET @FailMsg = NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "IF @FakeFunctionName IS NULL AND @FakeDataSource IS NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.Fail \u0027Either @FakeFunctionName or @FakeDataSource must be provided.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "IF @FakeFunctionName IS NOT NULL AND @FakeDataSource IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.Fail \u0027Both @FakeFunctionName and @FakeDataSource are valued. Please use only one.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.AssertObjectExists @FunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "IF @FakeDataSource IS NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.AssertObjectExists @FakeFunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.Private_GetParametersWithTypes @ParametersWithTypes OUTPUT, @FunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "SET @ParametersWithTypes = ISNULL(@ParametersWithTypes, \u0027\u0027);"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.Private_GetParametersWithTypes @FakeParametersWithTypes OUTPUT, @FakeFunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "SET @FakeParametersWithTypes = ISNULL(@FakeParametersWithTypes, \u0027\u0027);"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "IF @ParametersWithTypes \u003C\u003E @FakeParametersWithTypes"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.Fail \u0027Parameters of both functions must match! (This includes the return type for scalar functions.)\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.Private_GetObjectType @FunctionType OUTPUT, @FunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.Private_GetObjectType @FakeFunctionType OUTPUT, @FakeFunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "IF @FunctionType IN (\u0027IF\u0027, \u0027TF\u0027, \u0027FT\u0027) AND (@FakeFunctionType IN (\u0027IF\u0027, \u0027TF\u0027) OR @FakeDataSource IS NOT NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "IF @FakeDataSource IS NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.Private_GetParameters @Parameters OUTPUT, @FunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "SET @FakeDataSource = CONCAT(\u0027SELECT * FROM \u0027, @FakeFunctionName, \u0027 (\u0027, @Parameters, \u0027);\u0027);"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "IF (UPPER(@FakeDataSource) LIKE \u0027SELECT%\u0027 AND OBJECT_ID(@FakeDataSource) IS NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "SET @FakeDataSource = CONCAT(\u0027(\u0027, @FakeDataSource, \u0027) A \u0027);"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "SET @FakeDataSource = CONCAT(\u0027(SELECT * FROM \u0027, @FakeDataSource, \u0027);\u0027);"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "IF @FunctionType IN (\u0027FN\u0027, \u0027FS\u0027) AND @FakeFunctionType IN (\u0027FN\u0027) AND @FakeDataSource IS NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "SET @FakeDataSource = NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessFakeDataSource]",
+        "Text": "EXEC tSQLt.Fail \u0027Both parameters must contain the name of either scalar or table valued functions\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetScalarReturnType]",
+        "Text": "INSERT INTO @System_Parameters\n    EXEC tSQLt.System_Parameters @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetScalarReturnType]",
+        "Text": "SELECT\n        @user_type_id = [user_type_id],\n        @max_length = [max_length],\n        @precision = [precision],\n        @scale = [scale]\n    FROM @System_Parameters\n    WHERE parameter_id = 0"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetScalarReturnType]",
+        "Text": "EXEC tSQLt.Private_GetType @ObjectName, @ScalarReturnType OUTPUT, @user_type_id, @max_length, @precision, @scale"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "EXEC tSQLt.Private_ProcessFakeDataSource @FunctionName, @FakeFunctionName, @FakeDataSource OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "IF @FakeDataSource IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "EXEC tSQLt.Private_GetParametersWithTypes @ParametersWithTypesDefaultNulls OUTPUT, @FunctionName, @DefaultNulls = 1;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "SET @CreateFakeFunctionCommand = CONCAT_WS\n        (\n            \u0027 \u0027,\n            \u0027CREATE FUNCTION\u0027, CONCAT(QUOTENAME(PARSENAME(@FunctionName, 2)), \u0027.\u0027, QUOTENAME(PARSENAME(@FunctionName, 1))), CONCAT(\u0027(\u0027, @ParametersWithTypesDefaultNulls, \u0027)\u0027),\n            \u0027RETURNS TABLE AS\u0027,\n            \u0027RETURN\u0027, @FakeDataSource\n        );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "EXEC tSQLt.Private_GetScalarReturnType @ScalarReturnType OUTPUT, @FunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "EXEC tSQLt.Private_GetScalarParameters @ScalarParameters OUTPUT, @FunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "EXEC tSQLt.Private_GetParametersWithTypes @ScalarParametersWithTypesDefaultNulls OUTPUT, @FunctionName, @DefaultNulls = 1, @Scalar = 1;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "SET @CreateFakeFunctionCommand = CONCAT_WS\n        (\n            \u0027 \u0027,\n            \u0027CREATE FUNCTION\u0027, CONCAT(QUOTENAME(PARSENAME(@FunctionName, 2)), \u0027.\u0027, QUOTENAME(PARSENAME(@FunctionName, 1))), CONCAT(\u0027(\u0027, @ScalarParametersWithTypesDefaultNulls, \u0027)\u0027),\n            \u0027RETURNS\u0027, @ScalarReturnType,\n            \u0027AS BEGIN\u0027,\n            \u0027RETURN\u0027, @FakeFunctionName, CONCAT(\u0027(\u0027, @ScalarParameters, \u0027);\u0027),\n            \u0027END;\u0027\n        );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "EXEC tSQLt.Private_RenameObject @FunctionName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "IF PARSENAME(@FunctionName, 3) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "EXEC sys.sp_executesql @Execute, N\u0027@CreateFakeFunctionCommand NVARCHAR(MAX)\u0027, @CreateFakeFunctionCommand;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeFunction]",
+        "Text": "EXEC sys.sp_executesql @CreateFakeFunctionCommand;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "INSERT INTO @System_Columns\n    EXEC tSQLt.System_Columns @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "INSERT INTO @Result\n    (\n        [object_id],\n        [name],\n        [column_id],\n        [user_type_id],\n        [max_length],\n        [precision],\n        [scale],\n        [collation_name],\n        [is_nullable],\n        [is_identity],\n        [is_computed],\n        [default_object_id]\n    )\n    SELECT\n        [object_id],\n        [name],\n        [column_id],\n        [user_type_id],\n        [max_length],\n        [precision],\n        [scale],\n        [collation_name],\n        [is_nullable],\n        [is_identity],\n        [is_computed],\n        [default_object_id]\n    FROM @System_Columns\n    ORDER BY column_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "WHILE (@_i_ \u003C= @_m_)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "SELECT\n            @object_id = [object_id],\n            @name = [name],\n            @column_id = [column_id],\n            @user_type_id = [user_type_id],\n            @max_length = [max_length],\n            @precision = [precision],\n            @scale = [scale],\n            @collation_name = [collation_name],\n            @is_nullable = [is_nullable],\n            @is_identity = [is_identity],\n            @is_computed = [is_computed],\n            @default_object_id = [default_object_id]\n        FROM @Result\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "EXEC tSQLt.Private_GetType @ObjectName, @Type OUTPUT, @user_type_id, @max_length, @precision, @scale, @collation_name"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "IF @ComputedColumns = 1 AND @is_computed = 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "EXEC tSQLt.Private_GetComputedColumn @ComputedColumn OUTPUT, @ObjectName, @column_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "IF @Identity = 1 AND @is_identity = 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "EXEC tSQLt.Private_GetIdentityColumn @IdentityColumn OUTPUT, @ObjectName, @column_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "IF @Defaults = 1 AND @default_object_id \u003C\u003E 0"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "EXEC tSQLt.Private_GetDefaultConstraints @DefaultConstraints OUTPUT, @ObjectName, @column_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "UPDATE @Result\n        SET definition =\n            CASE\n                WHEN @ComputedColumns = 1 AND @is_computed = 1 THEN @ComputedColumn\n                ELSE CONCAT_WS\n                (\n                    \u0027 \u0027, @Type,\n                    CASE WHEN @Identity = 1 AND @is_identity = 1 THEN @IdentityColumn END,\n                    CASE WHEN @Defaults = 1 AND @default_object_id \u003C\u003E 0 THEN @DefaultConstraints ELSE\n                    CASE WHEN @NotNulls = 1 AND @is_nullable = 0 THEN \u0027NOT NULL\u0027 END END\n                )\n            END\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "SET @_i_ = @_i_ \u002B 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetFakeColumns]",
+        "Text": "SELECT\n        @FakeColumns = STRING_AGG\n        (\n            CONCAT_WS\n            (\n                \u0027 \u0027,\n                QUOTENAME(name),\n                definition\n            ),\n            \u0027, \u0027\n        ) WITHIN GROUP (ORDER BY column_id)\n    FROM @Result"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "INSERT INTO @System_IndexColumns\n    EXEC tSQLt.System_IndexColumns @ParentName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "SET @ConstraintName = QUOTENAME(PARSENAME(@ConstraintName, 1))"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "INSERT INTO @Result\n    (\n        [object_id],\n        [schema_name],\n        [table_name],\n        [index_name],\n        [column_name],\n        [key_ordinal],\n        [is_descending_key],\n        [type_desc],\n        [column_id],\n        [user_type_id],\n        [max_length],\n        [precision],\n        [scale],\n        [collation_name]\n    )\n    SELECT\n        [object_id],\n        [schema_name],\n        [table_name],\n        [index_name],\n        [column_name],\n        [key_ordinal],\n        [is_descending_key],\n        [type_desc],\n        [column_id],\n        [user_type_id],\n        [max_length],\n        [precision],\n        [scale],\n        [collation_name]\n    FROM @System_IndexColumns\n    WHERE QUOTENAME([index_name]) = @ConstraintName\n    AND [is_primary_key] = 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "WHILE (@_i_ \u003C= @_m_)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "SELECT\n            @user_type_id = [user_type_id],\n            @max_length = [max_length],\n            @precision = [precision],\n            @scale = [scale],\n            @collation_name = [collation_name]\n        FROM @Result\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "EXEC tSQLt.Private_GetType @ObjectName, @Type OUTPUT, @user_type_id, @max_length, @precision, @scale, @collation_name"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "UPDATE @Result\n        SET definition = @Type\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "SET @_i_ = @_i_ \u002B 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "SELECT\n        @AlterPrimaryColumns = STRING_AGG\n        (\n            CONCAT_WS\n            (\n                \u0027 \u0027,\n                \u0027ALTER TABLE\u0027, @ObjectName, \u0027ALTER COLUMN\u0027, QUOTENAME([column_name]),\n                definition,\n                \u0027NOT NULL\u0027\n            ),\n            \u0027 \u0027\n        )\n    FROM @Result"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "SELECT\n        @ConstraintDefinition = CONCAT\n        (\n            [type_desc],\n            \u0027 (\u0027,\n            STRING_AGG\n            (\n                CONCAT_WS\n                (\n                    \u0027 \u0027,\n                    QUOTENAME([column_name]),\n                    CASE WHEN [is_descending_key] = 1 THEN \u0027DESC\u0027 ELSE \u0027ASC\u0027 END\n                ),\n                \u0027, \u0027\n            ),\n            \u0027)\u0027\n        )\n    FROM @Result\n    GROUP BY [schema_name], [table_name], [index_name], [type_desc]"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "EXEC sys.sp_executesql @AlterPrimaryColumns;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ApplyPrimaryKey]",
+        "Text": "EXEC sys.sp_executesql @CreatePrimaryKey;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeTable]",
+        "Text": "EXEC tSQLt.Private_ProcessTableName @TableName OUTPUT, @SchemaName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeTable]",
+        "Text": "EXEC tSQLt.Private_GetFakeColumns @FakeColumns OUTPUT, @TableName, @Identity, @ComputedColumns, @Defaults, @NotNulls;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeTable]",
+        "Text": "EXEC tSQLt.Private_GetQuotedObjectName @TableName OUTPUT, @TableName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeTable]",
+        "Text": "EXEC tSQLt.Private_RenameObject @TableName, @NewTableName OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeTable]",
+        "Text": "EXEC sys.sp_executesql @CreateFakeTableCommand;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_FakeTable]",
+        "Text": "INSERT INTO tSQLt.Private_FakeTables (ObjectId, ObjectName, FakeObjectId, FakeObjectName)\n    VALUES (@ObjectId, @TableName, @NewObjectId, @NewTableName);"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "INSERT INTO @System_Parameters\n    EXEC tSQLt.System_Parameters @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "INSERT INTO @Result\n    (\n        [name],\n        [parameter_id],\n        [user_type_id],\n        [max_length],\n        [precision],\n        [scale]\n    )\n    SELECT\n        [name],\n        [parameter_id],\n        [user_type_id],\n        [max_length],\n        [precision],\n        [scale]\n    FROM @System_Parameters\n    ORDER BY parameter_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "WHILE (@_i_ \u003C= @_m_)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "SELECT\n            @user_type_id = [user_type_id],\n            @max_length = [max_length],\n            @precision = [precision],\n            @scale = [scale]\n        FROM @Result\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "EXEC tSQLt.Private_GetType @ObjectName, @Type OUTPUT, @user_type_id, @max_length, @precision, @scale"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "INSERT INTO @Types\n        EXEC tSQLt.System_Types @ObjectName, @user_type_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "SELECT @IsTableType = is_table_type FROM @Types"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "UPDATE @Result\n        SET\n            definition = @Type,\n            is_table_type = @IsTableType\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "SET @_i_ = @_i_ \u002B 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetSpyProcedureLogColumns]",
+        "Text": "SELECT\n        @SpyProcedureLogColumns = STRING_AGG\n        (\n            CONCAT_WS\n            (\n                \u0027 \u0027,\n                REPLACE(name, \u0027@\u0027, \u0027\u0027),\n                CASE\n                    WHEN is_table_type = 1 THEN \u0027xml\u0027\n                    ELSE definition\n                END,\n                \u0027NULL\u0027\n            ),\n            \u0027, \u0027\n        ) WITHIN GROUP (ORDER BY parameter_id)\n    FROM @Result"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "INSERT INTO @System_Columns\n    EXEC tSQLt.System_Columns @ObjectName"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "INSERT INTO @result (column_id, name)\n    SELECT column_id, name\n    FROM @System_Columns\n    ORDER BY column_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "WHILE (@_i_ \u003C= @_m_)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "SELECT\n            @object_id = [object_id],\n            @name = [name],\n            @column_id = [column_id],\n            @user_type_id = [user_type_id],\n            @max_length = [max_length],\n            @precision = [precision],\n            @scale = [scale],\n            @collation_name = [collation_name],\n            @is_nullable = [is_nullable],\n            @is_identity = [is_identity],\n            @is_computed = [is_computed],\n            @default_object_id = [default_object_id]\n        FROM @System_Columns\n        WHERE column_id = (SELECT column_id FROM @result WHERE _id_ = @_i_)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "EXEC tSQLt.Private_GetType @ObjectName, @Type OUTPUT, @user_type_id, @max_length, @precision, @scale, @collation_name"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "IF @is_computed = 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "EXEC tSQLt.Private_GetComputedColumn @ComputedColumn OUTPUT, @ObjectName, @column_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "IF @is_identity = 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "EXEC tSQLt.Private_GetIdentityColumn @IdentityColumn OUTPUT, @ObjectName, @column_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "IF @default_object_id \u003C\u003E 0"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "EXEC tSQLt.Private_GetDefaultConstraints @DefaultConstraints OUTPUT, @ObjectName, @column_id"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "UPDATE @result\n        SET definition =\n            CASE @is_computed\n                WHEN 1 THEN @ComputedColumn\n                ELSE CONCAT_WS\n                (\n                    \u0027 \u0027, @Type,\n                    CASE @is_identity WHEN 1 THEN @IdentityColumn END,\n                    CASE WHEN @default_object_id \u003C\u003E 0 THEN @DefaultConstraints ELSE\n                    CASE @is_nullable WHEN 1 THEN \u0027NULL\u0027 ELSE \u0027NOT NULL\u0027 END END\n                )\n            END\n        WHERE _id_ = @_i_"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "SET @_i_ = @_i_ \u002B 1"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetColumns]",
+        "Text": "SELECT\n        @Columns = STRING_AGG\n        (\n            CONCAT_WS\n            (\n                \u0027 \u0027,\n                QUOTENAME(name),\n                definition\n            ),\n            \u0027, \u0027\n        ) WITHIN GROUP (ORDER BY column_id)\n    FROM @result"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "EXEC tSQLt.Private_ProcessConstraintName @ParentName OUTPUT, @ObjectName OUTPUT, @ConstraintId OUTPUT, @ConstraintType OUTPUT, @TableName, @ConstraintName, @SchemaName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "IF @ConstraintType = \u0027C\u0027"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "EXEC tSQLt.Private_ApplyCheckConstraint @ParentName, @ObjectName, @ConstraintId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "IF @ConstraintType = \u0027F\u0027"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "EXEC tSQLt.Private_ApplyForeignKey @ParentName, @ObjectName, @ConstraintId, @NoCascade;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "IF @ConstraintType = \u0027PK\u0027"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "EXEC tSQLt.Private_ApplyPrimaryKey @ParentName, @ObjectName, @ConstraintName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "IF @ConstraintType = \u0027UQ\u0027"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "EXEC tSQLt.Private_ApplyUniqueConstraint @ParentName, @ObjectName, @ConstraintName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ApplyConstraint]",
+        "Text": "EXEC tSQLt.Fail @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTableSchema]",
+        "Text": "EXEC tSQLt.Private_ProcessTableName @Expected OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTableSchema]",
+        "Text": "EXEC tSQLt.Private_ProcessTableName @Actual OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTableSchema]",
+        "Text": "EXEC tSQLt.Private_GetColumns @ExpectedColumns OUTPUT, @Expected;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTableSchema]",
+        "Text": "EXEC tSQLt.Private_GetColumns @ActualColumns OUTPUT, @Actual;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTableSchema]",
+        "Text": "IF (@ExpectedColumns = @ActualColumns)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTableSchema]",
+        "Text": "RETURN;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsTableSchema]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessProcedureName]",
+        "Text": "EXEC tSQLt.Private_GetObjectType @ObjectType OUTPUT, @ProcedureName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessProcedureName]",
+        "Text": "IF @ObjectType IS NULL OR @ObjectType NOT IN (\u0027P\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessProcedureName]",
+        "Text": "EXEC tSQLt.Fail \u0027Cannot use SpyProcedure on\u0027, @ProcedureName, \u0027because the procedure does not exist.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessProcedureName]",
+        "Text": "EXEC tSQLt.Private_GetParameters @Parameters OUTPUT, @ProcedureName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessProcedureName]",
+        "Text": "EXEC tSQLt.Private_GetParametersNames @ParametersNames OUTPUT, @ProcedureName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessProcedureName]",
+        "Text": "EXEC tSQLt.Private_GetSpyProcedureLogSelect @SpyProcedureLogSelect OUTPUT, @ProcedureName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessProcedureName]",
+        "Text": "EXEC tSQLt.Private_GetSpyProcedureLogColumns @SpyProcedureLogColumns OUTPUT, @ProcedureName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessProcedureName]",
+        "Text": "EXEC tSQLt.Private_GetParametersWithTypes @ParametersWithTypesDefaultNulls OUTPUT, @ProcedureName, @DefaultNulls = 1;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_SpyProcedure]",
+        "Text": "EXEC tSQLt.Private_ProcessProcedureName\n        @ProcedureName,\n        @Parameters OUTPUT,\n        @ParametersNames OUTPUT,\n        @SpyProcedureLogSelect OUTPUT,\n        @SpyProcedureLogColumns OUTPUT,\n        @ParametersWithTypesDefaultNulls OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_SpyProcedure]",
+        "Text": "EXEC tSQLt.RemoveObject @LogTableName, @IfExists = 1;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_SpyProcedure]",
+        "Text": "EXEC tSQLt.RemoveObject @ProcedureName, @NewName OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_SpyProcedure]",
+        "Text": "EXEC sys.sp_executesql @CreateLogTableCommand;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_SpyProcedure]",
+        "Text": "IF PARSENAME(@ProcedureName, 3) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_SpyProcedure]",
+        "Text": "EXEC sys.sp_executesql @Execute, N\u0027@CreateProcedureCommand NVARCHAR(MAX)\u0027, @CreateProcedureCommand;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_SpyProcedure]",
+        "Text": "EXEC sys.sp_executesql @CreateProcedureCommand;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ResolveFakeTableNamesForBackwardCompatibility]",
+        "Text": "INSERT INTO @FakeTableNamesForBackwardCompatibility\n    SELECT\n        QUOTENAME(OBJECT_SCHEMA_NAME(ObjectId)),\n        QUOTENAME(OBJECT_NAME(ObjectId))\n    FROM\n    (\n        SELECT CASE\n            WHEN @SchemaName IS NULL THEN OBJECT_ID(@TableName)\n            ELSE ISNULL(OBJECT_ID(CONCAT(@SchemaName, \u0027.\u0027, @TableName)), OBJECT_ID(CONCAT(@TableName, \u0027.\u0027, @SchemaName)))\n        END ObjectId\n    ) A"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ResolveFakeTableNamesForBackwardCompatibility]",
+        "Text": "RETURN;"
+      },
+      {
+        "ObjectName": "[tSQLt].[TestCaseSummary]",
+        "Text": "INSERT INTO @Result\n    SELECT\n        Msg = CONCAT_WS\n        (\n            \u0027 \u0027,\n            \u0027Test Case Summary:\u0027,\n            Cnt, \u0027test case(s) executed,\u0027,\n            SuccessCnt, \u0027succeeded,\u0027,\n            SkippedCnt, \u0027skipped,\u0027,\n            FailCnt, \u0027failed,\u0027,\n            ErrorCnt, \u0027errored.\u0027\n        ),\n        Cnt,\n        SuccessCnt,\n        SkippedCnt,\n        FailCnt,\n        ErrorCnt\n    FROM\n    (\n        SELECT\n            Cnt = COUNT(1),\n            SuccessCnt = COALESCE(SUM(CASE WHEN Result = \u0027Success\u0027 THEN 1 ELSE 0 END), 0),\n            SkippedCnt = COALESCE(SUM(CASE WHEN Result = \u0027Skipped\u0027 THEN 1 ELSE 0 END), 0),\n            FailCnt = COALESCE(SUM(CASE WHEN Result = \u0027Failure\u0027 THEN 1 ELSE 0 END), 0),\n            ErrorCnt = COALESCE(SUM(CASE WHEN Result = \u0027Error\u0027 THEN 1 ELSE 0 END), 0)\n        FROM tSQLt.TestResult\n    ) A"
+      },
+      {
+        "ObjectName": "[tSQLt].[TestCaseSummary]",
+        "Text": "RETURN"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertObjectExists]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertObjectExists]",
+        "Text": "EXEC @Command\n    @ObjectName = @ObjectName,\n    @Message = @Message;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_XmlResultFormatter]",
+        "Text": "SELECT CAST(@Result AS XML);"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ResultLog]",
+        "Text": "SELECT Name, Msg FROM tSQLt.TestResult WHERE COALESCE(Result, \u0027\u0027) = \u0027Failure\u0027"
+      },
+      {
+        "ObjectName": "[tSQLt].[ApplyTrigger]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[ApplyTrigger]",
+        "Text": "EXEC @Command\n    @TableName = @TableName,\n    @TriggerName = @TriggerName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[RemoveObjectIfExists]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[RemoveObjectIfExists]",
+        "Text": "EXEC @Command\n    @ObjectName = @ObjectName,\n    @NewName = @NewName OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[DropClass]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[DropClass]",
+        "Text": "EXEC @Command\n    @ClassName = @ClassName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[FakeTable]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[FakeTable]",
+        "Text": "EXEC @Command\n    @TableName = @TableName,\n    @SchemaName = @SchemaName,\n    @Identity = @Identity,\n    @ComputedColumns = @ComputedColumns,\n    @Defaults = @Defaults,\n    @NotNulls = @NotNulls;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertEmptyTable]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertEmptyTable]",
+        "Text": "EXEC @Command\n    @TableName = @TableName,\n    @Message = @Message;"
+      },
+      {
+        "ObjectName": "[tSQLt].[NewTestClass]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[NewTestClass]",
+        "Text": "EXEC @Command\n    @ClassName = @ClassName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[ExpectException]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[ExpectException]",
+        "Text": "EXEC @Command\n    @ExpectedMessage = @ExpectedMessage,\n    @ExpectedSeverity = @ExpectedSeverity,\n    @ExpectedState = @ExpectedState,\n    @Message = @Message,\n    @ExpectedMessagePattern = @ExpectedMessagePattern,\n    @ExpectedErrorNumber = @ExpectedErrorNumber;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertNotEqualsString]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertNotEqualsString]",
+        "Text": "EXEC @Command\n    @Expected = @Expected,\n    @Actual = @Actual,\n    @Message = @Message;"
+      },
+      {
+        "ObjectName": "[tSQLt].[SpyProcedure]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[SpyProcedure]",
+        "Text": "EXEC @Command\n    @ProcedureName = @ProcedureName,\n    @CommandToExecute = @CommandToExecute,\n    @CallOriginal = @CallOriginal,\n    @CatchExecutionTimes = @CatchExecutionTimes;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetQuotedObjectName]",
+        "Text": "SET @QuotedObjectName = @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetQuotedObjectName]",
+        "Text": "IF (OBJECT_ID(@ObjectName) IS NOT NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetQuotedObjectName]",
+        "Text": "SET @QuotedObjectName = CONCAT\n        (\n            CASE WHEN PARSENAME(@ObjectName, 3) IS NOT NULL THEN CONCAT(QUOTENAME(PARSENAME(@ObjectName, 3)), \u0027.\u0027) END,\n            QUOTENAME(PARSENAME(@ObjectName, 2)), \u0027.\u0027,\n            QUOTENAME(PARSENAME(@ObjectName, 1))\n        );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetQuotedObjectName]",
+        "Text": "IF (OBJECT_ID(CONCAT(\u0027tempdb..\u0027, @ObjectName)) IS NOT NULL AND SUBSTRING(@ObjectName, 1, 1) = \u0027#\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_GetQuotedObjectName]",
+        "Text": "SET @QuotedObjectName = CONCAT(\u0027[#\u0027, SUBSTRING(@ObjectName, 2, LEN(@ObjectName) - 1), \u0027]\u0027);"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand_ColumnId]",
+        "Text": "IF @DatabaseName IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand_ColumnId]",
+        "Text": "EXEC sys.sp_executesql @Execute, N\u0027@Command NVARCHAR(MAX), @ObjectName NVARCHAR(MAX), @ColumnId INT\u0027, @Command, @ObjectName, @ColumnId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand_ColumnId]",
+        "Text": "EXEC sys.sp_executesql @Command, N\u0027@ObjectName NVARCHAR(MAX), @ColumnId INT\u0027, @ObjectName, @ColumnId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_Fail]",
+        "Text": "RAISERROR(N\u0027%s\u0027, 16, 10, @ErrorMessage);"
+      },
+      {
+        "ObjectName": "[tSQLt].[ExpectNoException]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[ExpectNoException]",
+        "Text": "EXEC @Command\n    @Message = @Message;"
+      },
+      {
+        "ObjectName": "[tSQLt].[XmlResultFormatter]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[XmlResultFormatter]",
+        "Text": "EXEC @Command;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertEqualsTableSchema]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertEqualsTableSchema]",
+        "Text": "EXEC @Command\n    @Expected = @Expected,\n    @Actual = @Actual,\n    @Message = @Message;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_RenameObject]",
+        "Text": "SET @NewName = ISNULL(@NewName, NEWID());"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_RenameObject]",
+        "Text": "EXEC tSQLt.Private_GetQuotedObjectName @QuotedObjectName OUTPUT, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_RenameObject]",
+        "Text": "SELECT @DatabaseName = CASE WHEN PARSENAME(@ObjectName, 3) IS NOT NULL THEN CONCAT(QUOTENAME(PARSENAME(@ObjectName, 3)), \u0027.\u0027) END"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_RenameObject]",
+        "Text": "SET @NewName = CONCAT\n    (\n        @DatabaseName,\n        QUOTENAME(PARSENAME(@QuotedObjectName, 2)), \u0027.\u0027,\n        QUOTENAME(@NewName)\n    );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_RenameObject]",
+        "Text": "EXEC sys.sp_executesql @Command;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Fail]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Fail]",
+        "Text": "EXEC @Command\n    @Message0 = @Message0,\n    @Message1 = @Message1,\n    @Message2 = @Message2,\n    @Message3 = @Message3,\n    @Message4 = @Message4,\n    @Message5 = @Message5,\n    @Message6 = @Message6,\n    @Message7 = @Message7,\n    @Message8 = @Message8,\n    @Message9 = @Message9;"
+      },
+      {
+        "ObjectName": "[tSQLt].[RenameClass]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[RenameClass]",
+        "Text": "EXEC @Command\n    @SchemaName = @SchemaName,\n    @NewSchemaName = @NewSchemaName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertResultSetsHaveSameMetaData]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertResultSetsHaveSameMetaData]",
+        "Text": "EXEC @Command\n    @ExpectedCommand = @expectedCommand,\n    @ActualCommand = @actualCommand;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertEqualsString]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[FakeFunction]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[FakeFunction]",
+        "Text": "EXEC @Command\n    @FunctionName = @FunctionName,\n    @FakeFunctionName = @FakeFunctionName,\n    @FakeDataSource = @FakeDataSource;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertObjectExists]",
+        "Text": "IF (OBJECT_ID(@ObjectName) IS NOT NULL) OR (OBJECT_ID(CONCAT(\u0027tempdb..\u0027, @ObjectName)) IS NOT NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertObjectExists]",
+        "Text": "RETURN;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertObjectExists]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_RemoveObject]",
+        "Text": "IF (OBJECT_ID(@ObjectName) IS NOT NULL) OR (OBJECT_ID(CONCAT(\u0027tempdb..\u0027, @ObjectName)) IS NOT NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_RemoveObject]",
+        "Text": "EXEC tSQLt.Private_RenameObject @ObjectName, @NewName OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_RemoveObject]",
+        "Text": "IF @IfExists = 0"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_RemoveObject]",
+        "Text": "EXEC tSQLt.Fail @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_IdentityColumns]",
+        "Text": "IF OBJECT_ID(CONCAT(\u0027tempdb..\u0027, @ObjectName)) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_IdentityColumns]",
+        "Text": "SET @Command = REPLACE(@Command, \u0027FROM sys.\u0027, \u0027FROM tempdb.sys.\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_IdentityColumns]",
+        "Text": "SET @Command = REPLACE(@Command, \u0027@ObjectName\u0027, \u0027CONCAT(\u0027\u0027tempdb..\u0027\u0027, @ObjectName)\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_IdentityColumns]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand_ColumnId @Command, @ObjectName, @ColumnId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Interfaces]",
+        "Text": "SELECT\n\t\t[name],\n\t\t[object_id],\n\t\t[principal_id],\n\t\t[schema_id],\n\t\t[parent_object_id],\n\t\t[type],\n\t\t[type_desc],\n\t\t[create_date],\n\t\t[modify_date],\n\t\t[is_ms_shipped],\n\t\t[is_published],\n\t\t[is_schema_published],\n\t\t[is_auto_executed],\n\t\t[is_execution_replicated],\n\t\t[is_repl_serializable_only],\n\t\t[skips_repl_constraints]\n\tFROM sys.procedures\n    WHERE SCHEMA_NAME(schema_id) = \u0027tSQLt\u0027\n    AND name NOT LIKE \u0027Internal[_]%\u0027\n    AND name NOT LIKE \u0027Private[_]%\u0027\n    AND name NOT LIKE \u0027System[_]%\u0027\n    AND name NOT LIKE \u0027RunAll\u0027"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertStringIn]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertStringIn]",
+        "Text": "EXEC @Command\n    @Expected = @Expected,\n    @Actual = @Actual,\n    @Message = @Message;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand_TypeId]",
+        "Text": "IF @DatabaseName IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand_TypeId]",
+        "Text": "EXEC sys.sp_executesql @Execute, N\u0027@Command NVARCHAR(MAX), @TypeId INT\u0027, @Command, @TypeId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand_TypeId]",
+        "Text": "EXEC sys.sp_executesql @Command, N\u0027@TypeId INT\u0027, @TypeId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertObjectDoesNotExist]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertObjectDoesNotExist]",
+        "Text": "EXEC @Command\n    @ObjectName = @ObjectName,\n    @Message = @Message;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertObjectDoesNotExist]",
+        "Text": "IF (OBJECT_ID(@ObjectName) IS NULL) AND (OBJECT_ID(CONCAT(\u0027tempdb..\u0027, @ObjectName)) IS NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertObjectDoesNotExist]",
+        "Text": "RETURN;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertObjectDoesNotExist]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_IsEmptyTable]",
+        "Text": "EXEC tSQLt.Private_GetQuotedObjectName @QuotedObjectName OUTPUT, @TableName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_IsEmptyTable]",
+        "Text": "EXEC sys.sp_executesql @Command, N\u0027@IsEmpty BIT OUTPUT\u0027, @IsEmpty OUTPUT;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_ExpectNoException]",
+        "Text": "INSERT INTO tSQLt.Private_ExpectException (ExpectException, Message)\n    VALUES (0, @Message)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_DefaultConstraints]",
+        "Text": "IF OBJECT_ID(CONCAT(\u0027tempdb..\u0027, @ObjectName)) IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_DefaultConstraints]",
+        "Text": "SET @Command = REPLACE(@Command, \u0027FROM sys.\u0027, \u0027FROM tempdb.sys.\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_DefaultConstraints]",
+        "Text": "SET @Command = REPLACE(@Command, \u0027@ObjectName\u0027, \u0027CONCAT(\u0027\u0027tempdb..\u0027\u0027, @ObjectName)\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_DefaultConstraints]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand_ColumnId @Command, @ObjectName, @ColumnId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Run]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Run]",
+        "Text": "EXEC @Command\n    @TestName = @TestName,\n    @TestResultFormatter = @TestResultFormatter;"
+      },
+      {
+        "ObjectName": "[tSQLt].[RemoveObject]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[RemoveObject]",
+        "Text": "EXEC @Command\n    @ObjectName = @ObjectName,\n    @NewName = @NewName OUTPUT,\n    @IfExists = @IfExists;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand]",
+        "Text": "IF @DatabaseName IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand]",
+        "Text": "EXEC sys.sp_executesql @Execute, N\u0027@Command NVARCHAR(MAX), @ObjectName NVARCHAR(MAX)\u0027, @Command, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_ExecuteCommand]",
+        "Text": "EXEC sys.sp_executesql @Command, N\u0027@ObjectName NVARCHAR(MAX)\u0027, @ObjectName;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "IF @ErrorMessage IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "SET @ErrorMessage = CONCAT_WS\n            (\n                \u0027 \u0027, @Message, @ExpectedNoExceptionMessage,\n                CONCAT(\u0027ErrorMessage:\u003C\u0027, @ErrorMessage, \u0027\u003E.\u0027),\n                CONCAT(\u0027ErrorSeverity:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ErrorSeverity), \u0027\u003E.\u0027),\n                CONCAT(\u0027ErrorState:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ErrorState), \u0027\u003E.\u0027),\n                CONCAT(\u0027ErrorNumber:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ErrorNumber), \u0027\u003E.\u0027)\n            );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "IF @ErrorMessage IS NOT NULL"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "IF @ExpectedMessage IS NOT NULL AND NOT (@ExpectedMessage = @ErrorMessage)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "SET @ErrorMessage = CONCAT_WS\n                (\n                    \u0027 \u0027, @Message, @ExpectedExceptionMessage,\n                    CONCAT(\u0027ExpectedMessage:\u003C\u0027, @ExpectedMessage, \u0027\u003E.\u0027),\n                    CONCAT(\u0027ActualMessage:\u003C\u0027, ISNULL(@ErrorMessage, \u0027(null)\u0027), \u0027\u003E.\u0027)\n                );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "IF @ExpectedSeverity IS NOT NULL AND NOT (@ExpectedSeverity = @ErrorSeverity)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "SET @ErrorMessage = CONCAT_WS\n                (\n                    \u0027 \u0027, @Message, @ExpectedExceptionMessage,\n                    CONCAT(\u0027ExpectedSeverity:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ExpectedSeverity), \u0027\u003E.\u0027),\n                    CONCAT(\u0027ActualSeverity:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ErrorSeverity), \u0027\u003E.\u0027)\n                );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "IF @ExpectedState IS NOT NULL AND NOT (@ExpectedState = @ErrorState)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "SET @ErrorMessage = CONCAT_WS\n                (\n                    \u0027 \u0027, @Message, @ExpectedExceptionMessage,\n                    CONCAT(\u0027ExpectedState:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ExpectedState), \u0027\u003E.\u0027),\n                    CONCAT(\u0027ActualState:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ErrorState), \u0027\u003E.\u0027)\n                );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "IF @ExpectedMessagePattern IS NOT NULL AND NOT (@ErrorMessage LIKE @ExpectedMessagePattern)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "SET @ErrorMessage = CONCAT_WS\n                (\n                    \u0027 \u0027, @Message, @ExpectedExceptionMessage,\n                    CONCAT(\u0027ExpectedMessagePattern:\u003C\u0027, @ExpectedMessagePattern, \u0027\u003E.\u0027),\n                    CONCAT(\u0027ActualMessage:\u003C\u0027, ISNULL(@ErrorMessage, \u0027(null)\u0027), \u0027\u003E.\u0027)\n                );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "IF @ExpectedErrorNumber IS NOT NULL AND NOT (@ExpectedErrorNumber = @ErrorNumber)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "SET @ErrorMessage = CONCAT_WS\n                (\n                    \u0027 \u0027, @Message, @ExpectedExceptionMessage,\n                    CONCAT(\u0027ExpectedErrorNumber:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ExpectedErrorNumber), \u0027\u003E.\u0027),\n                    CONCAT(\u0027ActualErrorNumber:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ErrorNumber), \u0027\u003E.\u0027)\n                );"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "SET @ErrorMessage = NULL;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_ProcessErrorMessage]",
+        "Text": "SET @ErrorMessage = CONCAT_WS\n            (\n                \u0027 \u0027, @Message, @ExpectedExceptionMessage,\n                CASE WHEN @ExpectedMessage IS NOT NULL THEN CONCAT(\u0027ExpectedMessage:\u003C\u0027, @ExpectedMessage, \u0027\u003E.\u0027) ELSE NULL END,\n                CASE WHEN @ExpectedSeverity IS NOT NULL THEN CONCAT(\u0027ExpectedSeverity:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ExpectedSeverity), \u0027\u003E.\u0027) ELSE NULL END,\n                CASE WHEN @ExpectedState IS NOT NULL THEN CONCAT(\u0027ExpectedState:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ExpectedState), \u0027\u003E.\u0027) ELSE NULL END,\n                CASE WHEN @ExpectedMessagePattern IS NOT NULL THEN CONCAT(\u0027ExpectedMessagePattern:\u003C\u0027, @ExpectedMessagePattern, \u0027\u003E.\u0027) ELSE NULL END,\n                CASE WHEN @ExpectedErrorNumber IS NOT NULL THEN CONCAT(\u0027ExpectedErrorNumber:\u003C\u0027, CONVERT(NVARCHAR(MAX), @ExpectedErrorNumber), \u0027\u003E.\u0027) ELSE NULL END\n            );"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertEqualsTable]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[AssertEqualsTable]",
+        "Text": "EXEC @Command\n    @Expected = @Expected,\n    @Actual = @Actual,\n    @Message = @Message,\n    @FailMsg = @FailMsg;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_DropClass]",
+        "Text": "EXEC tSQLt.Fail \u0027tSQLt.DropClass of\u0027, @ClassName, \u0027is not supported.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[ApplyConstraint]",
+        "Text": "SET NOCOUNT ON;"
+      },
+      {
+        "ObjectName": "[tSQLt].[ApplyConstraint]",
+        "Text": "EXEC @Command\n    @TableName = @TableName,\n    @ConstraintName = @ConstraintName,\n    @SchemaName = @SchemaName,\n    @NoCascade = @NoCascade;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertNotEqualsString]",
+        "Text": "IF (@Expected \u003C\u003E @Actual) OR (@Expected IS NULL AND @Actual IS NOT NULL) OR (@Expected IS NOT NULL AND @Actual IS NULL)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertNotEqualsString]",
+        "Text": "RETURN;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_AssertNotEqualsString]",
+        "Text": "EXEC tSQLt.Fail @Message, @Failed;"
+      },
+      {
+        "ObjectName": "[tSQLt].[System_Types]",
+        "Text": "EXEC tSQLt.System_ExecuteCommand_TypeId @Command, @ObjectName, @TypeId;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Internal_RenameClass]",
+        "Text": "EXEC tSQLt.Fail \u0027tSQLt.RenameClass of\u0027, @SchemaName, \u0027to\u0027, @NewSchemaName, \u0027is not supported.\u0027;"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_RemoveLastCharacter]",
+        "Text": "SET @String = CONCAT(RTRIM(@String), @RandomSuffix)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_RemoveLastCharacter]",
+        "Text": "SET @String = REPLACE(@String, CONCAT(@Character, @RandomSuffix), \u0027\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_RemoveLastCharacter]",
+        "Text": "SET @String = REPLACE(@String, @RandomSuffix, \u0027\u0027)"
+      },
+      {
+        "ObjectName": "[tSQLt].[Private_RunTestSetUp]",
+        "Text": "EXEC @TestSetUp;"
+      }
+    ],
+    "CoberturaXml": "\u003C?xml version=\u00221.0\u0022?\u003E\n\u003C!--DOCTYPE coverage SYSTEM \u0022http://cobertura.sourceforge.net/xml/coverage-03.dtd\u0022--\u003E\n\u003Ccoverage lines-valid=\u0022474\u0022 lines-covered=\u002253\u0022 line-rate=\u00220.11181434\u0022 version=\u00221.9\u0022 timestamp=\u00221790679183.607372\u0022\u003E\n \u003Cpackages\u003E\n  \u003Cpackage name=\u0022Database.Tests\u0022\u003E\n    \u003Cclasses\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_Synonyms]\u0022 filename=\u0022[tSQLt].[System_Synonyms]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002224\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_ComputedColumns]\u0022 filename=\u0022[tSQLt].[System_ComputedColumns]\u0022 lines-valid=\u00224\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002257\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_RemoveObjectIfExists]\u0022 filename=\u0022[tSQLt].[Internal_RemoveObjectIfExists]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[ApplyIndex]\u0022 filename=\u0022[tSQLt].[ApplyIndex]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_ExecuteCommand_ConstraintId]\u0022 filename=\u0022[tSQLt].[System_ExecuteCommand_ConstraintId]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_ExpectException]\u0022 filename=\u0022[tSQLt].[Internal_ExpectException]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertLike]\u0022 filename=\u0022[tSQLt].[AssertLike]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[dbo].[Assertions]\u0022 filename=\u0022[dbo].[Assertions]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00223\u0022 line-rate=\u00221\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00225\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[dbo].[Example]\u0022 filename=\u0022[dbo].[Example]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_IndexColumns]\u0022 filename=\u0022[tSQLt].[System_IndexColumns]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002235\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_ForeignKeys]\u0022 filename=\u0022[tSQLt].[System_ForeignKeys]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002240\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_Objects]\u0022 filename=\u0022[tSQLt].[System_Objects]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ApplyForeignKey]\u0022 filename=\u0022[tSQLt].[Private_ApplyForeignKey]\u0022 lines-valid=\u00224\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002244\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002245\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertStringIn]\u0022 filename=\u0022[tSQLt].[Internal_AssertStringIn]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002238\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetIdentityColumn]\u0022 filename=\u0022[tSQLt].[Private_GetIdentityColumn]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_NewTestClass]\u0022 filename=\u0022[tSQLt].[Internal_NewTestClass]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertEquals]\u0022 filename=\u0022[tSQLt].[Internal_AssertEquals]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00222\u0022 line-rate=\u00220.6666667\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ProcessConstraintName]\u0022 filename=\u0022[tSQLt].[Private_ProcessConstraintName]\u0022 lines-valid=\u002212\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002224\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002236\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_Parameters]\u0022 filename=\u0022[tSQLt].[System_Parameters]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002232\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertNotEquals]\u0022 filename=\u0022[tSQLt].[Internal_AssertNotEquals]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00222\u0022 line-rate=\u00220.6666667\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002219\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_ApplyIndex]\u0022 filename=\u0022[tSQLt].[Internal_ApplyIndex]\u0022 lines-valid=\u00229\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002250\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002260\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetObjectType]\u0022 filename=\u0022[tSQLt].[Private_GetObjectType]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertLike]\u0022 filename=\u0022[tSQLt].[Internal_AssertLike]\u0022 lines-valid=\u00225\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002224\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_Columns]\u0022 filename=\u0022[tSQLt].[System_Columns]\u0022 lines-valid=\u00224\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002253\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_Run]\u0022 filename=\u0022[tSQLt].[Private_Run]\u0022 lines-valid=\u002216\u0022 lines-covered=\u00229\u0022 line-rate=\u00220.5625\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002215\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002222\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002223\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002232\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002235\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002238\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetDefaultConstraints]\u0022 filename=\u0022[tSQLt].[Private_GetDefaultConstraints]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetParametersNames]\u0022 filename=\u0022[tSQLt].[Private_GetParametersNames]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetTypeName]\u0022 filename=\u0022[tSQLt].[Private_GetTypeName]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetParameters]\u0022 filename=\u0022[tSQLt].[Private_GetParameters]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetMetaData]\u0022 filename=\u0022[tSQLt].[Private_GetMetaData]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002215\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ProcessTableName]\u0022 filename=\u0022[tSQLt].[Private_ProcessTableName]\u0022 lines-valid=\u00229\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002231\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002234\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertResultSetsHaveSameMetaData]\u0022 filename=\u0022[tSQLt].[Internal_AssertResultSetsHaveSameMetaData]\u0022 lines-valid=\u00227\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_SqlModules]\u0022 filename=\u0022[tSQLt].[System_SqlModules]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002223\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ApplyUniqueConstraint]\u0022 filename=\u0022[tSQLt].[Private_ApplyUniqueConstraint]\u0022 lines-valid=\u00224\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002236\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetScalarParameters]\u0022 filename=\u0022[tSQLt].[Private_GetScalarParameters]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_CheckConstraints]\u0022 filename=\u0022[tSQLt].[System_CheckConstraints]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002231\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetComputedColumn]\u0022 filename=\u0022[tSQLt].[Private_GetComputedColumn]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetSpyProcedureLogSelect]\u0022 filename=\u0022[tSQLt].[Private_GetSpyProcedureLogSelect]\u0022 lines-valid=\u00229\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetColumnsNames]\u0022 filename=\u0022[tSQLt].[Private_GetColumnsNames]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_Run]\u0022 filename=\u0022[tSQLt].[Internal_Run]\u0022 lines-valid=\u002216\u0022 lines-covered=\u002215\u0022 line-rate=\u00220.9375\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002216\u0022 hits=\u00222\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002218\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002225\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002226\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002227\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002228\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002229\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002230\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002233\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002236\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002237\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002238\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002239\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002240\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002242\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002247\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ProcessTriggerName]\u0022 filename=\u0022[tSQLt].[Private_ProcessTriggerName]\u0022 lines-valid=\u00229\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ProcessUncomparableColumns]\u0022 filename=\u0022[tSQLt].[Private_ProcessUncomparableColumns]\u0022 lines-valid=\u00225\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002233\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002234\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002235\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002236\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002237\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002238\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002239\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002240\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002241\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002242\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002243\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002244\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002246\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002248\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ApplyCheckConstraint]\u0022 filename=\u0022[tSQLt].[Private_ApplyCheckConstraint]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002224\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertEmptyTable]\u0022 filename=\u0022[tSQLt].[Internal_AssertEmptyTable]\u0022 lines-valid=\u00225\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002222\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_ApplyTrigger]\u0022 filename=\u0022[tSQLt].[Internal_ApplyTrigger]\u0022 lines-valid=\u00228\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002231\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002235\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002246\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_RunAll]\u0022 filename=\u0022[tSQLt].[Internal_RunAll]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00221\u0022 line-rate=\u00221\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00224\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetType]\u0022 filename=\u0022[tSQLt].[Private_GetType]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetParametersWithTypes]\u0022 filename=\u0022[tSQLt].[Private_GetParametersWithTypes]\u0022 lines-valid=\u00229\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_CompareTables]\u0022 filename=\u0022[tSQLt].[Private_CompareTables]\u0022 lines-valid=\u00224\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertEqualsTable]\u0022 filename=\u0022[tSQLt].[Internal_AssertEqualsTable]\u0022 lines-valid=\u00226\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ProcessFakeDataSource]\u0022 filename=\u0022[tSQLt].[Private_ProcessFakeDataSource]\u0022 lines-valid=\u002225\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002224\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002232\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002234\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002241\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002242\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002248\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002250\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002258\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetScalarReturnType]\u0022 filename=\u0022[tSQLt].[Private_GetScalarReturnType]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_FakeFunction]\u0022 filename=\u0022[tSQLt].[Internal_FakeFunction]\u0022 lines-valid=\u002212\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002216\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002218\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002219\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002222\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002231\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002233\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002234\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002235\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002236\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002237\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002238\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002239\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002240\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002241\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002244\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002254\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002258\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetFakeColumns]\u0022 filename=\u0022[tSQLt].[Private_GetFakeColumns]\u0022 lines-valid=\u002214\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ApplyPrimaryKey]\u0022 filename=\u0022[tSQLt].[Private_ApplyPrimaryKey]\u0022 lines-valid=\u002212\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u0022142\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u0022143\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_FakeTable]\u0022 filename=\u0022[tSQLt].[Internal_FakeTable]\u0022 lines-valid=\u00226\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002222\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002230\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002231\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetSpyProcedureLogColumns]\u0022 filename=\u0022[tSQLt].[Private_GetSpyProcedureLogColumns]\u0022 lines-valid=\u002210\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetColumns]\u0022 filename=\u0022[tSQLt].[Private_GetColumns]\u0022 lines-valid=\u002214\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_ApplyConstraint]\u0022 filename=\u0022[tSQLt].[Internal_ApplyConstraint]\u0022 lines-valid=\u002210\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002235\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertEqualsTableSchema]\u0022 filename=\u0022[tSQLt].[Internal_AssertEqualsTableSchema]\u0022 lines-valid=\u00227\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ProcessProcedureName]\u0022 filename=\u0022[tSQLt].[Private_ProcessProcedureName]\u0022 lines-valid=\u00228\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002215\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002218\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002219\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002222\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_SpyProcedure]\u0022 filename=\u0022[tSQLt].[Internal_SpyProcedure]\u0022 lines-valid=\u00227\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002216\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002218\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002219\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002222\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002287\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002288\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002289\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002299\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u0022103\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ResolveFakeTableNamesForBackwardCompatibility]\u0022 filename=\u0022[tSQLt].[Private_ResolveFakeTableNamesForBackwardCompatibility]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[TestCaseSummary]\u0022 filename=\u0022[tSQLt].[TestCaseSummary]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_Tests]\u0022 filename=\u0022[tSQLt].[System_Tests]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00222\u0022 line-rate=\u00221\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002255\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertObjectExists]\u0022 filename=\u0022[tSQLt].[AssertObjectExists]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_XmlResultFormatter]\u0022 filename=\u0022[tSQLt].[Internal_XmlResultFormatter]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002264\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ResultLog]\u0022 filename=\u0022[tSQLt].[Private_ResultLog]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00222\u0022 line-rate=\u00220.6666667\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[ApplyTrigger]\u0022 filename=\u0022[tSQLt].[ApplyTrigger]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[RemoveObjectIfExists]\u0022 filename=\u0022[tSQLt].[RemoveObjectIfExists]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertEqualsString]\u0022 filename=\u0022[tSQLt].[AssertEqualsString]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00222\u0022 line-rate=\u00221\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[DropClass]\u0022 filename=\u0022[tSQLt].[DropClass]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[FakeTable]\u0022 filename=\u0022[tSQLt].[FakeTable]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002215\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002216\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002218\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertEmptyTable]\u0022 filename=\u0022[tSQLt].[AssertEmptyTable]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[NewTestClass]\u0022 filename=\u0022[tSQLt].[NewTestClass]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[ExpectException]\u0022 filename=\u0022[tSQLt].[ExpectException]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002215\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002216\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002218\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertNotEqualsString]\u0022 filename=\u0022[tSQLt].[AssertNotEqualsString]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[SpyProcedure]\u0022 filename=\u0022[tSQLt].[SpyProcedure]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetQuotedObjectName]\u0022 filename=\u0022[tSQLt].[Private_GetQuotedObjectName]\u0022 lines-valid=\u00225\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002218\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_ExecuteCommand_ColumnId]\u0022 filename=\u0022[tSQLt].[System_ExecuteCommand_ColumnId]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_Fail]\u0022 filename=\u0022[tSQLt].[Internal_Fail]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[ExpectNoException]\u0022 filename=\u0022[tSQLt].[ExpectNoException]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[XmlResultFormatter]\u0022 filename=\u0022[tSQLt].[XmlResultFormatter]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00224\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertEqualsTableSchema]\u0022 filename=\u0022[tSQLt].[AssertEqualsTableSchema]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_RenameObject]\u0022 filename=\u0022[tSQLt].[Private_RenameObject]\u0022 lines-valid=\u00225\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002223\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002224\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002230\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Fail]\u0022 filename=\u0022[tSQLt].[Fail]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002216\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002218\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002219\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002222\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002223\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002224\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[RenameClass]\u0022 filename=\u0022[tSQLt].[RenameClass]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertResultSetsHaveSameMetaData]\u0022 filename=\u0022[tSQLt].[AssertResultSetsHaveSameMetaData]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertEqualsString]\u0022 filename=\u0022[tSQLt].[Internal_AssertEqualsString]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00222\u0022 line-rate=\u00220.6666667\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002220\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[FakeFunction]\u0022 filename=\u0022[tSQLt].[FakeFunction]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertObjectExists]\u0022 filename=\u0022[tSQLt].[Internal_AssertObjectExists]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002219\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_RemoveObject]\u0022 filename=\u0022[tSQLt].[Internal_RemoveObject]\u0022 lines-valid=\u00224\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_IdentityColumns]\u0022 filename=\u0022[tSQLt].[System_IdentityColumns]\u0022 lines-valid=\u00224\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002258\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_GetNewTranName]\u0022 filename=\u0022[tSQLt].[Private_GetNewTranName]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00221\u0022 line-rate=\u00221\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00225\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_Interfaces]\u0022 filename=\u0022[tSQLt].[System_Interfaces]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertEquals]\u0022 filename=\u0022[tSQLt].[AssertEquals]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00222\u0022 line-rate=\u00221\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertStringIn]\u0022 filename=\u0022[tSQLt].[AssertStringIn]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertNotEquals]\u0022 filename=\u0022[tSQLt].[AssertNotEquals]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00222\u0022 line-rate=\u00221\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_ExecuteCommand_TypeId]\u0022 filename=\u0022[tSQLt].[System_ExecuteCommand_TypeId]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002217\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002221\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertObjectDoesNotExist]\u0022 filename=\u0022[tSQLt].[AssertObjectDoesNotExist]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertObjectDoesNotExist]\u0022 filename=\u0022[tSQLt].[Internal_AssertObjectDoesNotExist]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002219\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_IsEmptyTable]\u0022 filename=\u0022[tSQLt].[Private_IsEmptyTable]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002215\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_ExpectNoException]\u0022 filename=\u0022[tSQLt].[Internal_ExpectNoException]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_TestNames]\u0022 filename=\u0022[tSQLt].[Private_TestNames]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00222\u0022 line-rate=\u00221\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_DefaultConstraints]\u0022 filename=\u0022[tSQLt].[System_DefaultConstraints]\u0022 lines-valid=\u00224\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002233\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Run]\u0022 filename=\u0022[tSQLt].[Run]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[RemoveObject]\u0022 filename=\u0022[tSQLt].[RemoveObject]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_ExecuteCommand]\u0022 filename=\u0022[tSQLt].[System_ExecuteCommand]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002215\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002219\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_ProcessErrorMessage]\u0022 filename=\u0022[tSQLt].[Private_ProcessErrorMessage]\u0022 lines-valid=\u002218\u0022 lines-covered=\u00223\u0022 line-rate=\u00220.16666667\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002233\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002234\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002235\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002236\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002237\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002238\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002239\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002240\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002250\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002251\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002252\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002253\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002254\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002255\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002259\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002260\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002261\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002262\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002263\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002264\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002268\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002269\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002270\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002271\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002272\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002273\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002277\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002278\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002279\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002280\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002281\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002282\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002286\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002287\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002288\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002289\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002290\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002291\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002294\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002298\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002299\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u0022100\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u0022101\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u0022102\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u0022103\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u0022104\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u0022105\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u0022106\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[AssertEqualsTable]\u0022 filename=\u0022[tSQLt].[AssertEqualsTable]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_DropClass]\u0022 filename=\u0022[tSQLt].[Internal_DropClass]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00225\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[ApplyConstraint]\u0022 filename=\u0022[tSQLt].[ApplyConstraint]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00228\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002210\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002211\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002212\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002214\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_AssertNotEqualsString]\u0022 filename=\u0022[tSQLt].[Internal_AssertNotEqualsString]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00229\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u002219\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[System_Types]\u0022 filename=\u0022[tSQLt].[System_Types]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002227\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Internal_RenameClass]\u0022 filename=\u0022[tSQLt].[Internal_RenameClass]\u0022 lines-valid=\u00221\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_RemoveLastCharacter]\u0022 filename=\u0022[tSQLt].[Private_RemoveLastCharacter]\u0022 lines-valid=\u00223\u0022 lines-covered=\u00220\u0022 line-rate=\u00220\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[Private_RunTestSetUp]\u0022 filename=\u0022[tSQLt].[Private_RunTestSetUp]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00221\u0022 line-rate=\u00220.5\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u002213\u0022 hits=\u00220\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n    \u003Cclass name=\u0022[tSQLt].[RunAll]\u0022 filename=\u0022[tSQLt].[RunAll]\u0022 lines-valid=\u00222\u0022 lines-covered=\u00222\u0022 line-rate=\u00221\u0022 \u003E\r\n     \u003Cmethods/\u003E\r\n     \u003Clines\u003E\r\n      \u003Cline number=\u00224\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n      \u003Cline number=\u00226\u0022 hits=\u00221\u0022 branch=\u0022false\u0022 /\u003E\r\n     \u003C/lines\u003E\r\n    \u003C/class\u003E\r\n\n   \u003C/classes\u003E\n  \u003C/package\u003E\n \u003C/packages\u003E\n\u003C/coverage\u003E\r\n",
+    "Percent": 11
+  }
+}

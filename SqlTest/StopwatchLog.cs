@@ -1,20 +1,21 @@
 namespace SqlTest;
 
-using System.Diagnostics;
-
-public class StopwatchLog
+public sealed class StopwatchLog
 {
     private readonly IConsole console;
 
-    private readonly Stopwatch stopwatch = new Stopwatch();
+    private readonly TimeProvider timeProvider;
+
+    private long startTimestamp;
 
     private string? title;
 
     private bool debug;
 
-    public StopwatchLog(IConsole? mockConsole = null)
+    public StopwatchLog(IConsole console, TimeProvider timeProvider)
     {
-        this.console = mockConsole ?? SystemConsole.This;
+        this.console = console;
+        this.timeProvider = timeProvider;
     }
 
 #if DEBUG
@@ -35,18 +36,18 @@ public class StopwatchLog
             this.console.Write(title);
         }
 
-        this.stopwatch.Start();
+        this.startTimestamp = this.timeProvider.GetTimestamp();
 
         return this;
     }
 
     public void Stop()
     {
-        this.stopwatch.Stop();
+        var elapsed = this.timeProvider.GetElapsedTime(this.startTimestamp);
 
-        string message = this.stopwatch.Elapsed.TotalSeconds < 1.0 ?
-            $" {(int)this.stopwatch.Elapsed.TotalMilliseconds} ms" :
-            $" {(int)this.stopwatch.Elapsed.TotalSeconds} s";
+        string message = elapsed.TotalSeconds < 1.0 ?
+            $" {(int)elapsed.TotalMilliseconds} ms" :
+            $" {(int)elapsed.TotalSeconds} s";
 
         if (this.debug)
         {

@@ -13,6 +13,7 @@ public class RunTargetTests
         Assert.AreEqual(string.Empty, sut.TargetUser);
         Assert.AreEqual(string.Empty, sut.TargetPassword);
         Assert.AreEqual("Database.Tests", sut.TargetDatabaseName);
+        Assert.DoesNotContain("Database.Tests", sut.TargetConnectionString);
     }
 
     [TestMethod]
@@ -36,5 +37,21 @@ public class RunTargetTests
         Assert.AreEqual(string.Empty, sut.TargetUser);
         Assert.AreEqual(string.Empty, sut.TargetPassword);
         Assert.That.IsLike(sut.TargetConnectionString, "%Integrated Security=True%");
+        Assert.That.IsLike(sut.TargetConnectionString, "%Trust Server Certificate=True%");
+    }
+
+    [TestMethod]
+    public void ShouldKeepServerNameWhenPortIsNotNumeric()
+    {
+        var sut = new RunTarget("Server=host,abc;User ID=sa;Password=x");
+
+        Assert.AreEqual("host,abc", sut.TargetServerName);
+        Assert.AreEqual(0, sut.TargetPort);
+    }
+
+    [TestMethod]
+    public void ShouldThrowWhenDataSourceIsMissing()
+    {
+        _ = Assert.Throws<ArgumentException>(() => new RunTarget("Initial Catalog=Database.Tests"));
     }
 }

@@ -1,126 +1,88 @@
 namespace SqlTest;
 
-using System.Xml;
+using System.Globalization;
 
-public static class DotnetTool
+public sealed class DotnetTool
 {
-    public static string GetPublishScriptWithReferences(string project, string serverName, ushort port, string database, string user, string password)
+    public const string FileName = "dotnet";
+
+    private const string SpecialCharacters = "%$@';,?*";
+
+    private readonly IProcessRunner runner;
+
+    public DotnetTool(IProcessRunner runner)
     {
-        string script = string.Empty;
+        this.runner = runner;
+    }
 
-        var references = TryGetProjectReferences(project);
+    public static IReadOnlyList<string> GetCleanArguments(string project)
+    {
+        return ["clean", project];
+    }
 
-        foreach (var reference in references)
+    public static IReadOnlyList<string> GetBuildArguments(string project)
+    {
+        return ["build", project];
+    }
+
+    public static IReadOnlyList<string> GetPublishArguments(string project, RunTarget target, string database)
+    {
+        List<string> arguments = ["publish", project, "/t:PublishDatabase"];
+
+        AddProperty(arguments, "TargetDatabaseName", database);
+        AddProperty(arguments, "TargetServerName", target.TargetServerName);
+        AddProperty(arguments, "TargetPort", target.TargetPort > 0 ? target.TargetPort.ToString(CultureInfo.InvariantCulture) : string.Empty);
+        AddProperty(arguments, "TargetUser", target.TargetUser);
+        AddProperty(arguments, "TargetPassword", target.TargetPassword);
+        AddProperty(arguments, "CreateNewDatabase", "true");
+
+        return arguments;
+    }
+
+    // MSBuild treats these characters specially in /p: values (';' and ',' separate properties).
+    public static string EscapeProperty(string value)
+    {
+        return string.Concat(value.Select(c => SpecialCharacters.Contains(c, StringComparison.Ordinal)
+            ? string.Create(CultureInfo.InvariantCulture, $"%{(int)c:X2}")
+            : c.ToString(CultureInfo.InvariantCulture)));
+    }
+
+    public async Task<ProcessResult> CleanBuildAsync(string project, CancellationToken cancellationToken)
+    {
+        _ = await this.runner.RunAsync(FileName, GetCleanArguments(project), cancellationToken).ConfigureAwait(false);
+
+        return await this.runner.RunAsync(FileName, GetBuildArguments(project), cancellationToken).ConfigureAwait(false);
+    }
+
+    // Publishes referenced databases first and stops at the first failure.
+    public async Task<ProcessResult> PublishAsync(SqlProject project, RunTarget target, string database, CancellationToken cancellationToken)
+    {
+        List<string> output = [];
+        List<string> error = [];
+
+        var publishes = project.References.Append(new SqlProjectReference(project.FullName, database));
+
+        foreach (var publish in publishes)
         {
-            script += GetPublishScript(project: reference.Include, serverName, port, database: reference.Database, user, password);
+            var result = await this.runner.RunAsync(FileName, GetPublishArguments(publish.ProjectPath, target, publish.Database), cancellationToken).ConfigureAwait(false);
 
-            script += "\n";
-        }
+            output.AddRange(result.StandardOutput);
+            error.AddRange(result.StandardError);
 
-        script += GetPublishScript(project, serverName, port, database, user, password);
-
-        return script;
-    }
-
-    public static string GetPublishScript(string project, string serverName, ushort port, string database, string user, string password)
-    {
-        string script = $"dotnet publish {project} /t:PublishDatabase";
-
-        script += !string.IsNullOrEmpty(database) ? $" /p:TargetDatabaseName=\"{database}\"" : string.Empty;
-
-        script += !string.IsNullOrEmpty(serverName) ? $" /p:TargetServerName=\"{serverName}\"" : string.Empty;
-
-        script += (port > 0) ? $" /p:TargetPort={port}" : string.Empty;
-
-        script += !string.IsNullOrEmpty(user) ? $" /p:TargetUser=\"{user}\"" : string.Empty;
-
-        script += !string.IsNullOrEmpty(password) ? $" /p:TargetPassword=\"{password}\"" : string.Empty;
-
-        script += $" /p:CreateNewDatabase=true";
-
-        return script;
-    }
-
-    public static string GetCleanBuildScript(string project)
-    {
-        string script = $"dotnet clean {project}";
-
-        script += $"\ndotnet build {project}";
-
-        return script;
-    }
-
-    public static string GetProjectFullName(string project)
-    {
-        string projectFile = project;
-
-        if (Directory.Exists(project))
-        {
-            projectFile = new DirectoryInfo(project)
-                .GetFiles("*.csproj")
-                .First()
-                .FullName;
-        }
-
-        return projectFile;
-    }
-
-    public static string GetDatabaseName(string project)
-    {
-        return Path.GetFileNameWithoutExtension(project);
-    }
-
-    private static List<ProjectReference> TryGetProjectReferences(string project)
-    {
-        var result = new List<ProjectReference>();
-
-        try
-        {
-            XmlDocument doc = new();
-            doc.Load(project);
-
-            XmlNode root = doc.DocumentElement!;
-            XmlNodeList references = root.SelectNodes("ItemGroup/ProjectReference")!;
-
-            foreach (XmlNode reference in references)
+            if (result.ExitCode != 0)
             {
-                XmlAttribute include = reference.Attributes!["Include"]!;
-                XmlAttribute? databaseVariableLiteralValue = reference.Attributes!["DatabaseVariableLiteralValue"];
-
-                if (databaseVariableLiteralValue != null)
-                {
-                    result.Add(new ProjectReference()
-                    {
-                        Include = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(project)!, include.Value)),
-                        Database = databaseVariableLiteralValue.Value,
-                    });
-                }
-
-                XmlAttribute? databaseSqlCmdVariable = reference.Attributes!["DatabaseSqlCmdVariable"];
-
-                if (databaseSqlCmdVariable != null)
-                {
-                    XmlNode defaultValue = doc.SelectSingleNode($"//SqlCmdVariable[@Include='{databaseSqlCmdVariable.Value}']/DefaultValue")!;
-
-                    result.Add(new ProjectReference()
-                    {
-                        Include = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(project)!, include.Value)),
-                        Database = defaultValue.InnerText,
-                    });
-                }
+                return new ProcessResult(result.ExitCode, output, error);
             }
         }
-        finally
-        {
-        }
 
-        return result;
+        return new ProcessResult(0, output, error);
     }
 
-    private sealed class ProjectReference
+    private static void AddProperty(List<string> arguments, string name, string value)
     {
-        public string Include { get; init; } = default!;
-
-        public string Database { get; init; } = default!;
+        if (!string.IsNullOrEmpty(value))
+        {
+            arguments.Add($"/p:{name}={EscapeProperty(value)}");
+        }
     }
 }

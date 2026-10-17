@@ -21,16 +21,18 @@ Invoke the tool:
 
 ```
 Options:
-  -p, --project <project> (REQUIRED)            Database project
-  -i, --image <image>                           Docker image
-  -c, --collation <collation>                   Server collation
-  -cs, --connection-string <connection-string>  Target connection string (mutually exclusive with --image)
-  -r, --result <result>                         Save result to JUnit XML file
-  --cc-cobertura <cc-cobertura>                 Save code coverage to Cobertura XML file
-  --cc-disable                                  Disable code coverage
-  --cc-include-tsqlt                            Include code coverage of tSQLt schema
-  -?, -h, --help                                Show help and usage information
+  -p, --project <project> (REQUIRED)  Database project
+  -i, --image <image>                 Docker image
+  -c, --collation <collation>         Server collation
+  -t, --target <target>               Target connection string (mutually exclusive with --image)
+  -r, --result <result>               Save result to JUnit XML file
+  --cc-cobertura <cc-cobertura>       Save code coverage to Cobertura XML file
+  --cc-disable                        Disable code coverage
+  --cc-include-tsqlt                  Include code coverage of tSQLt schema
+  -?, -h, --help                      Show help and usage information
 ```
+
+Exit codes: `0` all tests passed, `1` some tests failed, `2` the database could not be prepared or deployed.
 
 ## Examples
 
@@ -57,13 +59,14 @@ Running all tSQLt tests against LocalDB on Windows:
 
 ```sqltest runall --project Database.Tests/Ok --target "Data Source=(localdb)\MSSQLLocalDB"```
 
+Containers can also be run by [Podman](https://podman.io) instead of Docker: start it with `podman machine start` and it serves the Docker API that the tool uses.
+
 ## Build
 
 [dotnet-sqltest](https://www.nuget.org/packages/dotnet-sqltest) is build with .NET 8 and .NET 10.
 
 Powered by:
 - [Dapper](https://www.nuget.org/packages/Dapper)
-- [Microsoft.PowerShell.SDK](https://www.nuget.org/packages/Microsoft.PowerShell.SDK)
 - [SQLCoverLib](https://www.nuget.org/packages/SQLCoverLib)
 - [System.CommandLine](https://www.nuget.org/packages/System.CommandLine)
 - [Testcontainers](https://www.nuget.org/packages/Testcontainers)

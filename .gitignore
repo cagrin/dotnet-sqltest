@@ -5,3 +5,4 @@ bin
 coverage.*
 obj
 TestResults
+devcontainer-lock.json
